@@ -276,11 +276,115 @@
           <section class="wrapper">
 
               <div class="row">
-                  <div class="col-lg-1"></div>
+                  <div class="row"></div>
+                  <div class="col-lg-12 main-chart">
+                    
+                    <div class="row mtbox">
+                    <div class="col-md-1 col-sm-1"></div>
+                      <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                        <div class="box1">
+                            <span class="li_heart"></span>
+                                <h3>933</h3>
+                        </div>
+                  <p>933 People liked your page the last 24hs. Whoohoo!</p>
+                      </div>
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_cloud"></span>
+                  <h3>+48</h3>
+                        </div>
+                  <p>48 New files were added in your cloud storage.</p>
+                      </div>
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_stack"></span>
+                  <h3>23</h3>
+                        </div>
+                  <p>You have 23 unread messages in your inbox.</p>
+                      </div>
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_news"></span>
+                  <h3>+10</h3>
+                        </div>
+                  <p>More than 10 news were added in your reader.</p>
+                      </div>
+                   
+                    
+                    </div>
+            
+
+
+
+              <div class="row">
+                  
                   <div class="col-lg-10 main-chart"> 	
                     <!-- here add content -->
                     
+                      <div class="row mt">
+                      <!-- SERVER STATUS PANELS -->
+                      <div class="col-md-2"></div>
+                        <div class="col-md-5 col-sm-5 mb">
+                          <div class="white-panel pn donut-chart">
+                            <div class="white-header">
+                                <h5>SERVER DISK</h5>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-4 col-xs-4 goleft">
+                                <p><i class="fa fa-database"></i> 70%</p>
+                              </div>
+                            </div>
+                              <canvas id="serverstatus01" height="120" width="140"></canvas>
+                              <script>
+                                var doughnutData = [
+                                    {
+                                      value: 70,
+                                      color:"#68dff0"
+                                    },
+                                    {
+                                      value : 30,
+                                      color : "#fdfdfd"
+                                    }
+                                  ];
+                                  var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                              </script>
+                            </div>
+                        </div>
 
+
+                      
+                    
+
+                  <div class="col-md-5 mb">
+                          <div class="darkblue-panel pn">
+                            <div class="darkblue-header">
+                    <h5>DROPBOX STATICS</h5>
+                            </div>
+                <canvas id="serverstatus02" height="120" width="140"></canvas>
+                <script>
+                  var doughnutData = [
+                      {
+                        value: 60,
+                        color:"#68dff0"
+                      },
+                      {
+                        value : 40,
+                        color : "#444c57"
+                      }
+                    ];
+                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                </script>
+                <p>April 17, 2014</p>
+                <footer>
+                  <div class="pull-left">
+                    <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+                  </div>
+                  <div class="pull-right">
+                    <h5>60% Used</h5>
+                  </div>
+                </footer>
+                </div>
+            </div>
 
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 

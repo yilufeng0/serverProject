@@ -21,7 +21,7 @@
      */
     
 	var URL ;
-		window.UEDITOR_HOME_URL="/ueditor/";
+		window.UEDITOR_HOME_URL="./ueditor/";
 	URL = window.UEDITOR_HOME_URL || getUEBasePath();
     
     /**
