@@ -311,7 +311,7 @@
                     <div class="showback text-center">
                       <h3>新增新闻</h3>
                         
-                      <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
+                      <form class="form-horizontal text-center" role="form" method="POST" action="AddNewsServlet" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
