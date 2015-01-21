@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.cp.serverInfo.*" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -327,22 +328,22 @@
                         <div class="col-md-5 col-sm-5 mb">
                           <div class="white-panel pn donut-chart">
                             <div class="white-header">
-                                <h5>SERVER DISK</h5>
+                                <h5>内存状态</h5>
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
-                                <p><i class="fa fa-database"></i> 70%</p>
+                                <p><i class="fa fa-database"></i> <%=serverinfo.getMemUsageRatio()%>>%</p>
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
                               <script>
                                 var doughnutData = [
                                     {
-                                      value: 70,
+                                      value: <%=serverinfo.getMemUsageRatio()%>,
                                       color:"#68dff0"
                                     },
                                     {
-                                      value : 30,
+                                      value : <%=100-serverinfo.getMemUsageRatio()%>,
                                       color : "#fdfdfd"
                                     }
                                   ];
