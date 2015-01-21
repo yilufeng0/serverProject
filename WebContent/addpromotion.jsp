@@ -30,6 +30,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
 
   <body>
@@ -53,7 +58,7 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">x</span>
                         </a>
@@ -63,7 +68,7 @@
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">DashGum Admin Panel</div>
                                         <div class="percent">40%</div>
@@ -76,7 +81,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Database Update</div>
                                         <div class="percent">60%</div>
@@ -89,7 +94,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Product Development</div>
                                         <div class="percent">80%</div>
@@ -102,7 +107,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Payments Sent</div>
                                         <div class="percent">70%</div>
@@ -122,7 +127,7 @@
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
                         </a>
@@ -132,7 +137,7 @@
                                 <p class="green">You have 5 new messages</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
@@ -144,7 +149,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
@@ -156,7 +161,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
@@ -168,7 +173,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
@@ -180,7 +185,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">See all messages</a>
+                                <a href="index.jsp#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -303,140 +308,74 @@
                       </div>
                     </div> -->
                     <!-- 模态框结束 -->
-                    <div class="showback">
-                      <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
-                    </div>
-                    <table class="table table-striped table-hover">
-                      <thead class="span1">
-                        <tr>
-                          <th class="span1 text-center">#</th>
-                          <th class="span2 text-center">标题</th>
-                          <th class="span1 text-center">时间</th>
-                          <th class="span2 text-center">作者</th>
-                          <th class="span1 text-center">操作</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <!-- 表格开始   -->
+                    <div class="showback text-center">
+                      <h3>新消息</h3>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-2"></div>
+                      </div>
+                      <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="ticker" class="col-sm-2 control-label text-center">通知栏提示文字</label>
+                        <div class="col-sm-6">                              
+                        <input type="text"class="form-control" id="ticker" name="ticker" placeholder="Ticker">                               
+                        </div>
+                      </div>
+                      <div class="form-group">                        
+                         <label for="title" class="col-sm-2 control-label text-center">通知标题</label>
+                        <div class="col-sm-6">                              
+                        <input type="text"class="form-control" id="title" name="title" placeholder="Title">                               
+                        </div>
+                      </div>
+                      <div class="form-group">                        
+                         <label for="notidesc" class="col-sm-2 control-label text-center">通知标题</label>
+                        <div class="col-sm-6">                              
+                        <input type="text"class="form-control" id="notidesc" name="notidesc" placeholder="Remark">                               
+                        </div>
+                      </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label">对象</label>
+                            <div class="col-sm-2">
+                              <select class="form-control" disabled="" id="Zone" name="Zone" placeholder="全部地区">
+                                <option>全部地区</option>
+                              </select>
+                            </div>
+                            <div class="col-sm-2">
+                              <select class="form-control" disabled="" id="people" name="people"    placeholder="所有人">
+                                <option>所有人</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                           <!--添加富文本编辑器  -->
+                              <div class="form-group">
+                              <label for="content" class="col-sm-2 control-label">正文</label>
+                            <div class="col-sm-8">
+                              <textarea style="width:100%" id="content" name="content" 
+                              >content</textarea>
+                              <script type="text/javascript">
+                                    var ue=UE.getEditor('content');
+                              </script>
+                            </div>
+                          </div>
+                           
 
-                          <!-- 此处内容有JSP动态生成 -->
-                          <!-- example start -->
-                        <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td>
-                          </tr>
-                          <!-- example end -->
-                          <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td>
-                        <!-- 表格结束 -->
-                      </tbody>
-                    </table>
-                    <ul class="pager">
-                    <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
-                      <li class="previous"><a href="">上一页</a></li>
-                      <li class="next"><a href="">下一页</a></li>
-                    </ul>
+                           <!-- 添加富文本编辑器结束 -->
+
+                          <div class="control-group">
+                            <div class="controls">                  
+                              <div class="span3">
+                                <button class="btn btn-large btn-block btn-primary" type="submit"><i class="fa fa-upload"></i><span> 提交</span></button>
+                              </div>
+                            </div>
+                          </div>                      
+
+                      </form>
+                      
+                    </div>
+                   
+            
+
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
@@ -458,6 +397,8 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
+ 
+  
   <script src="assets/js/jquery.js"></script>
   <script src="assets/js/jquery-1.8.3.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
