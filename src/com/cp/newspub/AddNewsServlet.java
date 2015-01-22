@@ -28,36 +28,45 @@ public class AddNewsServlet extends HttpServlet {
      */
     public AddNewsServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        uploadFileServlet a = new uploadFileServlet();
-		uploadFile a= new uploadFile();
+		/*
+		uploadFile upFile = new uploadFile();
 		Request req=null;
         try {
-        	a.init(this.getServletConfig());
-			a.upload(request, response, "png", "image");
-			req=a.getRequest();
+        	upFile.init(this.getServletConfig());
+			upFile.upload(request, response, "png", "image");
+			req=upFile.getRequest();
 			Enumeration<String> names=req.getParameterNames();
 			List<String> lName=new ArrayList<String>();
 			while(names.hasMoreElements()){
 				lName.add(names.nextElement())	;							
 			}
 			for (String item : lName) {
-				System.out.println(item);
-				System.out.println(req.getParameter(item));
+			//	System.out.println(item);
+			//	System.out.println(req.getParameter(item));
 			}
-			System.out.println(req.getParameter("newstitle"));
-//        	a.doPost(request, response);
-		//	System.out.println("test");
+		//	System.out.println(req.getParameter("newstitle"));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-     	
+     	*/
+		MultiUploadFile multiUpFile = new MultiUploadFile();
+		Request req = null;
+		try {
+			multiUpFile.init(this.getServletConfig());
+			multiUpFile.multiUpload(request, response, "png", "image");
+			List<String> list = new ArrayList<String>();
+			list = multiUpFile.getFileName();
+			System.out.println(list.get(0));		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

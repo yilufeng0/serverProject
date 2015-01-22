@@ -1,0 +1,5 @@
+Windows操作系统下Sigar.jar需要如下依赖：
+
+windows32位操作系统需要将dll中sigar-x86-winnt.dll文件拷贝到java SDK目录的bin内
+
+windows64位操作系统需要将dll中sigar-amd64-winnt.dll文件拷贝到java SDK目录的bin内
