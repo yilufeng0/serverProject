@@ -21,11 +21,26 @@ import com.jspsmart.upload.SmartUpload;
  * @param
  * @return
  */
-public class uploadFile {
+public class UploadFile {
 	
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
     private static final String CONTENT_TYPE = "text/html; charset=utf-8";
+    
+    /**
+	 * @param config
+	 */
+    public UploadFile(){
+        super();
+    }
+    
+    /**
+	 * @param config
+	 */
+	public UploadFile(ServletConfig config) {
+		super();
+		this.config = config;
+	}
     
     public void init(ServletConfig config) throws ServletException {
         this.config = config;
@@ -33,9 +48,7 @@ public class uploadFile {
     final public ServletConfig getServletConfig() {
         return config;  
     }    
-    public uploadFile(){
-        super();
-    }
+   
 	
     public String getRootPath() {
 		return rootPath;
@@ -73,14 +86,16 @@ public class uploadFile {
 	 * @param filePath    上传文件路径 
 	 */
 	public void upload(HttpServletRequest req, HttpServletResponse res, String upFileType, String filePath) throws Exception{
+		if (null==this.config) {
+			throw new Exception("无法获取配置文件，使用前需要初始化");
+		}
 		res.setContentType("text/html");
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
     	String rootPath;                   //创建根路径保存变量
     	String realPath = req.getSession().getServletContext().getRealPath("/");
     	realPath = realPath.substring(0,realPath.lastIndexOf("\\"));
-    	rootPath = realPath+"\\upload\\"+filePath+"\\";  //创建文件的保存目录
-    	System.out.println(rootPath);
+    	rootPath = realPath+"\\upload\\"+filePath+"\\";  //创建文件的保存目录   	
     	    	
         SmartUpload su = new SmartUpload();
         su.initialize(getServletConfig(), req, res);
@@ -99,14 +114,15 @@ public class uploadFile {
     	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
     	 if (upFileType.indexOf(fileType)==-1)
   	    {
-  	        throw new Exception("wrong file type");
+  	        throw new Exception("上传文件错误");
   	    }     
     	 this.rootPath = rootPath;
-    	 fileName = randomNum+myFileName;
-    	 extName = fileType;
-    	 request = su.getRequest();
+    	 this.fileName = randomNum+myFileName;
+    	 this.extName = fileType;
+    	 this.request = su.getRequest();
     	 myFile.saveAs(rootPath+randomNum+myFileName);  //文件保存位置
        }
     	
   }
+	
 }

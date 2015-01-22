@@ -24,17 +24,14 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-    
+    <script type="text/javascript">
+        var fileIndex=1;
+    </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
-    <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
 
   <body>
@@ -197,9 +194,6 @@
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
-              <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
-              </ul>
             </div>
         </header>
       <!--header end-->
@@ -213,7 +207,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="index.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="profile.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                   <h5 class="centered">CP Admin</h5>
                     
                   <li class="mt">
@@ -224,24 +218,24 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a  href="javascript:;" >
                           <i class="fa fa-phone"></i>
                           <span>智能终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="newspub.jsp">新闻发布</a></li>
+                          <li><a  href="newspub.jsp">新闻发布</a></li>
                           <li><a  href="promotion.jsp">优惠促销</a></li>
                           <li><a  href="feedback.jsp">用户反馈</a></li>
                       </ul>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a class="active" href="javascript:;" >
                           <i class="fa fa-desktop"></i>
                           <span>查询终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="aboutcp.jsp">关于正大</a></li>
+                          <li class="active"><a  href="aboutcp.jsp">关于正大</a></li>
                           <li><a  href="safetrace.jsp">安全追溯</a></li>
                           <li><a  href="advideo.jsp">宣传视频</a></li>
                       </ul>
@@ -277,95 +271,71 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
+      <section id="main-content" >
+          <section class="wrapper" >
 
               <div class="row">
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                    <!-- 模态框开始 -->
-                    <!-- <div class="showback">
-                      <button class="btn btn-success btn-1g" data-target="#myModal" data-toggle="modal">添加</button>
-
-                      <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <div class="modal-title">新增</div>
-                            </div>
-                            <div class="modal-body">
-                              <form >
-                                <input type="email">
-                              </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
-                              <button class="btn btn-primary" type="submit">提交</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-                    <!-- 模态框结束 -->
+                    
+                    
                     <div class="showback text-center">
-                      <h3>新增新闻</h3>
-                        
-                      <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
-                          <div class="form-group">
-                              <label for="newstitle" class="col-sm-2 control-label">标题</label>
-                            <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="newstitle" placeholder="News Title">
-                            </div>
-                          </div>
-                          <div class="form-group">
+
+                    <h2>上传图片</h2>
+                    <div class="row">
+                    <div class="form-group">                        
+                        <div >
+                          <!-- <button class="pull-left btn btn-primary btn-lg round-form"><i class="fa fa-plus"></i></button> -->
+                          <button class="pull-left round-form btn btn-link" onclick="addline()"><i class="fa fa-plus"></i>添加条目</button>
+                            <script type="text/javascript">
+                                function addline(){                                  
+                                  var imgform=document.getElementById('imgform')
+                                   var divline= document.getElementById('baseline')
+                                  var divout = document.createElement('div')
+                                  divout.setAttribute('class','form-group')
+                                  var inhtml='<label class="col-sm-2 control-label"></label>'+'<div class="col-sm-3"><input type="file" id="uploadfile'+fileIndex+'" name=uploadfile'+fileIndex+'"></div>'+'<label class="col-sm-1 control-label"></label><div class="col-sm-5"><input type="text" class="form-control round-form" id="filedescp'+fileIndex+'" name="filedescp'+fileIndex+'"></div>' 
+                                  //alert(inhtml)                          
+                                  divout.innerHTML=inhtml
+                                  imgform.insertBefore(divout,divline)
+                                  // var horz=document.createElement('hr')
+                                  // imgform.insertBefore(horz,divline)
+                                  fileIndex=fileIndex+1
+                                }
+                          </script>
+                        </div>                        
+                    </div>
+                    </div>                    
+                      <hr>  
+                      <form id="imgform" class="form-horizontal text-center" role="form" method="POST" action="AddImageServlet?type=aboutcp" enctype="multipart/form-data">
+                        <div class="form-group">
                               <label for="uploadfile" class="col-sm-2 control-label">配图</label>
-                            <div class="col-sm-8">
+                            <div class="col-sm-3">
                               <input type="file"  id="uploadfile" name="uploadfile">
+                            </div>
+                            <label class="col-sm-1 control-label" >描述</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control round-form" id="filedescp" name="filedescp">
+                            </div>                            
+                        </div>
+                        <hr id="baseline">
+                        <div id="auction" class="form-group">
+                              <label  class="col-sm-2 control-label">注意</label>
+                            <div class="col-sm-8">                              
                               <p class="help-block pull-left">(建议大小32*32)</p>
                             </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="newsauthor" class="col-sm-2 control-label">作者</label>
-                            <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="newsauthor" placeholder="Author">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="remark" class="col-sm-2 control-label">摘要</label>
-                            <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="remark" placeholder="Remark">
-                            </div>
-                          </div> 
-                           <!--添加富文本编辑器  -->
-                              <div class="form-group">
-                              <label for="content" class="col-sm-2 control-label">正文</label>
-                            <div class="col-sm-8">
-                              <textarea style="width:100%" id="content" name="content" class="round-form"
-                              >content</textarea>
-                              <script type="text/javascript">
-                                    var ue=UE.getEditor('content');
-                              </script>
-                            </div>
-                          </div>
-                           
-
-                           <!-- 添加富文本编辑器结束 -->
-
-                          <div class="control-group">
+                        </div>                        
+                        <div class="control-group">
                             <div class="controls">                  
                               <div class="span3">
                                 <button class="btn btn-large btn-block btn-primary" type="submit"><i class="fa fa-upload"></i><span> 提交</span></button>
                               </div>
                             </div>
-                          </div>                      
-
+                          </div>   
                       </form>
-                      
                     </div>
-                   
-            
 
+                    
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
@@ -375,10 +345,10 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer fixed">
+      <footer class="site-footer">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="addnews.jsp#" class="go-top">
+              <a href="index.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -387,8 +357,6 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
- 
-  
   <script src="assets/js/jquery.js"></script>
   <script src="assets/js/jquery-1.8.3.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>

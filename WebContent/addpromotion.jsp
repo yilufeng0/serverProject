@@ -318,19 +318,19 @@
                       <div class="form-group">
                         <label for="ticker" class="col-sm-2 control-label text-center">通知栏提示文字</label>
                         <div class="col-sm-6">                              
-                        <input type="text"class="form-control" id="ticker" name="ticker" placeholder="Ticker">                               
+                        <input type="text"class="form-control round-form" id="ticker" name="ticker" placeholder="Ticker">                               
                         </div>
                       </div>
                       <div class="form-group">                        
                          <label for="title" class="col-sm-2 control-label text-center">通知标题</label>
                         <div class="col-sm-6">                              
-                        <input type="text"class="form-control" id="title" name="title" placeholder="Title">                               
+                        <input type="text"class="form-control round-form" id="title" name="title" placeholder="Title">                               
                         </div>
                       </div>
                       <div class="form-group">                        
                          <label for="notidesc" class="col-sm-2 control-label text-center">通知标题</label>
                         <div class="col-sm-6">                              
-                        <input type="text"class="form-control" id="notidesc" name="notidesc" placeholder="Remark">                               
+                        <input type="text"class="form-control round-form" id="notidesc" name="notidesc" placeholder="Remark">                               
                         </div>
                       </div>
                           <div class="form-group">
@@ -351,7 +351,7 @@
                               <div class="form-group">
                               <label for="content" class="col-sm-2 control-label">正文</label>
                             <div class="col-sm-8">
-                              <textarea style="width:100%" id="content" name="content" 
+                              <textarea style="width:100%" id="content" name="content" class="round-form"
                               >content</textarea>
                               <script type="text/javascript">
                                     var ue=UE.getEditor('content');
