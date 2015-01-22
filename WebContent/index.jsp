@@ -34,6 +34,9 @@
   </head>
 
   <body>
+  <%!
+  	ServerInfo serverInfo = new ServerInfo();
+  %>
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -332,18 +335,39 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
+
+                                <p><i class="fa fa-database"></i><%=(int)serverInfo.getMemUsageRatio()%>%</p>
+
                                 <p><i class="fa fa-database"></i> <%= %>%</p>
+
+                                <p><i class="fa fa-database"></i> <%=serverInfo.getMemUsageRatio()%>>%</p>
+
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
                               <script>
                                 var doughnutData = [
                                     {
+
+                                      value: <%=(int)serverInfo.getMemUsageRatio()%>,
+                                      color:"#68dff0"
+                                    },
+                                    {
+                                      value : <%=100-(int)serverInfo.getMemUsageRatio()%>,
+
                                       value: <%= %>,
                                       color:"#68dff0"
                                     },
                                     {
                                       value : <%= %>,
+
+
+                                      value: <%=serverInfo.getMemUsageRatio()%>,
+                                      color:"#68dff0"
+                                    },
+                                    {
+                                      value : <%=100-serverInfo.getMemUsageRatio()%>,
+
                                       color : "#fdfdfd"
                                     }
                                   ];

@@ -4,6 +4,7 @@
 package com.cp.upload;
 
 import java.io.PrintWriter;
+import java.io.File;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,8 +19,6 @@ import com.jspsmart.upload.SmartUpload;
 
 /**
  * 单个文件上传功能
- * @param
- * @return
  */
 public class UploadFile {
 	
@@ -45,10 +44,19 @@ public class UploadFile {
     public void init(ServletConfig config) throws ServletException {
         this.config = config;
     }
-    final public ServletConfig getServletConfig() {
-        return config;  
-    }    
-   
+
+    /**
+	 * @param rootPath 文件根路径变量
+	 * @param fileName 文件名
+	 * @param extName  文件扩展名
+	 * @param request  请求对象 
+	 */
+    
+	private String rootPath;
+    private String fileName;
+    private String extName;
+    private Request request;
+
 	
     public String getRootPath() {
 		return rootPath;
@@ -67,17 +75,6 @@ public class UploadFile {
 	}
 	
 	
-	
-	/**
-	 * @param rootPath 文件根路径变量
-	 * @param fileName 文件名
-	 * @param extName  文件扩展名
-	 * @param request  请求对象 
-	 */
-	private String rootPath;
-    private String fileName;
-    private String extName;
-    private Request request;
     
 	/**
 	 * @param req        Request请求对象  
@@ -92,13 +89,18 @@ public class UploadFile {
 		res.setContentType("text/html");
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
+    	
     	String rootPath;                   //创建根路径保存变量
-    	String realPath = req.getSession().getServletContext().getRealPath("/");
-    	realPath = realPath.substring(0,realPath.lastIndexOf("\\"));
-    	rootPath = realPath+"\\upload\\"+filePath+"\\";  //创建文件的保存目录   	
-    	    	
+     	String realPath = req.getSession().getServletContext().getRealPath("/");
+     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
+     	rootPath = realPath+"/Upload/"+filePath+"/";
+     	File dirName = new File(rootPath);
+     	if(!dirName.isDirectory())  //如果目录不存在
+     	{
+     		dirName.mkdirs(); //创建多级目录
+     	}
         SmartUpload su = new SmartUpload();
-        su.initialize(getServletConfig(), req, res);
+        su.initialize(this.config, req, res);
     	try {
 			su.upload();
 		} catch (SmartUploadException e) {
@@ -117,10 +119,13 @@ public class UploadFile {
   	        throw new Exception("上传文件错误");
   	    }     
     	 this.rootPath = rootPath;
-    	 this.fileName = randomNum+myFileName;
-    	 this.extName = fileType;
-    	 this.request = su.getRequest();
-    	 myFile.saveAs(rootPath+randomNum+myFileName);  //文件保存位置
+    	 fileName = randomNum+myFileName;
+    	 extName = fileType;
+    	 request = su.getRequest();
+    	 
+    //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
+    	 myFile.saveAs(rootPath+randomNum+myFileName,2);  //PHYSICAL方式保存文件
+
        }
     	
   }
