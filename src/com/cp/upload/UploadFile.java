@@ -44,14 +44,7 @@ public class UploadFile {
     public void init(ServletConfig config) throws ServletException {
         this.config = config;
     }
-    final public ServletConfig getServletConfig() {
-        return config;  
-    }    
-<<<<<<< HEAD:src/com/cp/upload/uploadFile.java
-    public UploadFile(){
-        super();
-    }
-    
+
     /**
 	 * @param rootPath 文件根路径变量
 	 * @param fileName 文件名
@@ -63,9 +56,7 @@ public class UploadFile {
     private String fileName;
     private String extName;
     private Request request;
-=======
-   
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2:src/com/cp/upload/UploadFile.java
+
 	
     public String getRootPath() {
 		return rootPath;
@@ -100,7 +91,6 @@ public class UploadFile {
     	req.setCharacterEncoding("UTF-8");
     	
     	String rootPath;                   //创建根路径保存变量
-<<<<<<< HEAD:src/com/cp/upload/uploadFile.java
      	String realPath = req.getSession().getServletContext().getRealPath("/");
      	realPath = realPath.substring(0, realPath.indexOf(":")+1);
      	rootPath = realPath+"/Upload/"+filePath+"/";
@@ -109,15 +99,8 @@ public class UploadFile {
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
-     	
-=======
-    	String realPath = req.getSession().getServletContext().getRealPath("/");
-    	realPath = realPath.substring(0,realPath.lastIndexOf("\\"));
-    	rootPath = realPath+"\\upload\\"+filePath+"\\";  //创建文件的保存目录   	
-    	    	
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2:src/com/cp/upload/UploadFile.java
         SmartUpload su = new SmartUpload();
-        su.initialize(getServletConfig(), req, res);
+        su.initialize(this.config, req, res);
     	try {
 			su.upload();
 		} catch (SmartUploadException e) {
@@ -136,19 +119,13 @@ public class UploadFile {
   	        throw new Exception("上传文件错误");
   	    }     
     	 this.rootPath = rootPath;
-<<<<<<< HEAD:src/com/cp/upload/uploadFile.java
     	 fileName = randomNum+myFileName;
     	 extName = fileType;
     	 request = su.getRequest();
     	 
     //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
     	 myFile.saveAs(rootPath+randomNum+myFileName,2);  //PHYSICAL方式保存文件
-=======
-    	 this.fileName = randomNum+myFileName;
-    	 this.extName = fileType;
-    	 this.request = su.getRequest();
-    	 myFile.saveAs(rootPath+randomNum+myFileName);  //文件保存位置
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2:src/com/cp/upload/UploadFile.java
+
        }
     	
   }
