@@ -45,7 +45,7 @@ public class InsertOperation {
 	
 	/**
 	 * @param index 指示所填充的位置 
-	 * @param obj	在指示位置填充的数据
+	 * @param obj	在知识位置填充的数据
 	 * @throws SQLException 
 	 */
 	private static void set(int index,Object obj) throws SQLException{

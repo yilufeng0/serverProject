@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.cp.serverInfo.*" %>
-<%
-	ServerInfo serverinfo = new ServerInfo();
-%>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,6 +34,9 @@
   </head>
 
   <body>
+  <%!
+  	ServerInfo serverInfo = new ServerInfo();
+  %>
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -290,16 +288,16 @@
                       <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                         <div class="box1">
                             <span class="li_heart"></span>
-                                <h3>IP</h3>
+                                <h3>933</h3>
                         </div>
-                  <p><%=serverinfo.getIpAddr()%></p>
+                  <p>933 People liked your page the last 24hs. Whoohoo!</p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">
                   <span class="li_cloud"></span>
-                  <h3>System</h3>
+                  <h3>+48</h3>
                         </div>
-                  <p><%=serverinfo.getOsVersion() %></p>
+                  <p>48 New files were added in your cloud storage.</p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">
@@ -337,30 +335,39 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
-<<<<<<< HEAD
-                                <p><i class="fa fa-database"></i><%=(int)serverinfo.getMemUsageRatio()%>%</p>
-=======
+
+                                <p><i class="fa fa-database"></i><%=(int)serverInfo.getMemUsageRatio()%>%</p>
+
                                 <p><i class="fa fa-database"></i> <%= %>%</p>
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
+
+                                <p><i class="fa fa-database"></i> <%=serverInfo.getMemUsageRatio()%>>%</p>
+
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
                               <script>
                                 var doughnutData = [
                                     {
-<<<<<<< HEAD
-                                      value: <%=(int)serverinfo.getMemUsageRatio()%>,
+
+                                      value: <%=(int)serverInfo.getMemUsageRatio()%>,
                                       color:"#68dff0"
                                     },
                                     {
-                                      value : <%=100-(int)serverinfo.getMemUsageRatio()%>,
-=======
+                                      value : <%=100-(int)serverInfo.getMemUsageRatio()%>,
+
                                       value: <%= %>,
                                       color:"#68dff0"
                                     },
                                     {
                                       value : <%= %>,
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
+
+
+                                      value: <%=serverInfo.getMemUsageRatio()%>,
+                                      color:"#68dff0"
+                                    },
+                                    {
+                                      value : <%=100-serverInfo.getMemUsageRatio()%>,
+
                                       color : "#fdfdfd"
                                     }
                                   ];

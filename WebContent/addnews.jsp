@@ -311,19 +311,19 @@
                     <div class="showback text-center">
                       <h3>新增新闻</h3>
                         
-<<<<<<< HEAD
+
                       <form class="form-horizontal text-center" role="form" method="post" action="AddNewsServlet" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" id="newstitle"  name="newstitle" placeholder="News Title">
-=======
+
                       <form class="form-horizontal text-center" role="form" method="POST" action="AddNewsServlet" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control round-form" id="newstitle" placeholder="News Title">
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
+
                             </div>
                           </div>
                           <div class="form-group">
@@ -336,21 +336,21 @@
                           <div class="form-group">
                               <label for="newsauthor" class="col-sm-2 control-label">作者</label>
                             <div class="col-sm-8">
-<<<<<<< HEAD
+
                               <input type="text" class="form-control" id="newsauthor" name="newsauthor" placeholder="Author">
-=======
+
                               <input type="text" class="form-control round-form" id="newsauthor" placeholder="Author">
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
+
                             </div>
                           </div>
                           <div class="form-group">
                               <label for="remark" class="col-sm-2 control-label">摘要</label>
                             <div class="col-sm-8">
-<<<<<<< HEAD
+
                               <input type="text" class="form-control" id="remark" name="remark" placeholder="Remark">
-=======
+
                               <input type="text" class="form-control round-form" id="remark" placeholder="Remark">
->>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
+
                             </div>
                           </div> 
                            <!--添加富文本编辑器  -->
