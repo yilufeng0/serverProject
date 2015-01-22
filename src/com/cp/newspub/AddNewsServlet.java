@@ -33,7 +33,25 @@ public class AddNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+<<<<<<< HEAD
+		/*
+		uploadFile upFile = new uploadFile();
+		Request req=null;
+        try {
+        	upFile.init(this.getServletConfig());
+			upFile.upload(request, response, "png", "image");
+			req=upFile.getRequest();
+			Enumeration<String> names=req.getParameterNames();
+			List<String> lName=new ArrayList<String>();
+			while(names.hasMoreElements()){
+				lName.add(names.nextElement())	;							
+			}
+			for (String item : lName) {
+			//	System.out.println(item);
+			//	System.out.println(req.getParameter(item));
+			}
+		//	System.out.println(req.getParameter("newstitle"));
+=======
 		UploadFile uploadFile= new UploadFile(this.getServletConfig());
 		Request req=null;
 		List<Object> listReq=new ArrayList<>();
@@ -46,12 +64,15 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(req.getParameter("content"));
 			listReq.add(uploadFile.getFileName());
 			listReq.add(uploadFile.getExtName());
-			listReq.add(uploadFile.getRootPath());
+			listReq.add(uploadFile.getRootPath());			
+			
+>>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+     	*/
 		MultiUploadFile multiUpFile = new MultiUploadFile();
-//		Request req = null;
+		Request req = null;
 		try {
 			multiUpFile.init(this.getServletConfig());
 			multiUpFile.multiUpload(request, response, "png", "image");
