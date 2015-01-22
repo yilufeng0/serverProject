@@ -28,12 +28,12 @@ public class AddNewsServlet extends HttpServlet {
      */
     public AddNewsServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		UploadFile uploadFile= new UploadFile(this.getServletConfig());
 		Request req=null;
 		List<Object> listReq=new ArrayList<>();
@@ -46,23 +46,13 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(req.getParameter("content"));
 			listReq.add(uploadFile.getFileName());
 			listReq.add(uploadFile.getExtName());
-			listReq.add(uploadFile.getRootPath());
+			listReq.add(uploadFile.getRootPath());			
+			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		MultiUploadFile multiUpFile = new MultiUploadFile();
-//		Request req = null;
-		try {
-			multiUpFile.init(this.getServletConfig());
-			multiUpFile.multiUpload(request, response, "png", "image");
-			List<String> list = new ArrayList<String>();
-			list = multiUpFile.getFileName();
-			System.out.println(list.get(0));		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
+     	
 	}
 
 }
