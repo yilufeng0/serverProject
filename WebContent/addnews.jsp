@@ -309,13 +309,16 @@
                     </div> -->
                     <!-- 模态框结束 -->
                     <div class="showback text-center">
-                      <h3>新增新闻</h3>
-                        
+                      <h3>新增新闻</h3>                      
+
+
                       <form class="form-horizontal text-center" role="form" method="POST" action="AddNewsServlet" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control round-form" id="newstitle" placeholder="News Title">
+
+
                             </div>
                           </div>
                           <div class="form-group">
@@ -335,6 +338,7 @@
                               <label for="remark" class="col-sm-2 control-label">摘要</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control round-form" id="remark" placeholder="Remark">
+
                             </div>
                           </div> 
                            <!--添加富文本编辑器  -->
