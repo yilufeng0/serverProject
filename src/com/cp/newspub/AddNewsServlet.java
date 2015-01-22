@@ -34,8 +34,6 @@ public class AddNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 		UploadFile uploadFile= new UploadFile(this.getServletConfig());
 		Request req=null;
 		List<Object> listReq=new ArrayList<>();
@@ -48,12 +46,13 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(req.getParameter("content"));
 			listReq.add(uploadFile.getFileName());
 			listReq.add(uploadFile.getExtName());
-			listReq.add(uploadFile.getRootPath());
+			listReq.add(uploadFile.getRootPath());			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+     	
 	}
 
 }
