@@ -34,25 +34,20 @@ public class AddNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        uploadFileServlet a = new uploadFileServlet();
-		uploadFile a= new uploadFile();
+		UploadFile uploadFile= new UploadFile(this.getServletConfig());
 		Request req=null;
-        try {
-        	a.init(this.getServletConfig());
-			a.upload(request, response, "png", "image");
-			req=a.getRequest();
-			Enumeration<String> names=req.getParameterNames();
-			List<String> lName=new ArrayList<String>();
-			while(names.hasMoreElements()){
-				lName.add(names.nextElement())	;							
-			}
-			for (String item : lName) {
-				System.out.println(item);
-				System.out.println(req.getParameter(item));
-			}
-			System.out.println(req.getParameter("newstitle"));
-//        	a.doPost(request, response);
-		//	System.out.println("test");
+		List<Object> listReq=new ArrayList<>();
+        try {        	
+			uploadFile.upload(request, response, "png|jpg|gif|jpeg|bmp", "image");
+			req=uploadFile.getRequest();
+			listReq.add(req.getParameter("newstitle"));			
+			listReq.add(req.getParameter("newsauthor"));
+			listReq.add(req.getParameter("remark"));
+			listReq.add(req.getParameter("content"));
+			listReq.add(uploadFile.getFileName());
+			listReq.add(uploadFile.getExtName());
+			listReq.add(uploadFile.getRootPath());			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

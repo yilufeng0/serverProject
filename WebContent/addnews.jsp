@@ -315,7 +315,7 @@
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="newstitle" placeholder="News Title">
+                              <input type="text" class="form-control round-form" id="newstitle" placeholder="News Title">
                             </div>
                           </div>
                           <div class="form-group">
@@ -328,20 +328,20 @@
                           <div class="form-group">
                               <label for="newsauthor" class="col-sm-2 control-label">作者</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="newsauthor" placeholder="Author">
+                              <input type="text" class="form-control round-form" id="newsauthor" placeholder="Author">
                             </div>
                           </div>
                           <div class="form-group">
                               <label for="remark" class="col-sm-2 control-label">摘要</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="remark" placeholder="Remark">
+                              <input type="text" class="form-control round-form" id="remark" placeholder="Remark">
                             </div>
                           </div> 
                            <!--添加富文本编辑器  -->
                               <div class="form-group">
                               <label for="content" class="col-sm-2 control-label">正文</label>
                             <div class="col-sm-8">
-                              <textarea style="width:100%" id="content" name="content" 
+                              <textarea style="width:100%" id="content" name="content" class="round-form" 
                               >content</textarea>
                               <script type="text/javascript">
                                     var ue=UE.getEditor('content');
