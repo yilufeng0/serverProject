@@ -33,6 +33,7 @@ public class AddNewsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		/*
 		uploadFile upFile = new uploadFile();
 		Request req=null;
@@ -50,6 +51,22 @@ public class AddNewsServlet extends HttpServlet {
 			//	System.out.println(req.getParameter(item));
 			}
 		//	System.out.println(req.getParameter("newstitle"));
+=======
+		UploadFile uploadFile= new UploadFile(this.getServletConfig());
+		Request req=null;
+		List<Object> listReq=new ArrayList<>();
+        try {        	
+			uploadFile.upload(request, response, "png|jpg|gif|jpeg|bmp", "image");
+			req=uploadFile.getRequest();
+			listReq.add(req.getParameter("newstitle"));			
+			listReq.add(req.getParameter("newsauthor"));
+			listReq.add(req.getParameter("remark"));
+			listReq.add(req.getParameter("content"));
+			listReq.add(uploadFile.getFileName());
+			listReq.add(uploadFile.getExtName());
+			listReq.add(uploadFile.getRootPath());			
+			
+>>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

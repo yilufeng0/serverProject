@@ -337,18 +337,30 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
+<<<<<<< HEAD
                                 <p><i class="fa fa-database"></i><%=(int)serverinfo.getMemUsageRatio()%>%</p>
+=======
+                                <p><i class="fa fa-database"></i> <%= %>%</p>
+>>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
                               <script>
                                 var doughnutData = [
                                     {
+<<<<<<< HEAD
                                       value: <%=(int)serverinfo.getMemUsageRatio()%>,
                                       color:"#68dff0"
                                     },
                                     {
                                       value : <%=100-(int)serverinfo.getMemUsageRatio()%>,
+=======
+                                      value: <%= %>,
+                                      color:"#68dff0"
+                                    },
+                                    {
+                                      value : <%= %>,
+>>>>>>> d4d5282b0c309fe8ec6571fa3f889cfcba2d1dd2
                                       color : "#fdfdfd"
                                     }
                                   ];
