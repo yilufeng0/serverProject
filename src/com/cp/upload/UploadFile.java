@@ -3,19 +3,17 @@
  */
 package com.cp.upload;
 
-import java.io.PrintWriter;
 import java.io.File;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cp.basefunc.RandomNum;
 import com.jspsmart.upload.Request;
-import com.jspsmart.upload.SmartUploadException;
 import com.jspsmart.upload.SmartUpload;
+import com.jspsmart.upload.SmartUploadException;
 
 /**
  * 单个文件上传功能
@@ -99,6 +97,7 @@ public class UploadFile {
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
+     	
         SmartUpload su = new SmartUpload();
         su.initialize(this.config, req, res);
     	try {
