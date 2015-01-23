@@ -38,7 +38,18 @@
   </head>
 
   <body>
-
+	<% 
+		String appType=request.getParameter("apptype");
+		appType=appType==null?"android":appType;
+		String appTitle="";
+		if(appType.equals("ios")){
+			appTitle="苹果";
+		}else if(appType.equals("winphone")){
+			appTitle="微软";
+		}else{
+			appTitle="安卓";
+		}
+	%>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -224,12 +235,12 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a href="javascript:;" >
                           <i class="fa fa-phone"></i>
                           <span>智能终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="newspub.jsp">新闻发布</a></li>
+                          <li><a  href="newspub.jsp">新闻发布</a></li>
                           <li><a  href="promotion.jsp">优惠促销</a></li>
                           <li><a  href="feedback.jsp">用户反馈</a></li>
                       </ul>
@@ -247,14 +258,15 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a class="active" href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="androidapp.jsp">安卓终端</a></li>
-                          <li><a  href="iosapp.jsp">IOS终端</a></li>
-                          <li><a  href="winphoneapp.jsp">微软终端</a></li>
+                      <!-- 此处需要根据调教的类型进行动态生成 -->
+						 <li class=<%= appType.equals("android")?"active":"" %>><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li class=<%= appType.equals("ios")?"active":"" %>><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li class=<%= appType.equals("winphone")?"active":"" %>><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -309,8 +321,8 @@
                     </div> -->
                     <!-- 模态框结束 -->
                     <div class="showback text-center">
-                      <h3>新增新闻</h3>
-                        
+                      <h3><span><%= appTitle %>终端应用上传</span></h3>
+                        <hr>
                       <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="appname" class="col-sm-2 control-label">应用名称</label>
@@ -333,7 +345,7 @@
                           <div class="form-group">
                               <label for="apptype" class="col-sm-2 control-label">应用类型</label>
                             <div class="col-sm-8">
-                           	   <input type="text" class="form-control round-form" id="apptype" name="apptype" value="Admin" > 
+                           	   <input type="text" class="form-control round-form" id="apptype" name="apptype" disabled="" value=<%=appType %> > 
                             </div>
                           </div>
                          

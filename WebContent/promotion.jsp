@@ -248,9 +248,9 @@
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="androidapp.jsp">安卓终端</a></li>
-                          <li><a  href="iosapp.jsp">IOS终端</a></li>
-                          <li><a  href="winphoneapp.jsp">微软终端</a></li>
+                          <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -284,13 +284,13 @@
                       <a href="addpromotion.jsp"><button class="btn btn-success btn-lg">添加</button></a>
                     </div>
                     <table class="table table-striped table-hover">
-                      <thead class="span1">
+                      <thead>
                         <tr>
-                          <th class="span1 text-center">#</th>
-                          <th class="span2 text-center">通知栏提示文字</th>
-                          <th class="span1 text-center">通知标题</th>
-                          <th class="span2 text-center">通知描述</th>                        
-                          <th class="span1 text-center">操作</th>
+                          <th class="col-sm-1 text-center">#</th>
+                          <th class="col-sm-3 text-center">通知栏提示文字</th>
+                          <th class="col-sm-2 text-center">通知标题</th>
+                          <th class="col-sm-3 text-center">通知描述</th>                        
+                          <th class="col-sm-1 text-center">操作</th>
                         </tr>
                       </thead>
                       <tbody>

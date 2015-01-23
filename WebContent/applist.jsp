@@ -33,7 +33,10 @@
   </head>
 
   <body>
-
+<%
+	String appType=request.getParameter("apptype");
+	appType=appType==null?"android":appType;
+%>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -46,14 +49,14 @@
               </div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>安全追溯平台</b></a>
+            <a href="index.jsp" class="logo"><b>安全追溯平台</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">x</span>
                         </a>
@@ -63,7 +66,7 @@
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">DashGum Admin Panel</div>
                                         <div class="percent">40%</div>
@@ -76,7 +79,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Database Update</div>
                                         <div class="percent">60%</div>
@@ -89,7 +92,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Product Development</div>
                                         <div class="percent">80%</div>
@@ -102,7 +105,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Payments Sent</div>
                                         <div class="percent">70%</div>
@@ -122,7 +125,7 @@
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
                         </a>
@@ -132,7 +135,7 @@
                                 <p class="green">You have 5 new messages</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
@@ -144,7 +147,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
@@ -156,7 +159,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
@@ -168,7 +171,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
@@ -180,7 +183,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">See all messages</a>
+                                <a href="index.jsp#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -190,7 +193,7 @@
             </div>
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">退出</a></li>
+                    <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
             </div>
         </header>
@@ -205,11 +208,11 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="profile.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                   <h5 class="centered">CP Admin</h5>
                     
                   <li class="mt">
-                      <a href="index.html">
+                      <a href="index.jsp">
                           <i class="fa fa-dashboard"></i>
                           <span>主界面</span>
                       </a>
@@ -221,9 +224,9 @@
                           <span>智能终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="newspub.html">新闻发布</a></li>
-                          <li><a  href="promotion.html">优惠促销</a></li>
-                          <li><a  href="feedback.html">用户反馈</a></li>
+                          <li><a  href="newspub.jsp">新闻发布</a></li>
+                          <li><a  href="promotion.jsp">优惠促销</a></li>
+                          <li><a  href="feedback.jsp">用户反馈</a></li>
                       </ul>
                   </li>
 
@@ -233,9 +236,9 @@
                           <span>查询终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="aboutcp.html">关于正大</a></li>
-                          <li><a  href="safetrace.html">安全追溯</a></li>
-                          <li><a  href="advideo.html">宣传视频</a></li>
+                          <li><a  href="aboutcp.jsp">关于正大</a></li>
+                          <li><a  href="safetrace.jsp">安全追溯</a></li>
+                          <li><a  href="advideo.jsp">宣传视频</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -244,9 +247,9 @@
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="androidapp.html">安卓终端</a></li>
-                          <li><a  href="iosapp.html">IOS终端</a></li>
-                          <li><a  href="winphoneapp.html">微软终端</a></li>
+                          <li class=<%= appType.equals("android")?"active":"" %>><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li class=<%= appType.equals("ios")?"active":"" %>><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li class=<%= appType.equals("winphone")?"active":"" %>><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -255,9 +258,9 @@
                           <span>系统帐户管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.html">关于正大</a></li>
-                          <li><a  href="gallery.html">安全追溯</a></li>
-                          <li><a  href="todo_list.html">宣传视频</a></li>
+                          <li><a  href="calendar.jsp">关于正大</a></li>
+                          <li><a  href="gallery.jsp">安全追溯</a></li>
+                          <li><a  href="todo_list.jsp">宣传视频</a></li>
                       </ul>
               </ul>
               <!-- sidebar menu end-->
@@ -278,7 +281,7 @@
                     <!-- here add content -->
                     
                         <div class="showback">
-                      <a href="addpromotion.jsp"><button class="btn btn-success btn-lg">新版本提交</button></a>
+                      <a href=<%="addnewapp.jsp?apptype="+appType %>><button class="btn btn-success btn-lg">新版本提交</button></a>
                     </div>
                     <table class="table table-striped table-hover">
                       <thead class="span1">
@@ -331,7 +334,7 @@
       <footer class="site-footer">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="index.html#" class="go-top">
+              <a href="index.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>

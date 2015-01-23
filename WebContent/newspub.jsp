@@ -53,7 +53,7 @@
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">x</span>
                         </a>
@@ -63,7 +63,7 @@
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">DashGum Admin Panel</div>
                                         <div class="percent">40%</div>
@@ -76,7 +76,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Database Update</div>
                                         <div class="percent">60%</div>
@@ -89,7 +89,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Product Development</div>
                                         <div class="percent">80%</div>
@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <div class="task-info">
                                         <div class="desc">Payments Sent</div>
                                         <div class="percent">70%</div>
@@ -122,7 +122,7 @@
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">5</span>
                         </a>
@@ -132,7 +132,7 @@
                                 <p class="green">You have 5 new messages</p>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
@@ -144,7 +144,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
@@ -156,7 +156,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
@@ -168,7 +168,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">
+                                <a href="index.jsp#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
@@ -180,7 +180,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.html#">See all messages</a>
+                                <a href="index.jsp#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -247,9 +247,9 @@
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="androidapp.jsp">安卓终端</a></li>
-                          <li><a  href="iosapp.jsp">IOS终端</a></li>
-                          <li><a  href="winphoneapp.jsp">微软终端</a></li>
+                          <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
