@@ -322,7 +322,7 @@
                         <div id="auction" class="form-group">
                               <label  class="col-sm-2 control-label">注意</label>
                             <div class="col-sm-8">                              
-                              <p class="help-block pull-left">(建议大小32*32)</p>
+                              <p class="help-block pull-left">(建议大小1920*1080)</p>
                             </div>
                         </div>                        
                         <div class="control-group">

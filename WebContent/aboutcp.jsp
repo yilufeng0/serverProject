@@ -276,63 +276,7 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                    
-                    <div class="showback text-center">
-
-                    <h2>上传图片</h2>
-                    <div class="row">
-                    <div class="form-group">                        
-                        <div >
-                          <!-- <button class="pull-left btn btn-primary btn-lg round-form"><i class="fa fa-plus"></i></button> -->
-                          <button class="pull-left round-form btn btn-link" onclick="addline()"><i class="fa fa-plus"></i>添加条目</button>
-                            <script type="text/javascript">
-                                function addline(){                                  
-                                  var imgform=document.getElementById('imgform')
-                                   var divline= document.getElementById('baseline')
-                                  var divout = document.createElement('div')
-                                  divout.setAttribute('class','form-group')
-                                  var inhtml='<label class="col-sm-2 control-label"></label>'+'<div class="col-sm-3"><input type="file" id="uploadfile'+fileIndex+'" name=uploadfile'+fileIndex+'"></div>'+'<label class="col-sm-1 control-label"></label><div class="col-sm-5"><input type="text" class="form-control round-form" id="filedescp'+fileIndex+'" name="filedescp'+fileIndex+'"></div>' 
-                                  //alert(inhtml)                          
-                                  divout.innerHTML=inhtml
-                                  imgform.insertBefore(divout,divline)
-                                  // var horz=document.createElement('hr')
-                                  // imgform.insertBefore(horz,divline)
-                                  fileIndex=fileIndex+1
-                                }
-                          </script>
-                        </div>                        
-                    </div>
-                    </div>                    
-                      <hr>  
-                      <form id="imgform" class="form-horizontal text-center" role="form" method="POST" action="AddImageServlet?type=aboutcp" enctype="multipart/form-data">
-                        <div class="form-group">
-                              <label for="uploadfile" class="col-sm-2 control-label">配图</label>
-                            <div class="col-sm-3">
-                              <input type="file"  id="uploadfile" name="uploadfile">
-                            </div>
-                            <label class="col-sm-1 control-label" >描述</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control round-form" id="filedescp" name="filedescp">
-                            </div>                            
-                        </div>
-                        <hr id="baseline">
-                        <div id="auction" class="form-group">
-                              <label  class="col-sm-2 control-label">注意</label>
-                            <div class="col-sm-8">                              
-                              <p class="help-block pull-left">(建议大小32*32)</p>
-                            </div>
-                        </div>                        
-                        <div class="control-group">
-                            <div class="controls">                  
-                              <div class="span3">
-                                <button class="btn btn-large btn-block btn-primary" type="submit"><i class="fa fa-upload"></i><span> 提交</span></button>
-                              </div>
-                            </div>
-                          </div>   
-                      </form>
-                    </div>
-                    
-                    
+                
 
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
