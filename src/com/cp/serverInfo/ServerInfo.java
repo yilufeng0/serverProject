@@ -9,9 +9,14 @@ import org.hyperic.sigar.*;
 
 public class ServerInfo {
 	
+	private Sigar sigar=null;
+	public ServerInfo(){
+		this.sigar= new Sigar();
+	}
+	
     //获取服务器物理内存总量(GByte)
 	public float getMemoryAll() throws SigarException{
-		Sigar sigar = new Sigar();
+		sigar = new Sigar();
 		Mem mem = null;
 		mem = sigar.getMem();
 		float a = (float)mem.getTotal()/1024/1024/1024;   //内存单位为GByte
@@ -21,7 +26,7 @@ public class ServerInfo {
 	
 	//获取服务器物理内存使用率(%)
 	public float getMemUsageRatio() throws SigarException{
-		Sigar sigar = new Sigar();
+		sigar = new Sigar();
 		Mem mem = null;
 		mem = sigar.getMem();
 		float a = (float)mem.getUsedPercent();  //内存使用率%
@@ -31,7 +36,7 @@ public class ServerInfo {
 	
 	//获取服务器本地硬盘总量(GByte)
 	public float getDiskAll() throws SigarException{
-		Sigar sigar = new Sigar();  
+		sigar = new Sigar();  
 		FileSystem fslist[] = sigar.getFileSystemList();  
 		long total = 0L;
 		for (int i = 0; i < fslist.length; i++) {  
@@ -52,7 +57,7 @@ public class ServerInfo {
 	
 	//获取服务器本地硬盘使用率(%)
 	public float getDiskRatio() throws SigarException{
-		Sigar sigar = new Sigar();  
+		sigar = new Sigar();  
 		FileSystem fslist[] = sigar.getFileSystemList();  
 		long total = 0L;
 		long use = 0L;
@@ -119,6 +124,5 @@ public class ServerInfo {
 		 OperatingSystem OS = OperatingSystem.getInstance();  
 		 return OS.getVersion();
 	}
-	
 
 }
