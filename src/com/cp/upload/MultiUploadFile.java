@@ -3,9 +3,9 @@
  */
 package com.cp.upload;
 
-import java.util.*;
 import java.io.File;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.basefunc.RandomNum;
 import com.jspsmart.upload.Request;
-import com.jspsmart.upload.SmartUploadException;
 import com.jspsmart.upload.SmartUpload;
+import com.jspsmart.upload.SmartUploadException;
 
 
 /**
@@ -96,13 +96,15 @@ public class MultiUploadFile {
         com.jspsmart.upload.File myFile = su.getFiles().getFile(i);
        if(!myFile.isMissing())
        {       
-     	  String myFileName = myFile.getFileName();    //得到文件名  
+     	  String totalFileName = myFile.getFileName();    //得到文件名+扩展名  
+     	  String myFileName = totalFileName.substring(0, totalFileName.lastIndexOf(".")); //得到文件名
      	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
-     	  fileName.add(randomNum+myFileName);
-     	  
+    
      	  String fileType=myFile.getFileExt();     //得到文件扩展名
      	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
+     	  
      	  extName.add(fileType);
+     	  fileName.add(myFileName+randomNum+"."+fileType);
      	  
      	 if (upFileType.indexOf(fileType)==-1)
     	 {
@@ -112,7 +114,7 @@ public class MultiUploadFile {
      	 this.rootPath = rootPath;
     	 request = su.getRequest();
      //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
-    	 myFile.saveAs(rootPath+randomNum+myFileName,2);  //PHYSICAL方式保存文件
+    	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
        } 
      }
 	}

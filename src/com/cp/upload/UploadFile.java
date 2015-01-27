@@ -109,7 +109,8 @@ public class UploadFile {
     	com.jspsmart.upload.File myFile = su.getFiles().getFile(0);
     	if (!myFile.isMissing())
     	{       
-    	  String myFileName=myFile.getFileName();  //得到文件名  
+    	  String totalFileName=myFile.getFileName();  //得到文件名+扩展名   
+    	  String myFileName = totalFileName.substring(0, totalFileName.lastIndexOf(".")); //得到文件名
     	  String fileType=myFile.getFileExt();     //得到文件扩展名
     	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
     	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
@@ -118,12 +119,12 @@ public class UploadFile {
   	        throw new Exception("上传文件错误");
   	    }     
     	 this.rootPath = rootPath;
-    	 fileName = randomNum+myFileName;
+    	 fileName = myFileName+randomNum+"."+fileType;
     	 extName = fileType;
     	 request = su.getRequest();
     	 
     //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
-    	 myFile.saveAs(rootPath+randomNum+myFileName,2);  //PHYSICAL方式保存文件
+    	 myFile.saveAs(rootPath+fileName,2);  //PHYSICAL方式保存文件
 
        }
     	
