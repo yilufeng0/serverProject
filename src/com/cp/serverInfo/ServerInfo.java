@@ -1,11 +1,19 @@
 package com.cp.serverInfo;
 
-import java.io.*;
-import java.util.*;
-//import com.sun.management.*;
-import java.net.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
-import org.hyperic.sigar.*;
+import org.hyperic.sigar.CpuInfo;
+import org.hyperic.sigar.CpuPerc;
+import org.hyperic.sigar.FileSystem;
+import org.hyperic.sigar.FileSystemUsage;
+import org.hyperic.sigar.Mem;
+import org.hyperic.sigar.NetFlags;
+import org.hyperic.sigar.NetInterfaceConfig;
+import org.hyperic.sigar.NetInterfaceStat;
+import org.hyperic.sigar.OperatingSystem;
+import org.hyperic.sigar.Sigar;
+import org.hyperic.sigar.SigarException;
 
 public class ServerInfo {
 	
@@ -13,10 +21,9 @@ public class ServerInfo {
 	public ServerInfo(){
 		this.sigar= new Sigar();
 	}
-	
+///////////////////////////////////////////内存信息////////////////////////////////	
     //获取服务器物理内存总量(GByte)
 	public float getMemoryAll() throws SigarException{
-		sigar = new Sigar();
 		Mem mem = null;
 		mem = sigar.getMem();
 		float a = (float)mem.getTotal()/1024/1024/1024;   //内存单位为GByte
@@ -26,7 +33,6 @@ public class ServerInfo {
 	
 	//获取服务器物理内存使用率(%)
 	public float getMemUsageRatio() throws SigarException{
-		sigar = new Sigar();
 		Mem mem = null;
 		mem = sigar.getMem();
 		float a = (float)mem.getUsedPercent();  //内存使用率%
@@ -34,9 +40,9 @@ public class ServerInfo {
 		return b;
 	}
 	
+///////////////////////////////////////////硬盘信息////////////////////////////////		
 	//获取服务器本地硬盘总量(GByte)
-	public float getDiskAll() throws SigarException{
-		sigar = new Sigar();  
+	public float getDiskAll() throws SigarException{ 
 		FileSystem fslist[] = sigar.getFileSystemList();  
 		long total = 0L;
 		for (int i = 0; i < fslist.length; i++) {  
@@ -56,8 +62,7 @@ public class ServerInfo {
 	}
 	
 	//获取服务器本地硬盘使用率(%)
-	public float getDiskRatio() throws SigarException{
-		sigar = new Sigar();  
+	public float getDiskRatio() throws SigarException{ 
 		FileSystem fslist[] = sigar.getFileSystemList();  
 		long total = 0L;
 		long use = 0L;
@@ -81,6 +86,23 @@ public class ServerInfo {
           return diskUsedPercent*100;  //硬盘使用百分率%
 	}
 	
+///////////////////////////////////////////CPU信息////////////////////////////////		
+	//获取服务器CPU的总量GHz 
+	public float getCpuTotal() throws SigarException{
+		CpuInfo[] infos = sigar.getCpuInfoList();
+		CpuInfo info = infos[0];
+		float tmp = (float)info.getMhz()/1024;
+		float cpuInfo = (float)(Math.round(tmp*100))/100;
+		return cpuInfo;
+	}
+	
+	//获取服务器CPU的总(用户+系统)使用率(%)
+	public String getCpuRatio() throws SigarException{
+		CpuPerc cpu = sigar.getCpuPerc();
+		return CpuPerc.format(cpu.getCombined()); //总的使用率 
+	}
+	
+///////////////////////////////////////////网络信息////////////////////////////////		
 	//获取当前机器的IP地址
 	public String getIpAddr() {  	
 	    String address = null;  
@@ -105,8 +127,101 @@ public class ServerInfo {
 			  return address;		  
 	 }  
 
+	//获取所有网卡接收的总包裹数
+	public long getRxPackets() throws SigarException{
+		String Names[] = sigar.getNetInterfaceList();  
+		long rxPackets = 0L;
+		
+		for (int i = 0; i < Names.length; i++) {  
+		    String name = Names[i];  
+		    NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name); 
+		    if ((ifconfig.getFlags() & 1L) <= 0L) {    //IFF_UP...skipping getNetInterfaceStat
+		        continue;  
+		    }  
+		    try {  
+		        NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);  
+		        rxPackets = rxPackets + ifstat.getRxPackets();  // 计算所有网卡接收的总包裹数  		    
+		    } catch (SigarException e) {  
+		    	System.out.println(e.getMessage());  
+		    }  
+		
+		}  
+		
+		return rxPackets;
+		
+	} 
+	
+	//获取所有网卡发送的总包裹数
+		public long getTxPackets() throws SigarException{
+			String Names[] = sigar.getNetInterfaceList();  
+			long txPackets = 0L;
 
-		  
+			for (int i = 0; i < Names.length; i++) {  
+			    String name = Names[i];  
+			    NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name); 
+			    if ((ifconfig.getFlags() & 1L) <= 0L) {    //IFF_UP...skipping getNetInterfaceStat
+			        continue;  
+			    }  
+			    try {  
+			        NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);  
+			        txPackets = txPackets + ifstat.getTxPackets();  // 计算所有网卡发送的总包裹数   
+			    } catch (SigarException e) {  
+			    	System.out.println(e.getMessage());  
+			    }  	
+			}  
+			
+			return txPackets;		
+	} 
+	
+	
+		//获取所有网卡接收的总字节数
+		public long getRxBytes() throws SigarException{
+			String Names[] = sigar.getNetInterfaceList();  
+			long rxBytes = 0L;
+			
+			for (int i = 0; i < Names.length; i++) {  
+			    String name = Names[i];  
+			    NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name); 
+			    if ((ifconfig.getFlags() & 1L) <= 0L) {    //IFF_UP...skipping getNetInterfaceStat
+			        continue;  
+			    }  
+			    try {  
+			        NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);   
+			        rxBytes = rxBytes + ifstat.getRxBytes();      // 计算所有网卡接收到的总字节数  
+			    } catch (SigarException e) {  
+			    	System.out.println(e.getMessage());  
+			    }  
+			
+			}  
+			
+			return rxBytes;			
+	} 
+	
+		//获取所有网卡发送的总字节数
+		public long getTxBytes() throws SigarException{
+			String Names[] = sigar.getNetInterfaceList();  ;
+			long txBytes = 0L;
+			
+			for (int i = 0; i < Names.length; i++) {  
+			    String name = Names[i];  
+			    NetInterfaceConfig ifconfig = sigar.getNetInterfaceConfig(name); 
+			    if ((ifconfig.getFlags() & 1L) <= 0L) {    //IFF_UP...skipping getNetInterfaceStat
+			        continue;  
+			    }  
+			    try {  
+			        NetInterfaceStat ifstat = sigar.getNetInterfaceStat(name);  
+			        txBytes = txBytes + ifstat.getTxBytes();      // 计算所有网卡发送的总字节数 
+			    } catch (SigarException e) {  
+			    	System.out.println(e.getMessage());  
+			    }  
+			
+			}  
+			
+			return txBytes;			
+	} 
+	
+		
+///////////////////////////////////////////操作系统信息////////////////////////////////		  
 	 // 获取当前操作系统名称描述  
 	public String getOsDesc(){
 		 OperatingSystem OS = OperatingSystem.getInstance();  
@@ -124,5 +239,5 @@ public class ServerInfo {
 		 OperatingSystem OS = OperatingSystem.getInstance();  
 		 return OS.getVersion();
 	}
-
+		
 }

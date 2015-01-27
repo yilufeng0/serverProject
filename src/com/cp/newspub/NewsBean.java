@@ -9,14 +9,14 @@ package com.cp.newspub;
  */
 public class NewsBean {
 	private int id;
-	private String newsTitle;       //新闻标题
-	private String imagePath;       //配图路径
+	private String newsTitle;        //新闻标题
+	private String imagePath;        //配图路径
 	private String newsDescription;  //新闻摘要
-	private String newsAuthor;  
-	private String newsContent;  //新闻正文
-	private String newsTime;
-	private String newsDate;
-	private String imageName;
+	private String newsAuthor;       //新闻发布者
+	private String newsContent;      //新闻正文
+	private String newsTime;         //新闻日期
+	private String newsDate;         //新闻日期
+	private String imageName;        //图片名称
 	
 	public int getId() {
 		return id;

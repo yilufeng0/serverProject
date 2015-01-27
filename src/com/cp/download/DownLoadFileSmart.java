@@ -3,20 +3,17 @@
  */
 package com.cp.download;
 
-import java.io.IOException;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jspsmart.upload.SmartUpload;
-import com.jspsmart.upload.SmartUploadException;
 
 /**
  * 单文件下载功能
  */
-public class DownLoadFile {
+public class DownLoadFileSmart {
 	
 	private static final long serialVersionUID = 1L;
 	private ServletConfig config;
@@ -25,14 +22,14 @@ public class DownLoadFile {
     /**
 	 * @param config
 	 */
-    public DownLoadFile(){
+    public DownLoadFileSmart(){
         super();
     }
     
     /**
 	 * @param config
 	 */
-	public DownLoadFile(ServletConfig config) {
+	public DownLoadFileSmart(ServletConfig config) {
 		super();
 		this.config = config;
 	}

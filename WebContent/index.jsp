@@ -34,8 +34,10 @@
   </head>
 
   <body>
-  <%!
+  <%
   		ServerInfo serverinfo = new ServerInfo();
+		String  ratio = String.valueOf(serverinfo.getMemUsageRatio());
+		String  remainRatio=String.valueOf(100-serverinfo.getMemUsageRatio());
   %>
 
   <section id="container" >
@@ -335,7 +337,7 @@
                             </div>
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
-                                <p><i class="fa fa-database"></i> <%=serverinfo.getMemUsageRatio()%>%</p>
+                                <p><i class="fa fa-database"></i> <%=ratio%>%</p>
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
@@ -343,11 +345,11 @@
                                 var doughnutData = [
                                     {
 
-                                      value: <%=serverinfo.getMemUsageRatio()%>,
+                                      value: <%=ratio%>,
                                       color:"#68dff0"
                                     },
                                     {
-                                      value : <%=100-serverinfo.getMemUsageRatio()%>,
+                                      value : <%=remainRatio%>,
 
                                       color : "#fdfdfd"
                                     }
