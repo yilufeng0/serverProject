@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DownLoadServlet
+ * Servlet implementation class DownLoadServlet2
  */
-@WebServlet("/DownLoadServlet")
-public class DownLoadServlet extends HttpServlet {
+@WebServlet("/DownLoadServlet2")
+public class DownLoadServlet2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DownLoadServlet() {
+    public DownLoadServlet2() {
         super();
     }
 
@@ -26,17 +26,11 @@ public class DownLoadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		DownLoadFileStream dl = new DownLoadFileStream();
+		dl.downLoad(response, "D:\\Upload\\image\\图片1.png");
 		
-		DownLoadFileSmart downloadFile = new DownLoadFileSmart(this.getServletConfig());
-		try {
-			downloadFile.download(request, response, "image1.png", "image");
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.sendError(404);
 		}
 		
 	}
 
-	
-
-}
