@@ -246,9 +246,9 @@
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="androidapp.jsp">安卓终端</a></li>
-                          <li><a  href="iosapp.jsp">IOS终端</a></li>
-                          <li><a  href="winphoneapp.jsp">微软终端</a></li>
+                         <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -322,7 +322,7 @@
                         <div id="auction" class="form-group">
                               <label  class="col-sm-2 control-label">注意</label>
                             <div class="col-sm-8">                              
-                              <p class="help-block pull-left">(建议大小32*32)</p>
+                              <p class="help-block pull-left">(建议大小1920*1080)</p>
                             </div>
                         </div>                        
                         <div class="control-group">

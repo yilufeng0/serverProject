@@ -33,7 +33,10 @@
   </head>
 
   <body>
-
+<%
+	String appType=request.getParameter("apptype");
+	appType=appType==null?"android":appType;
+%>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -192,9 +195,6 @@
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
-              <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
-              </ul>
             </div>
         </header>
       <!--header end-->
@@ -208,7 +208,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="index.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="profile.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                   <h5 class="centered">CP Admin</h5>
                     
                   <li class="mt">
@@ -219,12 +219,12 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a class="active" href="javascript:;" >
+                      <a href="javascript:;" >
                           <i class="fa fa-phone"></i>
                           <span>智能终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="newspub.jsp">新闻发布</a></li>
+                          <li><a  href="newspub.jsp">新闻发布</a></li>
                           <li><a  href="promotion.jsp">优惠促销</a></li>
                           <li><a  href="feedback.jsp">用户反馈</a></li>
                       </ul>
@@ -242,14 +242,14 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a class="active" href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
-                          <li><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
-                          <li><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
+                          <li class=<%= appType.equals("android")?"active":"" %>><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                          <li class=<%= appType.equals("ios")?"active":"" %>><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
+                          <li class=<%= appType.equals("winphone")?"active":"" %>><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -279,164 +279,49 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                    <!-- 模态框开始 -->
-                    <!-- <div class="showback">
-                      <button class="btn btn-success btn-1g" data-target="#myModal" data-toggle="modal">添加</button>
-
-                      <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <div class="modal-title">新增</div>
-                            </div>
-                            <div class="modal-body">
-                              <form >
-                                <input type="email">
-                              </form>
-                            </div>
-                            <div class="modal-footer">
-                              <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
-                              <button class="btn btn-primary" type="submit">提交</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
-                    <!-- 模态框结束 -->
-                    <div class="showback">
-                      <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
+                    
+                        <div class="showback">
+                      <a href=<%="addnewapp.jsp?apptype="+appType %>><button class="btn btn-success btn-lg">新版本提交</button></a>
                     </div>
                     <table class="table table-striped table-hover">
                       <thead class="span1">
                         <tr>
                           <th class="span1 text-center">#</th>
-                          <th class="span2 text-center">标题</th>
-                          <th class="span1 text-center">时间</th>
-                          <th class="span2 text-center">作者</th>
+                          <th class="span2 text-center">应用名称</th>
+                          <!-- 通过点击 -->
+                          <th class="span1 text-center">版本号</th>
+                          <th class="span2 text-center">提交日期</th>                        
                           <th class="span1 text-center">操作</th>
                         </tr>
                       </thead>
                       <tbody>
                       <!-- 表格开始   -->
-
+                            <script type="text/javascript">
+                                function disp (id) {
+                                  $(this).tooltips('show');
+                                  
+                                }
+                            </script>
                           <!-- 此处内容有JSP动态生成 -->
-                          <!-- example start -->
                         <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
+                          <td >1</td>
+                          <td ><button type="button" class="btn btn-link" data-placement='right' title="aaaaaaaaaaaaaa" onclick="disp('right')">1</button></td>
+                          <td>知知知</td>
                           <td>1</td>
                           <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                             <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
-                          <!-- example end -->
-                          <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td>
                         <!-- 表格结束 -->
                       </tbody>
                     </table>
-                    <ul class="pager">
+                      <ul class="pager">
                     <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
                       <li class="previous"><a href="">上一页</a></li>
                       <li class="next"><a href="">下一页</a></li>
                     </ul>
+
+
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
@@ -446,10 +331,10 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer fixed">
+      <footer class="site-footer">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="newspub.jsp#" class="go-top">
+              <a href="index.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -517,3 +402,4 @@
 
   </body>
 </html>
+    
