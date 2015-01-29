@@ -22,7 +22,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+	<script src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -276,7 +276,61 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                
+                	
+                	    <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">                            
+                            <div class="modal-body">
+                              <img id="modalImg" src="">
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div> 
+                    
+                    <div class="showback text-center">
+                      
+                        <table class="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th class="col-sm-1 text-center">#</th>
+                          <th class="col-sm-2 text-center">图片</th>
+                          <th class="col-sm-1 text-center">描述</th>
+                          <th class="col-sm-2 text-center">上传时间</th>
+                          <th class="col-sm-1 text-center">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <!-- 表格开始   -->
+
+                          <!-- 此处内容有JSP动态生成 -->
+                          <!-- example start -->
+                        <tr class="text-center">
+                          <td>1</td>
+                          <td><img alt="" src="" onclick="dispImg(id)"></td>
+                          <td>1</td>
+                          <td>1</td>
+                          <td>
+                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                          </td>
+                          </tr>
+                          <!-- example end -->
+                          
+                        <!-- 表格结束 -->
+                      </tbody>
+                    </table>
+
+                    </div>           	
+                	
+                	
+                	
+                	
+                	
+                	
+                	
+                	
+                	
 
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
@@ -344,8 +398,8 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
-        });
-        
+        });    
+
         
         function myNavFunction(id) {
             $("#date-popover").hide();
