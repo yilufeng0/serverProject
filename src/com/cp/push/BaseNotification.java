@@ -25,7 +25,7 @@ public class BaseNotification {
 	
     /**
      * 设置appMasterSecret参数，用于MD5签名验证
-     * @param secret
+     * @param secret  传入appMasterSecret值
      */
     public void setAppMasterSecret(String secret){
     	appMasterSecret = secret;
