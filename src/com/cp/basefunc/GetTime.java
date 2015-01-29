@@ -29,6 +29,7 @@ public class GetTime {
 		this.dateAndTime = (new SimpleDateFormat("yyyyMMddHHmmss")).format(date);
 		this.onlyTime = (new SimpleDateFormat("HHmmss")).format(date);
 	}
+	
 
 	/**
 	 * @param args
@@ -38,7 +39,10 @@ public class GetTime {
 		GetTime getTime = new GetTime();
 		System.out.println(getTime.dateAndTime);
 	}
-
+	
+	public static String getPageDate() {
+		return (new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+	}
 	/**
 	 * 仅仅获取日期
 	 * @return the onlyDate
