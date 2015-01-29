@@ -16,7 +16,7 @@ import java.sql.Statement;
  *
  */
 public class SelectOperation {
-	private static Connection conn=JDBCConnect.getConnection();
+	private static Connection conn=null;
 	private static PreparedStatement pstm =null;
 	private static Statement stmt=null;
 	
@@ -28,15 +28,14 @@ public class SelectOperation {
 	public static ResultSet selectOnes(String sql){
 		ResultSet rs=null;
 		try {
+			conn = JDBCConnect.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			JDBCConnect.free(rs, conn, stmt);
+			e.printStackTrace();			
 			return null;
-		}
-		JDBCConnect.free(null, conn, stmt);
+		}		
 		return rs;		
 	}
 	
@@ -44,15 +43,14 @@ public class SelectOperation {
 	public static ResultSet selectOne(String sql,int id){
 		ResultSet rs = null;
 		try {
+			conn = JDBCConnect.getConnection();
 			pstm=conn.prepareStatement(sql);
 			set(1, id);
 			rs=pstm.executeQuery();
 		} catch (Exception e) {
-			// TODO: handle exception
-			JDBCConnect.free(rs, conn, pstm);
+			// TODO: handle exception			
 			return null;
-		}
-		JDBCConnect.free(null, conn, pstm);
+		}		
 		return rs;
 	}
 	
@@ -79,10 +77,14 @@ public class SelectOperation {
 	
 	/**
 	 * @param args
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-
+		ResultSet rs= SelectOperation.selectOnes("select * from position_shop");
+		rs.next();
+		System.out.println(rs.getString("cityname"));
+		
 	}
 
 }
