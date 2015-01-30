@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page import="com.cp.newspub.SelectNews"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.cp.JDBC.SelectOperation"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +37,9 @@
   </head>
 
   <body>
-
+  <%
+  	ResultSet rs = SelectNews.selectNews();
+  %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -306,7 +312,7 @@
                     <div class="showback">
                       <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover" >
                       <thead class="span1">
                         <tr>
                           <th class="span1 text-center">#</th>
@@ -319,116 +325,28 @@
                       <tbody>
                       <!-- 表格开始   -->
 
-                          <!-- 此处内容有JSP动态生成 -->
+                          <!-- 此处内容由JSP动态生成 -->
                           <!-- example start -->
+                     <%try{
+                     	while(rs.next()){%>
                         <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
+                          <td><%=rs.getRow()%></td>
+                          <td><%=rs.getString("title") %></td>
+                          <td><%=rs.getString("time") %></td>
+                          <td><%=rs.getString("author") %></td>
                           <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
                           </td>
-                          </tr>
+                        </tr>
+                       <%
+                         }
+                     }catch(SQLException e){
+                    	 e.printStackTrace();
+                     }
+                       %> 
                           <!-- example end -->
-                          <tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td><tr class="text-center">
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>1</td>
-                          <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-                          </td>
+
                         <!-- 表格结束 -->
                       </tbody>
                     </table>
