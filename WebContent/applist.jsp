@@ -1,3 +1,6 @@
+<%@page import="com.cp.app.SelectApps"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,7 +38,10 @@
   <body>
 <%
 	String appType=request.getParameter("apptype");
-	appType=appType==null?"android":appType;
+	appType=(appType==null)?"android":appType;
+	
+	ResultSet rs = SelectApps.selectApps(appType);
+	
 %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -195,6 +201,9 @@
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
+              </ul>
             </div>
         </header>
       <!--header end-->
@@ -303,15 +312,22 @@
                                 }
                             </script>
                           <!-- 此处内容有JSP动态生成 -->
+                        <%try{
+                        	while(rs.next()){
+                        %>
                         <tr class="text-center">
-                          <td >1</td>
-                          <td ><button type="button" class="btn btn-link" data-placement='right' title="aaaaaaaaaaaaaa" onclick="disp('right')">1</button></td>
-                          <td>知知知</td>
-                          <td>1</td>
+                          <td ><%=rs.getRow()%></td>
+                          <td ><button type="button" class="btn btn-link" data-placement='right' title=<%=rs.getString("title")%> onclick="disp('right')"><%=rs.getString("title") %></button></td>
+                          <td><%=rs.getString("bigVersion")%>.<%=rs.getString("mediumVersion")%>.<%=rs.getString("mediumVersion")%></td>
+                          <td><%=rs.getString("time") %></td>
                           <td>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button onlick="deleteItem(<%=rs.getInt("ID")%>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
+                          <%}
+                          }catch(SQLException e){
+                        	  e.printStackTrace();
+                          } %>
                         <!-- 表格结束 -->
                       </tbody>
                     </table>

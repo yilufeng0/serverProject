@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class JDBCConnect {
 	static String drivername="com.mysql.jdbc.Driver";
-	static String url="jdbc:mysql://localhost:3306/unicomdb";
+	static String url="jdbc:mysql://localhost:3306/serverProject";
 	static String username="root";
 	static String password="root";
 	

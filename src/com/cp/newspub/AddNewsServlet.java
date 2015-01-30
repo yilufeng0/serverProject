@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cp.upload.SmallUpImgNoRatio;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
 
@@ -49,6 +50,8 @@ public class AddNewsServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+
         
 	}
 	

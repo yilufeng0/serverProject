@@ -1,3 +1,6 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.cp.feedback.SelectFeedback"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +36,9 @@
   </head>
 
   <body>
-
+ <%
+ 	ResultSet rs = SelectFeedback.selectFeedback();
+ %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -192,6 +197,9 @@
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
+              </ul>
             </div>
         </header>
       <!--header end-->
@@ -292,18 +300,20 @@
                               </tr>
                               </thead>
                               <tbody>
+                              <% try{
+                        	      while(rs.next()){
+                              %>
                               <tr class="text-center">
-                                  <td>1</td>
-                                  <td>1</td>
-                                  <td  class="text-center">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.AUSTRALIAN AGRICULTURAL COMPANY LIMITED.AUSTRALIAN AGRICULTURAL COMPANY LIMITED.AUSTRALIAN AGRICULTURAL COMPANY LIMITED.AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                  <td  class="text-center">1</td>
-                              </tr>                                                      
-                              <tr class="text-center">
-                                  <td>2</td>
-                                  <td>ATLAS IRON LIMITED</td>
-                                  <td  class="text-center">2</td>
-                                  <td  class="text-center">2</td>
-                              </tr>
+                                  <td><%=rs.getRow()%></td>
+                                  <td><%=rs.getString("time") %></td>
+                                  <td  class="text-center"><%=rs.getString("feedback") %></td>
+                                  <td  class="text-center"><%=rs.getString("operation") %></td>
+                              </tr>  
+                               <%}
+                                }catch(SQLException e){
+                        	     e.printStackTrace();
+                                } 
+                              %>                                                                              
                               </tbody>
                           </table>
                           </div>

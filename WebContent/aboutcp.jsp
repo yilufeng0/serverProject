@@ -1,3 +1,6 @@
+<%@page import="com.cp.exhibition.SelectCpImage"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,7 +36,9 @@
   </head>
 
   <body> 
-
+ <%
+ 	ResultSet rs = SelectCpImage.selectCpImage();
+ %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -192,6 +197,9 @@
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
               </ul>
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
+              </ul>
             </div>
         </header>
       <!--header end-->
@@ -302,19 +310,27 @@
                       </thead>
                       <tbody>
                       <!-- 表格开始   -->
-
                           <!-- 此处内容有JSP动态生成 -->
                           <!-- example start -->
+                       <%try{
+                     	while(rs.next()){
+                       %>
                         <tr class="text-center">
-                          <td>1</td>
-                          <td><img alt="" src="" onclick="dispImg(id)"></td>
-                          <td>1</td>
-                          <td>1</td>
+                          <td><%=rs.getRow() %></td>
+                          <td><img alt="error" src=<%=rs.getString("thumbpath") %> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
+                          <td><%=rs.getString("description") %></td>
+                          <td><%=rs.getString("time") %></td>
                           <td>
-                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
+                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
+                        <%
+                         }
+                        }catch(SQLException e){
+                    	 e.printStackTrace();
+                       }
+                       %> 
                           <!-- example end -->
                           
                         <!-- 表格结束 -->
@@ -322,14 +338,6 @@
                     </table>
 
                     </div>           	
-                	
-                	
-                	
-                	
-                	
-                	
-                	
-                	
                 	
 
                     <!-- here finish add content -->

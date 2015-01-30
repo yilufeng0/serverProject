@@ -6,7 +6,7 @@
 
 function dispImg (id) {
     var imgTag = document.getElementById("modalImg");
-    imgTag.src= "" ;    //此处添加获取图片的地址并在此处将图片ID传给后台
+    imgTag.src= "exhibition.jsp?id="+id;    //此处添加获取图片的地址并在此处将图片ID传给后台
      $("#myModal").modal("toggle");
   }
 
@@ -21,10 +21,10 @@ function afterDelItem(){
 
 function deleteItem(id){
 	var xmlHttp = createXMLHTTP();
-	xmlhttp.open("POST", "Regist", true);
+	xmlhttp.open("POST", "deleteApp.jsp", true);
 	xmlhttp.onreadystatechange=afterDelItem(id);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("itemID"+id);
+	xmlhttp.send("id="+id);
 }
 
 function createXMLHTTP(){
