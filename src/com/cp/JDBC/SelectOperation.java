@@ -10,6 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.fabric.xmlrpc.base.Array;
 
 /**
  * @author Jerry
@@ -24,7 +28,7 @@ public class SelectOperation {
 	 * 完成数据的查询操作
 	 * @param sql
 	 * @return
-	 */
+	 */	
 	public static ResultSet selectOnes(String sql){
 		ResultSet rs=null;
 		try {
@@ -39,7 +43,21 @@ public class SelectOperation {
 		return rs;		
 	}
 	
-	
+	public static ResultSet selectOne(String sql,List<Object> param){
+		ResultSet rs = null;
+		try {
+			conn = JDBCConnect.getConnection();
+			pstm = conn.prepareStatement(sql);
+			for(int i =0;i<param.size();i++){
+				set(i+1, param.get(i));
+			}
+			rs=pstm.executeQuery();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return rs;
+	}
 	public static ResultSet selectOne(String sql,int id){
 		ResultSet rs = null;
 		try {
@@ -81,7 +99,9 @@ public class SelectOperation {
 	 */
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
-		ResultSet rs= SelectOperation.selectOnes("select * from position_shop");
+		List<Object> list= new ArrayList<>();
+		list.add(6);
+		ResultSet rs= SelectOperation.selectOne("select *  from position_shop where id = ?",list);
 		rs.next();
 		System.out.println(rs.getString("cityname"));
 		
