@@ -312,6 +312,7 @@
                     <div class="showback">
                       <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
                     </div>
+                    <div class="content-panel" style="height:500px;">
                     <table class="table table-striped table-hover" >
                       <thead class="span1">
                         <tr>
@@ -350,6 +351,7 @@
                         <!-- 表格结束 -->
                       </tbody>
                     </table>
+                    </div>
                     <ul class="pager">
                     <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
                       <li class="previous"><a href="">上一页</a></li>
@@ -367,7 +369,7 @@
       <footer class="site-footer fixed">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="newspub.jsp#" class="go-top">
+              <a href="#container" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>

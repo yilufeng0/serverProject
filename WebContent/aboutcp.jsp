@@ -296,7 +296,7 @@
                         </div>
                       </div> 
                     
-                    <div class="showback text-center">
+                    <div class="showback text-center" style="height:650px;">
                       
                         <table class="table table-striped table-hover">
                       <thead>
@@ -352,7 +352,7 @@
       <footer class="site-footer">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="index.jsp#" class="go-top">
+              <a href="#container" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
