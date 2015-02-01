@@ -317,7 +317,7 @@
                        %>
                         <tr class="text-center">
                           <td><%=rs.getRow() %></td>
-                          <td><img alt="error" src=<%=rs.getString("thumbpath") %> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
+                          <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
                           <td><%=rs.getString("description") %></td>
                           <td><%=rs.getString("time") %></td>
                           <td>

@@ -10,4 +10,8 @@ public class SelectFeedback {
 		return rs;
 	}
 
+	public static ResultSet selectFeedback(String pageNum){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,time,feedback,operation from feedback order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
+		return rs;
+	}
 }

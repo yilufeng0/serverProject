@@ -18,5 +18,10 @@ public class SelectApps {
 	    ResultSet rs = SelectOperation.selectOne("select ID as id where ID = ?", list);	
 	    return rs;
 	}
+	
+	public static ResultSet selectApps(String appType, String pageNum){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,time,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
+		return rs;
+	}
 
 }
