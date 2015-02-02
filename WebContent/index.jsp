@@ -29,7 +29,7 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-    
+    <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -37,8 +37,8 @@
     <![endif]-->
   </head>
 
-  <body>
-<%!ServerInfo serverInfo = new ServerInfo(); %>
+  <body onload="setContentHeight('mainheight',0.5)">
+	<%!ServerInfo serverInfo = new ServerInfo(); %>
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -292,28 +292,28 @@
                             <span class="li_heart"></span>
                                 <h3>IP</h3>
                         </div>
-                  <p><%=serverInfo.getIpAddr()%></p>
+                 			 <p><%=serverInfo.getIpAddr()%></p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">
-                  <span class="li_cloud"></span>
-                  <h3>系统名称</h3>
-                        </div>
-                  <p><%=serverInfo.getOsDesc() %></p>
+	                  		<span class="li_cloud"></span>
+	                 		 <h3>系统名称</h3>
+                       	</div>
+                 		 	<p><%=serverInfo.getOsDesc() %></p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">
-                  <span class="li_stack"></span>
-                  <h3>系统类型</h3>
+			                  <span class="li_stack"></span>
+			                  <h3>系统类型</h3>
                         </div>
-                  <p><%=serverInfo.getOsType()%></p>
+                  			<p><%=serverInfo.getOsType()%></p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">
-                  <span class="li_news"></span>
-                  <h3>系统版本</h3>
+		                  <span class="li_news"></span>
+		                  <h3>系统版本</h3>
                         </div>
-                  <p><%=serverInfo.getOsVersion()%></p>
+                 			 <p><%=serverInfo.getOsVersion()%></p>
                       </div>
                    
                     
@@ -327,7 +327,7 @@
                   <div class="col-lg-10 main-chart"> 	
                     <!-- here add content -->
                     
-                      <div class="row mt" style="height:480px;">
+                      <div class="row mt" id="mainheight">
                       <!-- SERVER STATUS PANELS -->
                       <div class="col-md-2"></div>
                         <div class="col-md-5 col-sm-5 mb">
@@ -367,31 +367,31 @@
                   <div class="col-md-5 mb">
                           <div class="darkblue-panel pn">
                             <div class="darkblue-header">
-                    <h5>硬盘状态</h5>
+                    			<h5>硬盘状态</h5>
                             </div>
                 <canvas id="serverstatus02" height="120" width="140"></canvas>
-                <script>
-                  var doughnutData = [
-                      {
-                        value: <%=serverInfo.getDiskRatio()%>,
-                        color:"#68dff0"
-                      },
-                      {
-                        value : <%=100-serverInfo.getDiskRatio()%>,
-                        color : "#444c57"
-                      }
-                    ];
-                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
-                </script>
-                <p><%=GetTime.getPageDate() %></p>
-                <footer>
-                  <div class="pull-left">
-                    <h5><i class="fa fa-hdd-o"></i><%=serverInfo.getDiskAll()%>GB</h5>
-                  </div>
-                  <div class="pull-right">
-                    <h5><%=serverInfo.getDiskRatio() %>% Used</h5>
-                  </div>
-                </footer>
+	                <script>
+	                  var doughnutData = [
+	                      {
+	                        value: <%=serverInfo.getDiskRatio()%>,
+	                        color:"#68dff0"
+	                      },
+	                      {
+	                        value : <%=100-serverInfo.getDiskRatio()%>,
+	                        color : "#444c57"
+	                      }
+	                    ];
+	                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+	                </script>
+                		<p><%=GetTime.getPageDate() %></p>
+	                <footer>
+	                  <div class="pull-left">
+	                    <h5><i class="fa fa-hdd-o"></i><%=serverInfo.getDiskAll()%>GB</h5>
+	                  </div>
+	                  <div class="pull-right">
+	                    <h5><%=serverInfo.getDiskRatio() %>% Used</h5>
+	                  </div>
+	                </footer>
                 </div>
             </div>
 

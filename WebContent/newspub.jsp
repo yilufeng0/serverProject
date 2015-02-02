@@ -28,7 +28,7 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
-    
+    <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -36,7 +36,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body onload="setContentHeight('main-content',0.95)">
   <%
   	ResultSet rs = SelectNews.selectNews();
   %>
@@ -312,7 +312,7 @@
                     <div class="showback">
                       <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
                     </div>
-                    <div class="content-panel" style="height:500px;">
+                    <div class="content-panel" style="">
                     <table class="table table-striped table-hover" >
                       <thead class="span1">
                         <tr>
