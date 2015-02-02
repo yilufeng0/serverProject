@@ -267,9 +267,9 @@
                           <span>系统帐户管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="calendar.jsp">关于正大</a></li>
-                          <li><a  href="gallery.jsp">安全追溯</a></li>
-                          <li><a  href="todo_list.jsp">宣传视频</a></li>
+                         <li><a  href="createaccount.jsp">添加账户</a></li>
+                         <li><a  href="accountprofile.jsp?type=server">后台账户管理</a></li>
+                         <li><a  href="accountprofile.jsp?type=remote">远程账户管理</a></li>
                       </ul>
               </ul>
               <!-- sidebar menu end-->

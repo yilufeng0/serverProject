@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int id = Integer.valueOf(request.getParameter("id"));  //通过"exhibition.jsp?id="+id;活动参数id
+	int id = Integer.valueOf(request.getParameter("id"));  //通过"exhibition.jsp?id="+id;获取参数id
 	ResultSet rs = SelectCpImage.selectCpImage(id);
 	rs.next();
 	String filePath = rs.getString("oripath");
