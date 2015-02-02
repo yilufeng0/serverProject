@@ -1,7 +1,8 @@
+<%@page import="com.cp.newspub.SelectNews"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.cp.feedback.SelectFeedback"%>
+<%@page import="com.cp.JDBC.SelectOperation"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +37,9 @@
   </head>
 
   <body onload="setContentHeight('main-content',0.95)">
- <%
- 	ResultSet rs = SelectFeedback.selectFeedback();
- %>
+  <%
+  	ResultSet rs = SelectNews.selectNews();
+  %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -213,7 +214,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-                  <p class="centered"><a href="profile.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                  <p class="centered"><a href="index.jsp"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                   <h5 class="centered">CP Admin</h5>
                     
                   <li class="mt">
@@ -229,9 +230,9 @@
                           <span>智能终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="newspub.jsp">新闻发布</a></li>
+                          <li class="active"><a  href="newspub.jsp">新闻发布</a></li>
                           <li><a  href="promotion.jsp">优惠促销</a></li>
-                          <li class="active"><a  href="feedback.jsp">用户反馈</a></li>
+                          <li><a  href="feedback.jsp">用户反馈</a></li>
                       </ul>
                   </li>
 
@@ -284,44 +285,12 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                    
-                   <div class="showback text-center">
-                   <h2><span>用户反馈</span></h2>
-                    </div>
                    
+            
                     <div class="content-panel" style="">
-                            <table class="table table-striped table-hover">
-                              <thead>
-                              <tr>
-                                  <th class="col-sm-1 text-center">#</th>
-                                  <th class="col-sm-2 text-center">时间</th>
-                                  <th class="col-sm-6 text-center">用户反馈信息</th>
-                                  <th class="col-sm-1 text-center">备注</th>                             
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <% try{
-                        	      while(rs.next()){
-                              %>
-                              <tr class="text-center">
-                                  <td><%=rs.getRow()%></td>
-                                  <td><%=rs.getString("time") %></td>
-                                  <td  class="text-center"><%=rs.getString("feedback") %></td>
-                                  <td  class="text-center"><%=rs.getString("operation") %></td>
-                              </tr>  
-                               <%}
-                                }catch(SQLException e){
-                        	     e.printStackTrace();
-                                } 
-                              %>                                                                              
-                              </tbody>
-                          </table>
-                          </div>
-                    <ul class="pager">
-                    <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
-                      <li class="previous"><a href="">上一页</a></li>
-                      <li class="next"><a href="">下一页</a></li>
-                    </ul>
+                    
+                    </div>
+                    
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
@@ -331,7 +300,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
+      <footer class="site-footer fixed">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="#container" class="go-top">

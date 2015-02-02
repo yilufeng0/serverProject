@@ -10,7 +10,7 @@
 	}
 	
 	String appType = request.getParameter("appType");
-	appType = (appType == null)?"android":null;
+	appType = (appType == null)?"android":appType;
 	
 	ResultSet rs = SelectApps.selectApps(appType, pageNum);
 	try{
