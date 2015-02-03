@@ -35,11 +35,10 @@ public class InsertOperation {
 			pstm.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			JDBCConnect.free(null, conn, pstm);
+			e.printStackTrace();			
 			return false;
 		}
-		JDBCConnect.free(null, conn, pstm);
+		
 		return true;
 	}
 	
