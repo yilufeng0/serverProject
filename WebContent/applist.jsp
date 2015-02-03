@@ -174,7 +174,9 @@
                                 }
                             </script>
                           <!-- 此处内容有JSP动态生成 -->
-                        <%try{
+                        <%
+                        if(rs!=null){
+                         try{
                         	while(rs.next()){
                         %>
                         <tr class="text-center">
@@ -187,9 +189,11 @@
                           </td>
                           </tr>
                           <%}
-                          }catch(SQLException e){
+                           }catch(SQLException e){
                         	  e.printStackTrace();
-                          } %>
+                           }
+                         }
+                         %>
                         <!-- 表格结束 -->
                       </tbody>
                     </table>

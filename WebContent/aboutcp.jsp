@@ -173,8 +173,10 @@
                       <!-- 表格开始   -->
                           <!-- 此处内容有JSP动态生成 -->
                           <!-- example start -->
-                       <%try{
-                     	while(rs.next()){
+                       <%
+                       if(rs!=null){
+                        try{
+                     	  while(rs.next()){
                        %>
                         <tr class="text-center">
                           <td><%=rs.getRow() %></td>
@@ -187,9 +189,10 @@
                           </td>
                           </tr>
                         <%
-                         }
-                        }catch(SQLException e){
+                          }
+                         }catch(SQLException e){
                     	 e.printStackTrace();
+                        }
                        }
                        %> 
                           <!-- example end -->

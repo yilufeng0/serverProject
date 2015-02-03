@@ -161,7 +161,9 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <% try{
+                              <% 
+                              if(rs!=null){
+                                try{
                         	      while(rs.next()){
                               %>
                               <tr class="text-center">
@@ -174,6 +176,7 @@
                                 }catch(SQLException e){
                         	     e.printStackTrace();
                                 } 
+                              }
                               %>                                                                              
                               </tbody>
                           </table>
