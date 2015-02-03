@@ -144,10 +144,39 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                    <div class="content-panel" style="">
+                    <div class="showback" style="">
                     
-                    	
+                    <form class="form-horizontal text-center" >
+                      <hr>
+                      <h3>创建帐户</h3>   
+					  <div class="form-group">
+                          <label for="account" class="col-sm-2 control-label">帐户名</label>
+                        <div class="col-sm-8 form-center">
+                          <input type="text" class="form-control round-form" id="account"  placeholder="Account">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="passwd" class="col-sm-2 control-label">新密码</label>
+                        <div class="col-sm-8 form-center">
+                          <input type="password" class="form-control round-form" id="passwd" placeholder="New password">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="renewpasswd" class="col-sm-2 control-label">确认密码</label>
+                        <div class="col-sm-8 form-center">
+                          <input type="password" class="form-control round-form" id="renewpasswd"  placeholder="password again">
+                        </div>
+                      </div>
+					<hr>
+                       <div class="control-group">
+                         <div class="controls">                  
+                           <div class="">
+                             <button class="btn btn-large btn-block btn-primary" onclick="createNewAcc()"><i class="fa fa-upload"></i><span> 提交</span></button>
+                           </div>
+                         </div>
+                       </div>                      
 
+                      </form>                   	
                     
                     
                     </div>

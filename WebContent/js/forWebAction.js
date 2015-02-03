@@ -10,6 +10,22 @@ function dispImg (id) {
      $("#myModal").modal("toggle");
   }
 
+function createNewAcc(){
+	var account= document.getElementById("account").value;
+	var passwd= document.getElementById("passwd").value;
+	var repasswd= document.getElementById("renewpasswd").value;
+	
+	if(passwd!="" && repasswd!="" && passwd ==repasswd && account !=""){
+		var xmlhttp = createXMLHTTP();
+		xmlhttp.open("POST","createuser.jsp",true);
+		xmlhttp.onreadystatechange=doresultaccount;
+		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xmlhttp.send("account="+account+"&passwd="+passwd);
+	}else{ //弹出警告
+		
+	}
+}
+
 function afterDelItem(){
 	//完成条目删除后的表格刷新     同时将表格中的序号根据重新生成
 	var trs=document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
@@ -22,7 +38,9 @@ function afterDelItem(){
 function deleteItem(id){
 	var xmlHttp = createXMLHTTP();
 	xmlhttp.open("POST", "deleteApp.jsp", true);
-	xmlhttp.onreadystatechange=afterDelItem(id);
+	xmlhttp.onreadystatechange=function(){
+		afterDelItem(id);
+	};
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("id="+id);
 }

@@ -40,10 +40,10 @@ public class DeleteOperation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JDBCConnect.free(null, conn, pstm);
+//			JDBCConnect.free(null, conn, pstm);
 			return false;
 		}
-		JDBCConnect.free(null, conn, pstm);
+//		JDBCConnect.free(null, conn, pstm);
 		return true;
 	}
 	
@@ -62,10 +62,10 @@ public class DeleteOperation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JDBCConnect.free(null, conn, pstm);
+//			JDBCConnect.free(null, conn, pstm);
 			return false;
 		}
-		JDBCConnect.free(null, conn, pstm);
+//		JDBCConnect.free(null, conn, pstm);
 		return true;
 	}
 	public static boolean deleteones(String sql){
@@ -74,10 +74,10 @@ public class DeleteOperation {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			JDBCConnect.free(null, conn, stmt);
+//			JDBCConnect.free(null, conn, stmt);
 			return false;
 		}
-		JDBCConnect.free(null, conn, stmt);		
+//		JDBCConnect.free(null, conn, stmt);		
 		return true;
 	}
 	
