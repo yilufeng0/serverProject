@@ -39,7 +39,7 @@ function deletedItem(id){
 	tagid.remove();
 }
 function deleteItem(id){
-	var xmlHttp = createXMLHTTP();
+	var xmlhttp = createXMLHTTP();	
 	xmlhttp.open("POST", "deleteApp.jsp", true);
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState==4 && xmlhttp.status==200){

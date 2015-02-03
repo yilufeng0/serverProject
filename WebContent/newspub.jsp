@@ -26,7 +26,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+	<script type="text/javascript" src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -194,7 +194,7 @@
                       if(rs!=null){
                       try{
                      	while(rs.next()){%>
-                        <tr class="text-center">
+                        <tr class="text-center" id="<%=rs.getInt("ID")%>">
                           <td><%=rs.getRow()%></td>
                           <td><%=rs.getString("title") %></td>
                           <td><%=rs.getString("time") %></td>
