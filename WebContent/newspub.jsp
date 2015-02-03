@@ -328,7 +328,10 @@
 
                           <!-- 此处内容由JSP动态生成 -->
                           <!-- example start -->
-                     <%try{
+                     
+                     <%
+                      if(rs!=null){
+                      try{
                      	while(rs.next()){%>
                         <tr class="text-center">
                           <td><%=rs.getRow()%></td>
@@ -342,10 +345,10 @@
                         </tr>
                        <%
                          }
-                     }catch(SQLException e){
+                       }catch(SQLException e){
                     	 e.printStackTrace();
-                     }
-                       %> 
+                       }
+                      } %> 
                           <!-- example end -->
 
                         <!-- 表格结束 -->

@@ -304,7 +304,9 @@
 
                           <!-- 此处内容有JSP动态生成 -->
                           <!-- example start -->
-                        <%try{
+                      <%
+                        if(rs!=null){ 
+                        try{
                         	while(rs.next()){
                         %>
                         <tr class="text-center">
@@ -317,9 +319,10 @@
                           </td>
                           </tr>
                           <%}
-                          }catch(SQLException e){
+                           }catch(SQLException e){
                         	  e.printStackTrace();
-                          } %>
+                           } 
+                          }%>
                           <!-- example end -->
                         <!-- 表格结束 -->
                       </tbody>
