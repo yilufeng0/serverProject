@@ -144,12 +144,12 @@
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                   
-            
                     <div class="content-panel" style="">
                     
-                    </div>
+                    	
                     
+                    
+                    </div>
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 

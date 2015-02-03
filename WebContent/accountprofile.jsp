@@ -150,14 +150,38 @@
         
                     <div class="content-panel" style="">
                     
-                    
-                    
-                    
+                    <table class="table table-striped table-hover" >
+                      <thead class="span1">
+                        <tr>
+                          <th class="col-sm-1 text-center">#</th>
+                          <th class="col-sm-3 text-center">帐户名</th>
+                          <th class="col-sm-2 text-center">注册时间</th>
+                          <th class="col-sm-2 text-center">备注</th>
+                          <th class="col-sm-2 text-center">操作</th>                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                      
+                      	<tr class="text-center">
+                      	<td>id</td>
+                      	<td>accountname</td>
+                      	<td>time</td>
+                      	<td></td>
+                      	<td>
+                      	<button class="btn btn-primary btn-xs" onclick="editItem(id)"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="deleteItem(id)"><i class="fa fa-trash-o"></i></button>
+                      	</td>
+                      	
+                      	</tr>
+                      
+                                            
+                      </tbody>
+                      </table>
                     </div>
                     
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
-                  <div class="col-lg-1"></div>                 
+                  <div class="col-lg-1"></div>             
               </div>
           </section>
       </section>
