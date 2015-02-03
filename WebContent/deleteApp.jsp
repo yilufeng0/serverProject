@@ -7,9 +7,9 @@
 	int id = Integer.valueOf(request.getParameter("id"));
     boolean result=new DeleteApps().deleteApp(id);
     if(result){
-    	out.write('1');
+    	out.write("1");
     }else{
-    	out.write('0');
+    	out.write("0");
     }
 	
 %>
