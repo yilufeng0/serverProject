@@ -8,7 +8,7 @@ import com.cp.JDBC.SelectOperation;
 
 public class SelectApps {
 	public static ResultSet selectApps(String appType){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,time,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit 0,20");
+		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,showTime,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit 0,20");
 		return rs;
 	}
 	
@@ -20,7 +20,7 @@ public class SelectApps {
 	}
 	
 	public static ResultSet selectApps(String appType, String pageNum){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,time,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
+		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,showTime,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
 		return rs;
 	}
 

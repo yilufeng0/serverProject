@@ -175,7 +175,7 @@
                       <div class="row">
                         <div class="col-sm-2"></div>
                       </div>
-                      <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
+                      <form class="form-horizontal text-center" role="form" method="POST" action="AddPromotionServlet">
                       <div class="form-group">
                         <label for="ticker" class="col-sm-2 control-label text-center">通知栏提示文字</label>
                         <div class="col-sm-6">                              
@@ -189,7 +189,7 @@
                         </div>
                       </div>
                       <div class="form-group">                        
-                         <label for="notidesc" class="col-sm-2 control-label text-center">通知标题</label>
+                         <label for="notidesc" class="col-sm-2 control-label text-center">通知摘要</label>
                         <div class="col-sm-6">                              
                         <input type="text"class="form-control round-form" id="notidesc" name="notidesc" placeholder="Remark">                               
                         </div>
