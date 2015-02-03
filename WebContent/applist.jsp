@@ -155,7 +155,7 @@
                     </div>
                     <div class="content-panel" style="">
                     <table class="table table-striped table-hover">
-                      <thead class="col-sm-1">
+                      <thead class="">
                         <tr>
                           <th class="col-sm-1 text-center">#</th>
                           <th class="col-sm-2 text-center">应用名称</th>

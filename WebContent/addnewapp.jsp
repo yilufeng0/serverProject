@@ -192,6 +192,12 @@
                             </div>
                           </div>
                           <div class="form-group">
+                              <label for="uploadfile" class="col-sm-2 control-label">应用程序</label>
+                            <div class="col-sm-8">
+                              <input type="file"  id="uploadfile" name="uploadfile">                          
+                            </div>
+                          </div>
+                          <div class="form-group">
                               <label for="versionid" class="col-sm-2 control-label">版本号</label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control round-form" id="versionid"  name="versionid" placeholder="例：2.3.34">

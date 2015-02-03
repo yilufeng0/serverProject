@@ -14,13 +14,13 @@ function createNewAcc(){
 	var account= document.getElementById("account").value;
 	var passwd= document.getElementById("passwd").value;
 	var repasswd= document.getElementById("renewpasswd").value;
-	
+	var type=document.getElementById("acctype").value;
 	if(passwd!="" && repasswd!="" && passwd ==repasswd && account !=""){
 		var xmlhttp = createXMLHTTP();
 		xmlhttp.open("POST","createuser.jsp",true);
 		xmlhttp.onreadystatechange=doresultaccount;
 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlhttp.send("account="+account+"&passwd="+passwd);
+		xmlhttp.send("account="+account+"&passwd="+passwd+"&type="+type);
 	}else{ //弹出警告
 		
 	}

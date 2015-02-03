@@ -156,9 +156,10 @@
                           </div>
                         </div>
                       </div> 
-                    
-                    <div class="showback text-center" style="">
-                      
+                    <div class="showback">
+                    	<a href="addnewcp.jsp"><button class="btn btn-success btn-lg">上传图片</button></a>
+                    </div>
+                    <div class="showback text-center" style="">                      
                         <table class="table table-striped table-hover">
                       <thead>
                         <tr>

@@ -156,6 +156,15 @@
                         </div>
                       </div>
                       <div class="form-group">
+                          <label for="acctype" class="col-sm-2 control-label">账户类型</label>
+                        <div class="col-sm-4 form-center">
+                          <select class="form-control" id="acctype">
+                          	<option>本地账户</option>
+                          	<option>远程账户</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
                           <label for="passwd" class="col-sm-2 control-label">新密码</label>
                         <div class="col-sm-8 form-center">
                           <input type="password" class="form-control round-form" id="passwd" placeholder="New password">
