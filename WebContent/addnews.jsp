@@ -177,7 +177,7 @@
                           <div class="form-group">
                               <label for="newstitle" class="col-sm-2 control-label">标题</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="newstitle" placeholder="News Title">
+                              <input type="text" class="form-control round-form" id="newstitle" name="newstitle" placeholder="News Title">
 
 
                             </div>
@@ -192,13 +192,13 @@
                           <div class="form-group">
                               <label for="newsauthor" class="col-sm-2 control-label">作者</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="newsauthor" placeholder="Author">
+                              <input type="text" class="form-control round-form" id="newsauthor" name="newsauthor" placeholder="Author">
                             </div>
                           </div>
                           <div class="form-group">
                               <label for="remark" class="col-sm-2 control-label">摘要</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control round-form" id="remark" placeholder="Remark">
+                              <input type="text" class="form-control round-form" id="remark" name="remark" placeholder="Remark">
 
                             </div>
                           </div> 

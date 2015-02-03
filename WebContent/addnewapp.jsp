@@ -184,7 +184,7 @@
                     <div class="showback text-center">
                       <h3><span><%= appTitle %>终端应用上传</span></h3>
                         <hr>
-                      <form class="form-horizontal text-center" role="form" method="POST" action="" enctype="multipart/form-data">
+                      <form class="form-horizontal text-center" role="form" method="POST" action="AddNewAppServlet">
                           <div class="form-group">
                               <label for="appname" class="col-sm-2 control-label">应用名称</label>
                             <div class="col-sm-8">
@@ -212,7 +212,7 @@
                           <div class="form-group">
                               <label for="apptype" class="col-sm-2 control-label">应用类型</label>
                             <div class="col-sm-8">
-                           	   <input type="text" class="form-control round-form" id="apptype" name="apptype" disabled="" value=<%=appType %> > 
+                           	   <input type="text" class="form-control round-form" id="apptype" name="apptype" readonly = "readonly"  value="<%=appType%>" > 
                             </div>
                           </div>
                          

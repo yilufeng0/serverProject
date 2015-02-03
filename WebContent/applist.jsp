@@ -183,7 +183,7 @@
                           <td ><%=rs.getRow()%></td>
                           <td ><button type="button" class="btn btn-link" data-placement='right' title=<%=rs.getString("title")%> onclick="disp('right')"><%=rs.getString("title") %></button></td>
                           <td><%=rs.getString("bigVersion")%>.<%=rs.getString("mediumVersion")%>.<%=rs.getString("smallVersion")%></td>
-                          <td><%=rs.getString("time") %></td>
+                          <td><%=rs.getString("showTime") %></td>
                           <td>
                             <button onlick="deleteItem(<%=rs.getInt("ID")%>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>

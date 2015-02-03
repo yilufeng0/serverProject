@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cp.upload.SmallUpImgNoRatio;
+import com.cp.JDBC.InsertOperation;
+import com.cp.basefunc.GetTime;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
 
@@ -43,15 +44,17 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(req.getParameter("newsauthor"));
 			listReq.add(req.getParameter("remark"));
 			listReq.add(req.getParameter("content"));
-			listReq.add(uploadFile.getFileName());
-			listReq.add(uploadFile.getExtName());
 			listReq.add(uploadFile.getRootPath());
-				
+			listReq.add(new GetTime().getDateAndTime());
+			
+			String sql = "insert into news(title,author,abstract,content,imageOri,time) values(?,?,?,?,?,?)";
+			InsertOperation.insertOne(sql, listReq);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-
+        request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
         
 	}
 	
