@@ -34,12 +34,23 @@ function afterDelItem(){
 		trs.getElementsByTagName("td")[0].innerHTML=i+1;
 	}
 }
-
+function deletedItem(id){
+	var tagid=document.getElementById(id);
+	tagid.remove();
+}
 function deleteItem(id){
 	var xmlHttp = createXMLHTTP();
 	xmlhttp.open("POST", "deleteApp.jsp", true);
 	xmlhttp.onreadystatechange=function(){
-		afterDelItem(id);
+		if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			if(xmlhttp.responseText == "1"){
+				deletedItem(id);
+				afterDelItem();
+			}else if(xmlhttp.responseText =="0"){ //提示删除错误
+				
+			}
+			
+		}		
 	};
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("id="+id);

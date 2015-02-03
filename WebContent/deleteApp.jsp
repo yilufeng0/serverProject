@@ -5,6 +5,11 @@
     pageEncoding="UTF-8"%>
 <%
 	int id = Integer.valueOf(request.getParameter("id"));
-    new DeleteApps().deleteApp(id);
-
+    boolean result=new DeleteApps().deleteApp(id);
+    if(result){
+    	out.write('1');
+    }else{
+    	out.write('0');
+    }
+	
 %>
