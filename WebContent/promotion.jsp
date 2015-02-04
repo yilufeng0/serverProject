@@ -172,9 +172,9 @@
                         %>
                         <tr class="text-center">
                           <td><%=rs.getRow()%></td>
-                          <td><%=rs.getString("tips") %></td>
-                          <td><%=rs.getString("title") %></td>
-                          <td><%=rs.getString("abstract") %></td>
+                          <td><%=rs.getString("tips")!=null?rs.getString("tips"):"" %></td>
+                          <td><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>
+                          <td><%=rs.getString("abstract")!=null?rs.getString("abstract"):"" %></td>
                           <td>                            
                             <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
                           </td>

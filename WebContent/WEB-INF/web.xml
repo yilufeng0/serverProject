@@ -18,7 +18,26 @@
     <url-pattern>/AddPromotionServlet</url-pattern>
   </servlet-mapping>
   
-   <servlet>
+  <servlet>
+    <servlet-name>AddImageServlet</servlet-name>
+    <servlet-class>com.cp.exhibition.AddImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddImageServlet</servlet-name>
+    <url-pattern>/AddImageServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>AddNewAccountServlet</servlet-name>
+    <servlet-class>com.cp.account.AddNewAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewAccountServlet</servlet-name>
+    <url-pattern>/AddNewAccountServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AddNewAppServlet</servlet-name>
     <servlet-class>com.cp.app.AddNewAppServlet</servlet-class>
   </servlet>
@@ -26,7 +45,6 @@
     <servlet-name>AddNewAppServlet</servlet-name>
     <url-pattern>/AddNewAppServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>DownLoadServlet</servlet-name>
     <servlet-class>com.cp.download.DownLoadServlet</servlet-class>

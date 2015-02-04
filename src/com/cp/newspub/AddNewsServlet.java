@@ -46,8 +46,9 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(req.getParameter("content"));
 			listReq.add(uploadFile.getRootPath());
 			listReq.add(new GetTime().getDateAndTime());
+			listReq.add(GetTime.getPageDate());
 			
-			String sql = "insert into news(title,author,abstract,content,imageOri,time) values(?,?,?,?,?,?)";
+			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime) values(?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);
 			
 		} catch (Exception e) {

@@ -25,7 +25,7 @@
 
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript">
-        var fileIndex=1;
+        var fileIndex=2;
     </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -168,7 +168,7 @@
                     </div>
                     </div>                    
                       <hr>  
-                      <form id="imgform" class="form-horizontal text-center" role="form" method="POST" action="AddImageServlet?type=aboutcp" enctype="multipart/form-data">
+                      <form id="imgform" class="form-horizontal text-center" role="form" method="POST" action="AddImageServlet?type=image" enctype="multipart/form-data">
                         <div class="form-group">
                               <label for="uploadfile" class="col-sm-2 control-label">配图</label>
                             <div class="col-sm-3">
@@ -176,7 +176,7 @@
                             </div>
                             <label class="col-sm-1 control-label" >描述</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control round-form" id="filedescp" name="filedescp">
+                                <input type="text" class="form-control round-form" id="filedescp" name="filedescp1">
                             </div>                            
                         </div>
                         <hr id="baseline">

@@ -7,8 +7,9 @@
 <%
    String pageNum = request.getParameter("pageNum");
    if(pageNum==null){
-	pageNum="0";
-   }
+	   out.write("0");
+	   return;
+	}
    
    ResultSet rs = SelectFeedback.selectFeedback(pageNum);
    try{

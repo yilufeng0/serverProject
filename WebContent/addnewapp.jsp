@@ -184,7 +184,7 @@
                     <div class="showback text-center">
                       <h3><span><%= appTitle %>终端应用上传</span></h3>
                         <hr>
-                      <form class="form-horizontal text-center" role="form" method="POST" action="AddNewAppServlet">
+                      <form class="form-horizontal text-center" role="form" method="POST" action="AddNewAppServlet" enctype="multipart/form-data">
                           <div class="form-group">
                               <label for="appname" class="col-sm-2 control-label">应用名称</label>
                             <div class="col-sm-8">

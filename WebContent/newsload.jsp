@@ -7,9 +7,10 @@
 
 <%
    String pageNum = request.getParameter("pageNum");
-	if(pageNum==null){
-		pageNum="0";
-	}
+   if(pageNum==null){
+	   out.write("0");
+	   return;
+   }
 	ResultSet rs = SelectNews.selectNews(pageNum);
   try{
  	while(rs.next()){

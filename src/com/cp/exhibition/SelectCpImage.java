@@ -8,7 +8,7 @@ import com.cp.JDBC.SelectOperation;
 
 public class SelectCpImage {
 	public static ResultSet selectCpImage(){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id,time,thumbpath,description from exhibition order by ID desc limit 0,20");
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,showTime,thumbpath,description,operation from exhibition order by ID desc limit 0,20");
 		return rs;
 	}
 	
