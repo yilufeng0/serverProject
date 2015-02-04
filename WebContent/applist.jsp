@@ -185,7 +185,7 @@
                           <td><%=rs.getString("bigVersion")!=null?rs.getString("bigVersion"):""%>.<%=rs.getString("mediumVersion")!=null?rs.getString("mediumVersion"):""%>.<%=rs.getString("smallVersion")!=null?rs.getString("smallVersion"):""%></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>
-                            <button onlick="deleteItem(<%=rs.getInt("ID")%>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button onlick="deleteItem(<%=rs.getInt("ID")%>,<%=appType%>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
                           <%}

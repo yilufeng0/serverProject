@@ -176,7 +176,7 @@
                           <td><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>
                           <td><%=rs.getString("abstract")!=null?rs.getString("abstract"):"" %></td>
                           <td>                            
-                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,push)"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
                           <%}
