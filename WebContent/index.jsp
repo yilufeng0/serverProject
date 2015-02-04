@@ -27,7 +27,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+	<script type="text/javascript" src="js/getserverstate.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,7 +37,7 @@
     <![endif]-->
   </head>
 
-  <body onload="setContentHeight('mainheight',0.5)">
+  <body onload="setContentHeight('mainheight',0.5);timer()">
 	<%!ServerInfo serverInfo = new ServerInfo(); %>
 
   <section id="container" >
@@ -259,7 +259,7 @@
                             <div class="row">
                               <div class="col-sm-4 col-xs-4 goleft">
 
-                                <p><i class="fa fa-database"></i><%=serverInfo.getMemUsageRatio()%>%</p>
+                                <p><i class="fa fa-database"></i><span id="memstatetitle"><%=serverInfo.getMemUsageRatio()%></span>%</p>
                               </div>
                             </div>
                               <canvas id="serverstatus01" height="120" width="140"></canvas>
@@ -307,10 +307,10 @@
                 		<p><%=GetTime.getPageDate() %></p>
 	                <footer>
 	                  <div class="pull-left">
-	                    <h5><i class="fa fa-hdd-o"></i><%=serverInfo.getDiskAll()%>GB</h5>
+	                    <h5><i class="fa fa-hdd-o"></i><span id="diskall"><%=serverInfo.getDiskAll()%></span>GB</h5>
 	                  </div>
 	                  <div class="pull-right">
-	                    <h5><%=serverInfo.getDiskRatio() %>% Used</h5>
+	                    <h5><span id="diskratio"><%=serverInfo.getDiskRatio() %></span>% Used</h5>
 	                  </div>
 	                </footer>
                 </div>

@@ -30,9 +30,10 @@ function createNewAcc(){
 //编辑条目信息
 function editItem(id){
 	var xmlhttp=createXMLHTTP();
-	var modalTag = document.getElementById();
+	var modalTag = document.getElementById("myModal");
 	
 	
+	 $("#myModal").modal("toggle");	
 }
 
 //删除对应条目后的序号重新编排
@@ -54,11 +55,11 @@ function deletedItem(id){
 
 
 //使用ajax进行远程服务器条目删除请求，并对返回的结果进行处理
-function deleteItem(id){
+function deleteItem(id,type){
 	
 	var xmlhttp = createXMLHTTP();
 	var ID=String(id);
-	xmlhttp.open("POST", "deleteApp.jsp", true);
+	xmlhttp.open("POST", "deleteApp.jsp?type="+type, true);
 	xmlhttp.onreadystatechange=function(){	
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var result=xmlhttp.responseText.replace(/[\r\n]/g,"");

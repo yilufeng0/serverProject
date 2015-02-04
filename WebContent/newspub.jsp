@@ -147,8 +147,7 @@
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
                     <!-- 模态框开始 -->
-                    <!-- <div class="showback">
-                      <button class="btn btn-success btn-1g" data-target="#myModal" data-toggle="modal">添加</button>
+                                   
 
                       <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
                         <div class="modal-dialog">
@@ -168,7 +167,7 @@
                           </div>
                         </div>
                       </div>
-                    </div> -->
+                     
                     <!-- 模态框结束 -->
                     <div class="showback">
                       <a href="addnews.jsp"><button class="btn btn-success btn-lg">添加</button></a>
