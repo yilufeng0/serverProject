@@ -239,5 +239,8 @@ public class ServerInfo {
 		 OperatingSystem OS = OperatingSystem.getInstance();  
 		 return OS.getVersion();
 	}
-			
+		
+	public static void main(String[] args) {
+		
+	}
 }

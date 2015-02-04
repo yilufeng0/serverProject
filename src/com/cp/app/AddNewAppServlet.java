@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
+import com.cp.upload.UploadFile;
+import com.jspsmart.upload.Request;
 
 /**
  * Servlet implementation class AddNewAppServlet
@@ -31,21 +33,25 @@ public class AddNewAppServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		UploadFile uploadFile = new UploadFile(this.getServletConfig());
+		Request req = null;
 		List<Object> listReq = new ArrayList<>();
 		try {
-			String verisonId = request.getParameter("versionid");
+			uploadFile.upload(request, response, "apk|ipa|xap", "apps");
+			req = uploadFile.getRequest();
+			String verisonId = req.getParameter("versionid");
 			String bigVersion = verisonId.substring(0, verisonId.indexOf("."));
 			String mediumVersion = verisonId.substring(verisonId.indexOf(".")+1, verisonId.lastIndexOf("."));
 			String smallVersion = verisonId.substring(verisonId.lastIndexOf(".")+1, verisonId.length());
-			
-			
-			listReq.add(request.getParameter("appname"));
+				
+			listReq.add(req.getParameter("appname"));
 			listReq.add(bigVersion);
 			listReq.add(mediumVersion);
 			listReq.add(smallVersion);
-			listReq.add(request.getParameter("author"));
-			listReq.add(request.getParameter("apptype"));
-			listReq.add(request.getParameter("content"));
+			listReq.add(req.getParameter("author"));
+			listReq.add(req.getParameter("apptype"));
+			listReq.add(req.getParameter("content"));
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
 			String sql = "insert into apps(title,bigVersion,mediumVersion,smallVersion,submit,type,description,time,showTime) values(?,?,?,?,?,?,?,?,?)";
@@ -53,6 +59,7 @@ public class AddNewAppServlet extends HttpServlet {
     	} catch (Exception e) {
 		e.printStackTrace();
 	  }
+	  response.setCharacterEncoding("UTF-8");
 	  request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
 		
 	}

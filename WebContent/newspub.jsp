@@ -195,12 +195,12 @@
                      	while(rs.next()){%>
                         <tr class="text-center" id="<%=rs.getInt("ID")%>">
                           <td><%=rs.getRow()%></td>
-                          <td><%=rs.getString("title") %></td>
-                          <td><%=rs.getString("time") %></td>
-                          <td><%=rs.getString("author") %></td>
+                          <td><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>
+                          <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):""%></td>
+                          <td><%=rs.getString("author")!=null?rs.getString("author"):"" %></td>
                           <td>
                             <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,news)"><i class="fa fa-trash-o"></i></button>
                           </td>
                         </tr>
                        <%

@@ -5,8 +5,9 @@
     pageEncoding="UTF-8"%>
 <%
 	String pageNum = request.getParameter("pageNum");
-	if(pageNum==null){
-	pageNum="0";
+    if(pageNum==null){
+		out.write("0");
+		return;
 	}
 	
 	ResultSet rs = SelectCpImage.selectCpImage(pageNum);

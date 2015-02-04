@@ -168,9 +168,9 @@
                               %>
                               <tr class="text-center">
                                   <td><%=rs.getRow()%></td>
-                                  <td><%=rs.getString("time") %></td>
-                                  <td  class="text-center"><%=rs.getString("feedback") %></td>
-                                  <td  class="text-center"><%=rs.getString("operation") %></td>
+                                  <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
+                                  <td  class="text-center"><%=rs.getString("feedback")!=null?rs.getString("feedback"):"" %></td>
+                                  <td  class="text-center"><%=rs.getString("operation")!=null?rs.getString("operation"):"" %></td>
                               </tr>  
                                <%}
                                 }catch(SQLException e){

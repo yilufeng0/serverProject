@@ -27,22 +27,26 @@ public class MultiUploadFile {
 	private ServletConfig config;
 	
 	/**
-	 * @param rootPath 文件根路径变量
-	 * @param fileName 文件名
-	 * @param extName  文件扩展名
-	 * @param request  请求对象 
+	 * @param rootPath   文件根路径变量
+	 * @param fileTotalName   文件全名（包含扩展名及随机数）
+	 * @param 
+	 * @param extName    文件扩展名
+	 * @param request    请求对象 
+	 * @param fileCount  上传文件数
 	 */
 	private String rootPath;
+    private List<String> fileTotalName = new ArrayList<String>();
     private List<String> fileName = new ArrayList<String>();
     private List<String> extName = new ArrayList<String>();
     private Request request;
+    private int fileCount;
     
     public String getRootPath() {
 		return rootPath;
 	}
     
-	public List<String> getFileName() {
-		return fileName;
+	public List<String> getFileTotalName() {
+		return fileTotalName;
 	}
 	
 	public List<String> getExtName() {
@@ -53,14 +57,24 @@ public class MultiUploadFile {
 		return request;
 	}
 	
+	public int getFileCount(){
+		return fileCount;
+	}
+	
+	public List<String> getFileName() {
+		return fileName;
+	}
+	
 	private static final String CONTENT_TYPE = "text/html; charset=utf-8";
+    
+	public MultiUploadFile(ServletConfig config) {
+		super();
+		this.config = config;
+	}
     
     public void init(ServletConfig config) throws ServletException {
         this.config = config;
-    }
-    final public ServletConfig getServletConfig() {
-        return config;  
-    }    
+    }  
     
     public MultiUploadFile(){
         super();
@@ -68,6 +82,9 @@ public class MultiUploadFile {
 	
     
 	public void multiUpload(HttpServletRequest req, HttpServletResponse res, String upFileType, String filePath) throws Exception{
+		if (null==this.config) {
+			throw new Exception("无法获取配置文件，使用前需要初始化");
+		}
 		res.setContentType("text/html");
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
@@ -83,13 +100,15 @@ public class MultiUploadFile {
      	}
     	
         SmartUpload su = new SmartUpload();
-        su.initialize(getServletConfig(), req, res);
+        su.initialize(this.config, req, res);
 
     	try {
 			su.upload();
 		} catch (SmartUploadException e) {
 			e.printStackTrace();
 		}
+    	
+    	fileCount = su.getFiles().getCount();
     	
     	//循环取得上传所有文件
      for(int i=0;i<su.getFiles().getCount();i++){
@@ -104,7 +123,8 @@ public class MultiUploadFile {
      	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
      	  
      	  extName.add(fileType);
-     	  fileName.add(myFileName+randomNum+"."+fileType);
+     	  fileName.add(myFileName+randomNum);
+     	  fileTotalName.add(myFileName+randomNum+"."+fileType);
      	  
      	 if (upFileType.indexOf(fileType)==-1)
     	 {

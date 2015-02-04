@@ -146,34 +146,34 @@
                     <!-- here add content -->
                     <div class="showback" style="">
                     
-                    <form class="form-horizontal text-center" >
+                    <form class="form-horizontal text-center" role="form" method="POST" action="AddNewAccountServlet">
                       <hr>
                       <h3>创建帐户</h3>   
 					  <div class="form-group">
                           <label for="account" class="col-sm-2 control-label">帐户名</label>
                         <div class="col-sm-8 form-center">
-                          <input type="text" class="form-control round-form" id="account"  placeholder="Account">
+                          <input type="text" class="form-control round-form" id="account" name="account" placeholder="Account">
                         </div>
                       </div>
                       <div class="form-group">
                           <label for="acctype" class="col-sm-2 control-label">账户类型</label>
                         <div class="col-sm-4 form-center">
-                          <select class="form-control" id="acctype">
-                          	<option>本地账户</option>
-                          	<option>远程账户</option>
+                          <select class="form-control" id="acctype" name="acctype">
+                          	<option value="server">本地账户</option>
+                          	<option value="remote">远程账户</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                           <label for="passwd" class="col-sm-2 control-label">新密码</label>
                         <div class="col-sm-8 form-center">
-                          <input type="password" class="form-control round-form" id="passwd" placeholder="New password">
+                          <input type="password" class="form-control round-form" id="passwd" name="passwd" placeholder="New password">
                         </div>
                       </div>
                       <div class="form-group">
                           <label for="renewpasswd" class="col-sm-2 control-label">确认密码</label>
                         <div class="col-sm-8 form-center">
-                          <input type="password" class="form-control round-form" id="renewpasswd"  placeholder="password again">
+                          <input type="password" class="form-control round-form" id="renewpasswd" name="renewpasswd" placeholder="password again">
                         </div>
                       </div>
 					<hr>

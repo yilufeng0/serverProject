@@ -4,6 +4,7 @@
 package com.cp.upload;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.coobird.thumbnailator.Thumbnails;
 
@@ -26,11 +27,11 @@ public class SmallUpImgRatio {
 	* @param height     图片高度像素值
 	* @return  返回图片文件名
 	*/
-	public ArrayList<String> smallUpload(String[] fName, String fileType, String filePath, int width, int height) throws Exception{
+	public static ArrayList<String> smallUpload(List<String> fName, List<String> fileType, String filePath, int width, int height) throws Exception{
 	   ArrayList<String> fileName = new ArrayList<String>(); 	
-       for(int i = 0;i < fName.length;i++){ 
-    	 Thumbnails.of(filePath+fName[i]+"."+fileType).size(width, height).toFile(filePath+fName[i]+"_R"+width+"x"+height+"."+fileType);
-         fileName.add(filePath+fName[i]+"_R"+width+"x"+height+"."+fileType);
+       for(int i = 0;i < fName.size();i++){ 
+    	 Thumbnails.of(filePath+fName.get(i)+"."+fileType.get(i)).size(width, height).toFile(filePath+fName.get(i)+"_R"+width+"x"+height+"."+fileType.get(i));
+         fileName.add(filePath+fName.get(i)+"_R"+width+"x"+height+"."+fileType.get(i));
        }	
        return fileName;
      }

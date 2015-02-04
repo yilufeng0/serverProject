@@ -1,4 +1,4 @@
-package com.cp.push;
+package com.cp.account;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,16 +16,16 @@ import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
 
 /**
- * Servlet implementation class AddPromotionServlet
+ * Servlet implementation class AddNewAccountServlet
  */
-@WebServlet("/AddPromotionServlet")
-public class AddPromotionServlet extends HttpServlet {
+@WebServlet("/AddNewAccountServlet")
+public class AddNewAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPromotionServlet() {
+    public AddNewAccountServlet() {
         super();
     }
 
@@ -33,20 +33,19 @@ public class AddPromotionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		List<Object> listReq = new ArrayList<>();
 		try {
-			listReq.add(request.getParameter("ticker"));
-			listReq.add(request.getParameter("title"));
-			listReq.add(request.getParameter("notidesc"));
-			listReq.add(request.getParameter("content"));
+			request.setCharacterEncoding("UTF-8");
+			listReq.add(request.getParameter("account"));
+			listReq.add(request.getParameter("acctype"));
+			listReq.add(request.getParameter("passwd"));
 			listReq.add(new GetTime().getDateAndTime());
-			String sql = "insert into push(tips,title,abstract,content,time) values(?,?,?,?,?)";
+			listReq.add(GetTime.getPageDate());
+			String sql = "insert into account(userName,type,passwd,time,showTime) values(?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);	
     	} catch (Exception e) {
 		e.printStackTrace();
 	  }
-	  response.setCharacterEncoding("UTF-8");
 	  request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
 		
 	}

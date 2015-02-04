@@ -1,3 +1,4 @@
+<%@page import="com.cp.account.SelectAccount"%>
 <%@page import="com.cp.newspub.SelectNews"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="com.cp.JDBC.SelectOperation"%>
@@ -40,6 +41,7 @@
   <%
   	String type=request.getParameter("type");
   	String accountType = (type==null)? "remote":type;
+  	ResultSet rs = SelectAccount.selectAccount(accountType);
   %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -161,20 +163,27 @@
                         </tr>
                       </thead>
                       <tbody>
-                      
+                      <%
+                        if(rs!=null){
+                         try{
+                        	while(rs.next()){
+                      %>
                       	<tr class="text-center">
-                      	<td>id</td>
-                      	<td>accountname</td>
-                      	<td>time</td>
+                      	<td><%=rs.getRow()%></td>
+                      	<td><%=rs.getString("userName")!=null?rs.getString("userName"):"" %></td>
+                      	<td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                       	<td></td>
                       	<td>
-                      	<button class="btn btn-primary btn-xs" onclick="editItem(id)"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs" onclick="deleteItem(id)"><i class="fa fa-trash-o"></i></button>
+                      	<button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>)"><i class="fa fa-trash-o"></i></button>
                       	</td>
-                      	
                       	</tr>
-                      
-                                            
+                      <%}
+                           }catch(SQLException e){
+                        	  e.printStackTrace();
+                           }
+                         }
+                      %>                       
                       </tbody>
                       </table>
                     </div>
