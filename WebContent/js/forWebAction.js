@@ -27,13 +27,10 @@ function createNewAcc(){
 	}
 }
 
-//编辑条目信息
-function editItem(id){
-	var xmlhttp=createXMLHTTP();
-	var modalTag = document.getElementById("myModal");
+
+//完成更改后的提交
+function editsubmit(){
 	
-	
-	 $("#myModal").modal("toggle");	
 }
 
 //删除对应条目后的序号重新编排

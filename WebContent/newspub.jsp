@@ -153,12 +153,12 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <div class="modal-title">新增</div>
+                              <div class="modal-title"><input id="edittitle" readonly="readonly"></div>
                             </div>
                             <div class="modal-body">
-                              <form >
-                                <input type="email">
-                              </form>
+                             <script type="text/plain" id="editcontent"></script>
+                              
+                             
                             </div>
                             <div class="modal-footer">
                               <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
@@ -259,8 +259,15 @@
   <!--script for this page-->
   <script src="assets/js/sparkline-chart.js"></script>    
   <script src="assets/js/zabuto_calendar.js"></script>  
-  
-
+  <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
+  <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
+  <script type="text/javascript">
+  		function editItem(id){
+  			var ue=UE.getEditor('editcontent');
+  			$("#myModal").modal("toggle");
+  		}
+  </script>
   
   <script type="application/javascript">
         $(document).ready(function () {
