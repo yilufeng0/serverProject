@@ -37,9 +37,8 @@ function editsubmit(){
 function afterDelItem(){
 	//完成条目删除后的表格刷新     同时将表格中的序号根据重新生成
 	var trs=document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-	var  cells= null;
 	for(var i=0;i<trs.length;i=i+1){
-		trs.getElementsByTagName("td")[0].innerHTML=i+1;
+		trs[i].getElementsByTagName("td")[0].innerHTML=i+1;
 	}
 }
 
