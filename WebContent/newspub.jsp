@@ -153,7 +153,7 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <div class="modal-title"><input id="edittitle" readonly="readonly"></div>
+                              <div class="modal-title text-center"><h4 id="edittitle">sssss</h4></div>
                             </div>
                             <div class="modal-body">
                              <script type="text/plain" id="editcontent"></script>
