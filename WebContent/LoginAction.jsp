@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+/*
 	String userName=null,passwd;
 	passwd=request.getParameter("passwd");
 	if(request.getParameter("account")!=null){
@@ -26,5 +27,6 @@
 		resp=0;
 	}	
 	out.write(String.valueOf(resp));
-	//out.write(String.valueOf(1));
+*/
+	out.write("1");
 %>
