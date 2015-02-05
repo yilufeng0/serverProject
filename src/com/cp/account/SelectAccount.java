@@ -16,7 +16,7 @@ public class SelectAccount {
 	public static ResultSet selectAccount(int id){
 		List<Object> list = new ArrayList<>();
 		list.add(id);
-	    ResultSet rs = SelectOperation.selectOne("select ID as id where ID = ?", list);	
+	    ResultSet rs = SelectOperation.selectOne("select ID as id from account where ID = ?", list);	
 	    return rs;
 	}
 	
