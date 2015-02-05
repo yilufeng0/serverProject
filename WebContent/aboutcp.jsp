@@ -179,7 +179,7 @@
                         try{
                      	  while(rs.next()){
                        %>
-                        <tr class="text-center">
+                        <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
                           <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
                           <td><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>

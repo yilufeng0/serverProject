@@ -30,6 +30,7 @@
     case "server" :
     case "remote" :
     	  result = DeleteAccount.deleteAccount(id);  
+    	  break;
     default:
     	result = false;
     
@@ -37,7 +38,6 @@
 
     if(result){
     	out.write("1"); 
-    	//System.out.println("1");
     }else{
     	out.write("0");
     }

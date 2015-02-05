@@ -180,13 +180,13 @@
                          try{
                         	while(rs.next()){
                         %>
-                        <tr class="text-center">
+                        <tr class="text-center" id="<%=rs.getInt("ID")%>">
                           <td ><%=rs.getRow()%></td>
                           <td ><button type="button" class="btn btn-link" data-placement='right' title=<%=rs.getString("title")!=null?rs.getString("title"):""%> onclick="disp('right')"><%=rs.getString("title") %></button></td>
                           <td><%=rs.getString("bigVersion")!=null?rs.getString("bigVersion"):""%>.<%=rs.getString("mediumVersion")!=null?rs.getString("mediumVersion"):""%>.<%=rs.getString("smallVersion")!=null?rs.getString("smallVersion"):""%></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>
-                            <button onlick="deleteItem(<%=rs.getInt("ID")%>,'<%=appType%>')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button onclick="deleteItem(<%=rs.getInt("ID")%>,'<%=appType%>')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
                           <%}
