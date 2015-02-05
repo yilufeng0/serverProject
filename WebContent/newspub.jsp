@@ -195,7 +195,7 @@
                      	while(rs.next()){%>
                         <tr class="text-center" id="<%=rs.getInt("ID")%>">
                           <td><%=rs.getRow()%></td>
-                          <td><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>
+                          <td id="title<%=rs.getInt("ID")%>"><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):""%></td>
                           <td><%=rs.getString("author")!=null?rs.getString("author"):"" %></td>
                           <td>

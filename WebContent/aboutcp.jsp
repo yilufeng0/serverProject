@@ -182,7 +182,7 @@
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
                           <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
-                          <td><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
+                          <td id="des<%=rs.getInt("ID") %>"><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>
                             <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
