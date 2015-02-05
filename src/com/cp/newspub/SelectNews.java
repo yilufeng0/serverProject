@@ -16,7 +16,7 @@ public class SelectNews {
 	public static ResultSet selectNews(int id){
 		List<Object> list = new ArrayList<>();
 		list.add(id);
-	    ResultSet rs = SelectOperation.selectOne("select ID as id from news where ID = ?", list);	
+	    ResultSet rs = SelectOperation.selectOne("select content from news where ID = ?", list);	
 	    return rs;
 	}
 	

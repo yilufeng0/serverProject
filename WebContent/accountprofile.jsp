@@ -27,7 +27,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-
+	<script type="text/javascript" src="js/editaccount.js"></script>
     <script type="text/javascript" src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
@@ -145,7 +145,51 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
+				
+				
+				 <!-- 模态框开始 -->
+                                   
 
+                      <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <div class="modal-title text-center"><h4 id="edittitle">密码修改</h4></div>
+                            </div>
+                            <div class="modal-body">
+                             	<div class="form-group">
+		                          <label for="oripasswd" class=" control-label">原始密码</label>
+		                        <div class=" form-center">
+		                          <input type="password" class="form-control round-form" id="oripasswd"placeholder="New password">
+		                        </div>
+		                      </div>
+		                      <div class="form-group">
+		                          <label for="newpasswd" class=" control-label">原始密码</label>
+		                        <div class=" form-center">
+		                          <input type="password" class="form-control round-form" id="newpasswd"placeholder="New password">
+		                        </div>
+		                      </div>
+		                      <div class="form-group">
+		                          <label for="renewpasswd" class=" control-label">确认密码</label>
+		                        <div class="form-center">
+		                          <input type="password" class="form-control round-form" id="renewpasswd" name="renewpasswd" placeholder="password again">
+		                        </div>
+		                      </div>
+                              
+                             
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
+                              <label style="display:none" id="submitid">2222</label>
+                              <button class="btn btn-primary" type="" onclick="suretofix()">提交</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    <!-- 模态框结束 -->
+				
+				
               <div class="row">
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  

@@ -6,6 +6,7 @@
 	int id = Integer.valueOf(request.getParameter("id"));
 	ResultSet rs = SelectNews.selectNews(id);	
 	rs.next();
-    String oriContent = rs.getString("content");  
+    String oriContent = rs.getString("content"); 
+    System.out.println(oriContent);
 	out.write(oriContent);
 %>

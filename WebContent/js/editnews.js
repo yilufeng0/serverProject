@@ -23,7 +23,7 @@ function getcontent(){
 
 function dispmodal(content){
 	document.getElementById("edittitle").innerHTML=document.getElementById("title"+Id).innerHTML;
-	//ue.setContent(content);
+	ue.setContent(content);
 	document.getElementById("submitid").innerHTML=Id;
 	$("#myModal").modal("toggle");
 }
@@ -38,7 +38,7 @@ function suretopush(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var result = xmlhttp.responseText.replace(/[\r\n]/g,"");
 			if(result=="1"){
-				
+				$("#myModal").modal("toggle");
 			}
 		}
 	};

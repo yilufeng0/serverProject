@@ -28,6 +28,7 @@
 	<script src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
+    <script type="text/javascript" src="js/editcp.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -148,11 +149,28 @@
                 	
                 	    <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
                         <div class="modal-dialog">
-                          <div class="modal-content">                            
+                          <!--<div class="modal-content">                            
                             <div class="modal-body">
                               <img id="modalImg" src="">
+                            </div> -->
+                           <img id="modalImg" src="">
+                          </div>
+                        </div>
+                      </div> 
+                      <div id="myModaldes" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">                            
+                            <div class="modal-header">
+                              <div class="modal-title text-center"><h4 id="edittitle">描述信息</h4></div>
                             </div>
-                           
+                            <div class="modal-body">                                                         
+                             	<input class="" id="modaldes">
+                            </div>
+                            <div class="modal-footer">
+                              <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
+                              <label style="display:none" id="submitid">2222</label>
+                              <button class="btn btn-primary" onclick="suretodesc()">提交</button>
+                            </div>
                           </div>
                         </div>
                       </div> 
