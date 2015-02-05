@@ -184,10 +184,9 @@
                           <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
                           <td><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
-                          <td><%=rs.getString("operation")!=null?rs.getString("operation"):"" %></td>
                           <td>
                             <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,cpimg)"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,'cpimg')"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
                         <%
