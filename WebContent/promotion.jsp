@@ -170,7 +170,7 @@
                         try{
                         	while(rs.next()){
                         %>
-                        <tr class="text-center">
+                        <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow()%></td>
                           <td><%=rs.getString("tips")!=null?rs.getString("tips"):"" %></td>
                           <td><%=rs.getString("title")!=null?rs.getString("title"):"" %></td>

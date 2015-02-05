@@ -169,7 +169,7 @@
                          try{
                         	while(rs.next()){
                       %>
-                      	<tr class="text-center">
+                      	<tr class="text-center" id="<%=rs.getInt("ID") %>">
                       	<td><%=rs.getRow()%></td>
                       	<td><%=rs.getString("userName")!=null?rs.getString("userName"):"" %></td>
                       	<td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
