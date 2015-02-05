@@ -59,7 +59,7 @@ function deleteItem(id,type){
 	
 	var xmlhttp = createXMLHTTP();
 	var ID=String(id);
-	xmlhttp.open("POST", "deleteApp.jsp?type="+type, true);
+	xmlhttp.open("POST", "deleteItem.jsp?type="+type, true);
 	xmlhttp.onreadystatechange=function(){	
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var result=xmlhttp.responseText.replace(/[\r\n]/g,"");

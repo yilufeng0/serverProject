@@ -26,6 +26,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
+    <script type="text/javascript" src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -185,7 +186,7 @@
                           <td><%=rs.getString("bigVersion")!=null?rs.getString("bigVersion"):""%>.<%=rs.getString("mediumVersion")!=null?rs.getString("mediumVersion"):""%>.<%=rs.getString("smallVersion")!=null?rs.getString("smallVersion"):""%></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>
-                            <button onlick="deleteItem(<%=rs.getInt("ID")%>,<%=appType%>)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
+                            <button onlick="deleteItem(<%=rs.getInt("ID")%>,'<%=appType%>')" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
                           </td>
                           </tr>
                           <%}

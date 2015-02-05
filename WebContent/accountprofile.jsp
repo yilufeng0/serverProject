@@ -28,6 +28,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
+    <script type="text/javascript" src="js/forWebAction.js"></script>
     <script src="assets/js/chart-master/Chart.js"></script>
     <script type="text/javascript" src="js/contentHeight.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -175,7 +176,7 @@
                       	<td></td>
                       	<td>
                       	<button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,<%=accountType%>)"><i class="fa fa-trash-o"></i></button>
+                        <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,'<%=accountType%>')"><i class="fa fa-trash-o"></i></button>
                       	</td>
                       	</tr>
                       <%}
