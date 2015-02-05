@@ -162,7 +162,8 @@
                             </div>
                             <div class="modal-footer">
                               <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
-                              <button class="btn btn-primary" type="submit">提交</button>
+                              <label style="display:none" id="submitid">2222</label>
+                              <button class="btn btn-primary" type="" onclick="suretopush()">提交</button>
                             </div>
                           </div>
                         </div>
@@ -258,16 +259,12 @@
 
   <!--script for this page-->
   <script src="assets/js/sparkline-chart.js"></script>    
-  <script src="assets/js/zabuto_calendar.js"></script>  
+  <script src="assets/js/zabuto_calendar.js"></script> 
+  <script type="text/javascript" src="js/editnews.js"></script> 
   <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.config.js"></script>
   <script type="text/javascript" charset="utf-8" src="ueditor/ueditor.all.min.js"> </script>
   <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
-  <script type="text/javascript">
-  		function editItem(id){
-  			var ue=UE.getEditor('editcontent');
-  			$("#myModal").modal("toggle");
-  		}
-  </script>
+ 
   
   <script type="application/javascript">
         $(document).ready(function () {
