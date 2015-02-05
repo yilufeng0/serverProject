@@ -25,7 +25,7 @@ function suretodesc(){
 		}
 	};
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("id="+tagid+"&description"+desc);
+	xmlhttp.send("id="+tagid+"&description="+desc);
 	
 }
 

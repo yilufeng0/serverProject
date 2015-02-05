@@ -164,13 +164,13 @@
 		                        </div>
 		                      </div>
 		                      <div class="form-group">
-		                          <label for="newpasswd" class=" control-label">原始密码</label>
+		                          <label for="newpasswd" class=" control-label">新密码</label>
 		                        <div class=" form-center">
 		                          <input type="password" class="form-control round-form" id="newpasswd"placeholder="New password">
 		                        </div>
 		                      </div>
 		                      <div class="form-group">
-		                          <label for="renewpasswd" class=" control-label">确认密码</label>
+		                          <label for="renewpasswd" class=" control-label">确认新密码</label>
 		                        <div class="form-center">
 		                          <input type="password" class="form-control round-form" id="renewpasswd" name="renewpasswd" placeholder="password again">
 		                        </div>

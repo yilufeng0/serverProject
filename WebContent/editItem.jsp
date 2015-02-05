@@ -8,7 +8,7 @@
 <%
 	int id = Integer.valueOf(request.getParameter("id"));
     String type = request.getParameter("type");
-   
+ 
     boolean result = false;
     switch (type){
     case "news" :
@@ -16,16 +16,15 @@
     	  result = EditNews.editNews(id, content);
     	  break;
     case "cpimg" :
-    	  String discription = request.getParameter("description");
-    	  result = EditCpImage.editCpImage(id, discription);
+    	  String description = request.getParameter("description");
+    	  result = EditCpImage.editCpImage(id, description);
     	  break;
-    case "server" :
-    case "remote" :	 
+    case "account" :	 
     	  String passwd = request.getParameter("passwd");
           ResultSet rs = SelectAccount.selectAccount(id);
           rs.next();
           String passwdInDataBase = rs.getString("passwd");
-          if(passwd == passwdInDataBase){
+          if(passwd.equals(passwdInDataBase)){
         	  String renewpasswd = request.getParameter("renewpasswd");
         	  result = EditAccount.editAccount(id, renewpasswd);   
           }

@@ -7,7 +7,7 @@ import com.cp.JDBC.UpdateOperation;
 
 public class EditAccount {
 	public static boolean editAccount(int id, String renewpasswd){
-		String sql = "update account set passed =? where ID = ?";
+		String sql = "update account set passwd = ? where ID = ?";
 		List<Object> updateList = new ArrayList<>();
 		updateList.add(renewpasswd);
 		updateList.add(id);
