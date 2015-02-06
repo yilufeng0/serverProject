@@ -37,7 +37,7 @@
     <![endif]-->
   </head>
 
-  <body onload="setContentHeight('mainheight',0.5);timer()">
+  <body onload="setContentHeight('mainheight',0.63);timer()">
 	<%!ServerInfo serverInfo = new ServerInfo(); %>
 
   <section id="container" >
@@ -61,7 +61,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-tasks"></i>
-                            <span class="badge bg-theme">x</span>
+                            <span class="badge bg-theme"></span>
                         </a>
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-green"></div>
@@ -89,7 +89,7 @@
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.jsp#">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-theme">5</span>
+                            <span class="badge bg-theme"></span>
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-green"></div>
