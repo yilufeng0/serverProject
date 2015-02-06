@@ -16,37 +16,44 @@ function createXMLHTTP(){
 
 //执行提交后的操作
 function afterSubmit(result){
-    if(result == 1){		//成功登录，进行页面的跳转	
-    	window.location.href="index.jsp";
+    if(result == "1"){		//成功登录，进行页面的跳转    	
+    	self.location="index.jsp";    	
     }else{							//告知用户密码错误
-    	
+    	alert("fail");
     }    
 }
-//function getSubmit(){
-//	var passwd= document.getElementById("passwd");
-//	var xmlhttp=createXMLHTTP();
-//	xmlhttp.open("POST", "LoginAction.jsp", true);
-//	xmlhttp.onreadystatechange=function(){
-//		afterSubmit();
-//	};
-//	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//	xmlhttp.send("passwd"+passwd.value);
-//}
+
+
+function getSubmit(){
+	var passwd= document.getElementById("passwd");
+	var xmlhttp=createXMLHTTP();
+	xmlhttp.open("POST", "downloadTest.jsp", true);
+	xmlhttp.onreadystatechange=function(){
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			var result=xmlhttp.responseText.replace(/[\r\n]/g,"");							
+			afterSubmit(result);
+		}
+	};
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("passwd"+passwd.value);
+}
 
 
 //
 function mainPaeSubmit(){
 	var passwd= document.getElementById("passwd");
 	var account = document.getElementById("account");
-	var xmlhttp=createXMLHTTP();
-	xmlhttp.open("POST", "LoginAction.jsp", true);
-	xmlhttp.onreadystatechange=function(){
-		//alert(xmlhttp.readyState);
-		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			var result=xmlhttp.responseText.replace(/[\r\n]/g,"");							
-			//afterSubmit(result);
-		}
-	};
-	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xmlhttp.send("passwd"+passwd.value+"&account="+account.value);
+	if(passwd !="" && account !=""){
+		var xmlhttp=createXMLHTTP();
+		xmlhttp.open("POST", "downloadTest.jsp", true);
+		xmlhttp.onreadystatechange=function(){
+			//alert(xmlhttp.readyState);
+			if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+				var result=xmlhttp.responseText.replace(/[\r\n]/g,"");							
+				afterSubmit(result);
+			}
+		};
+		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xmlhttp.send("passwd"+passwd.value+"&account="+account.value);
+	}
 }
