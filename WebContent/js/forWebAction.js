@@ -1,7 +1,9 @@
 /**
  * 此文件用于完成与删除相关的功能
- * @param id
+ * 
  */
+//用于记录所加载的页面的页码
+ var pageNum = 1;
 
 
 //使用模态框显示图片
@@ -70,6 +72,21 @@ function deleteItem(id,type){
 	};
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("id="+ID);
+}
+
+
+
+//异步加载列表
+
+function loadlist(loadType){
+	var xmlhttp=createXMLHTTP();
+	xmlhttp.open("GET","url",true);
+	xmlhttp.onreadystatechange=function(){
+		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						
+		}
+	};
+	xmlhttp.send();
 }
 
 
