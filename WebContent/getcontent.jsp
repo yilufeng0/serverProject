@@ -7,6 +7,5 @@
 	ResultSet rs = SelectNews.selectNews(id);	
 	rs.next();
     String oriContent = rs.getString("content"); 
-    System.out.println(oriContent);
 	out.write(oriContent);
 %>

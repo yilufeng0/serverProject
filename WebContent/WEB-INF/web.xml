@@ -17,7 +17,6 @@
     <servlet-name>AddPromotionServlet</servlet-name>
     <url-pattern>/AddPromotionServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddImageServlet</servlet-name>
     <servlet-class>com.cp.exhibition.AddImageServlet</servlet-class>
@@ -27,7 +26,14 @@
     <url-pattern>/AddImageServlet</url-pattern>
   </servlet-mapping>
   
-  
+  <servlet>
+    <servlet-name>AddVideoServlet</servlet-name>
+    <servlet-class>com.cp.video.AddVideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddVideoServlet</servlet-name>
+    <url-pattern>/AddVideoServlet</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>AddNewAccountServlet</servlet-name>

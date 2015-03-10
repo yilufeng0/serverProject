@@ -35,7 +35,4 @@
 		 e.printStackTrace();
 	 }
 
-
-
-
 %>

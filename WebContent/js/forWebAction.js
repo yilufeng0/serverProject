@@ -7,7 +7,7 @@
 //使用模态框显示图片
 function dispImg (id) {
     var imgTag = document.getElementById("modalImg");
-    imgTag.src= "exhibition.jsp?id="+id;    //此处添加获取图片的地址并在此处将图片ID传给后台
+     imgTag.src = "exhibition.jsp?id="+id;    //此处添加获取图片的地址并在此处将图片ID传给后台
      $("#myModal").modal("toggle");
   }
 //创建新帐户

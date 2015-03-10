@@ -1,6 +1,3 @@
-<%@page import="com.cp.exhibition.SelectCpImgVideo"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,10 +22,11 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
-	<script src="js/forWebAction.js"></script>
+
     <script src="assets/js/chart-master/Chart.js"></script>
-    <script type="text/javascript" src="js/contentHeight.js"></script>
-    <script type="text/javascript" src="js/editcp.js"></script>
+    <script type="text/javascript">
+        var fileIndex=2;
+    </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -36,10 +34,8 @@
     <![endif]-->
   </head>
 
-  <body onload="setContentHeight('main-content',0.95)"> 
- <%
-  	ResultSet rs = SelectCpImgVideo.selectCpImgVideo();
-  %>
+  <body>
+
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -58,9 +54,6 @@
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login.jsp">退出</a></li>
-              </ul>
-              <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
               </ul>
             </div>
         </header>
@@ -114,7 +107,7 @@
                           <span>应用版本管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
+                         <li><a  href="applist.jsp?apptype=android">安卓终端</a></li>
                           <li><a  href="applist.jsp?apptype=ios">IOS终端</a></li>
                           <li><a  href="applist.jsp?apptype=winphone">微软终端</a></li>
                       </ul>
@@ -125,7 +118,7 @@
                           <span>系统帐户管理</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="createaccount.jsp">添加账户</a></li>
+                          <li class="active"><a  href="createaccount.jsp">添加账户</a></li>
                           <li><a  href="accountprofile.jsp?type=server">后台账户管理</a></li>
                           <li><a  href="accountprofile.jsp?type=remote">远程账户管理</a></li>
                       </ul>
@@ -139,93 +132,71 @@
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
+      <section id="main-content" >
+          <section class="wrapper" >
 
               <div class="row">
                   <div class="col-lg-1"></div>
                   <div class="col-lg-10 main-chart">  
                     <!-- here add content -->
-                	
-                	    <div id="myModal" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                          <!--<div class="modal-content">                            
-                            <div class="modal-body">
-                              <img id="modalImg" src="">
-                            </div> -->
-                           <img id="modalImg" src="">
-                          </div>
-                        </div>
-                      </div> 
-                      <div id="myModaldes" class="modal fade bs-example-modal-lg" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">                            
-                            <div class="modal-header">
-                              <div class="modal-title text-center"><h4 id="edittitle">描述信息</h4></div>
-                            </div>
-                            <div class="modal-body">                                                         
-                             	<input class="" id="modaldes">
-                            </div>
-                            <div class="modal-footer">
-                              <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
-                              <label style="display:none" id="submitid">2222</label>
-                              <button class="btn btn-primary" onclick="suretodesc()">提交</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div> 
-                    <div class="showback">
-                    	<a href="addnewcp.jsp"><button class="btn btn-success btn-lg">上传图片</button></a>
+                    
+                    
+                    <div class="showback text-center">
+
+                    <h2>上传视频</h2>
+                    <div class="row">
+                    <div class="form-group">                        
+                        <div >
+                          <!-- <button class="pull-left btn btn-primary btn-lg round-form"><i class="fa fa-plus"></i></button> -->
+                          <button class="pull-left round-form btn btn-link" onclick="addline()"><i class="fa fa-plus"></i>添加条目</button>
+                            <script type="text/javascript">
+                                function addline(){                                  
+                                  var imgform=document.getElementById('imgform')
+                                   var divline= document.getElementById('baseline')
+                                  var divout = document.createElement('div')
+                                  divout.setAttribute('class','form-group')
+                                  var inhtml='<label class="col-sm-2 control-label"></label>'+'<div class="col-sm-3"><input type="file" id="uploadfile'+fileIndex+'" name=uploadfile'+fileIndex+'"></div>'+'<label class="col-sm-1 control-label"></label><div class="col-sm-5"><input type="text" class="form-control round-form" id="filedescp'+fileIndex+'" name="filedescp'+fileIndex+'"></div>' 
+                                  //alert(inhtml)                          
+                                  divout.innerHTML=inhtml
+                                  imgform.insertBefore(divout,divline)
+                                  // var horz=document.createElement('hr')
+                                  // imgform.insertBefore(horz,divline)
+                                  fileIndex=fileIndex+1
+                                }
+                          </script>
+                        </div>                        
                     </div>
-                    <div class="showback text-center" style="">                      
-                        <table class="table table-striped table-hover">
-                      <thead>
-                        <tr>
-                          <th class="col-sm-1 text-center">#</th>
-                          <th class="col-sm-2 text-center">图片</th>
-                          <th class="col-sm-1 text-center">描述</th>
-                          <th class="col-sm-2 text-center">上传时间</th>
-                          <th class="col-sm-1 text-center">操作</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <!-- 表格开始   -->
-                          <!-- 此处内容有JSP动态生成 -->
-                          <!-- example start -->
-                       <%
-                       if(rs!=null){
-                        try{
-                     	  while(rs.next()){                   		 
-                     		  if(rs.getString("type").equals("image"))
-                     		  {
-                       %>
-                        <tr class="text-center" id="<%=rs.getInt("ID") %>">
-                          <td><%=rs.getRow() %></td>
-                          <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
-                          <td id="des<%=rs.getInt("ID") %>"><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
-                          <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
-                          <td>
-                            <button class="btn btn-primary btn-xs" onclick="editItem(<%=rs.getInt("ID")%>)"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btn-xs" onclick="deleteItem(<%=rs.getInt("ID")%>,'cpimg')"><i class="fa fa-trash-o"></i></button>
-                          </td>
-                          </tr>
-                        <%
-                     		 }
-                          }
-                         }catch(SQLException e){
-                    	 e.printStackTrace();
-                        }
-                       }
-                       %> 
-                          <!-- example end -->
-                          
-                        <!-- 表格结束 -->
-                      </tbody>
-                    </table>
+                    </div>                    
+                      <hr>  
+                      <form id="imgform" class="form-horizontal text-center" role="form" method="POST" action="AddVideoServlet?type=video" enctype="multipart/form-data">
+                        <div class="form-group">
+                              <label for="uploadfile" class="col-sm-2 control-label">视频</label>
+                            <div class="col-sm-3">
+                              <input type="file"  id="uploadfile" name="uploadfile">
+                            </div>
+                            <label class="col-sm-1 control-label" >描述</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control round-form" id="filedescp" name="filedescp1">
+                            </div>                            
+                        </div>
+                        <hr id="baseline">
+                        <div id="auction" class="form-group">
+                              <label  class="col-sm-2 control-label">注意</label>
+                            <div class="col-sm-8">                              
+                              <p class="help-block pull-left">(建议使用Windows Media Player支持的文件类型，文件大小无限制)</p>
+                            </div>
+                        </div>                        
+                        <div class="control-group">
+                            <div class="controls">                  
+                              <div class="span3">
+                                <button class="btn btn-large btn-block btn-primary" type="submit"><i class="fa fa-upload"></i><span> 提交</span></button>
+                              </div>
+                            </div>
+                          </div>   
+                      </form>
+                    </div>
 
-                    </div>           	
-                	
-
+                    
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
@@ -238,7 +209,7 @@
       <footer class="site-footer">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
-              <a href="#container" class="go-top">
+              <a href="index.jsp#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -292,8 +263,8 @@
                     {type: "block", label: "Regular event", }
                 ]
             });
-        });    
-
+        });
+        
         
         function myNavFunction(id) {
             $("#date-popover").hide();

@@ -28,6 +28,9 @@
         	  String renewpasswd = request.getParameter("renewpasswd");
         	  result = EditAccount.editAccount(id, renewpasswd);   
           }
+          else{
+        	  result = false;
+          }
     	  break;
     default:
     	result = false;
