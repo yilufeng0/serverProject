@@ -37,7 +37,7 @@
     <script type="text/javascript" charset="utf-8" src="ueditor/lang/zh-cn/zh-cn.js"></script>
   </head>
 
-  <body>
+  <body onload="setContentHeight('main-content',1.2)">
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************

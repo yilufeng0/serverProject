@@ -138,5 +138,59 @@ public class MultiUploadFile {
        } 
      }
 	}
+	
+	
+	public void multiUploadVideo(HttpServletRequest req, HttpServletResponse res,String filePath) throws Exception{
+		if (null==this.config) {
+			throw new Exception("无法获取配置文件，使用前需要初始化");
+		}
+		res.setContentType("text/html");
+    	res.setCharacterEncoding("UTF-8"); 
+    	req.setCharacterEncoding("UTF-8");
+    	
+    	String rootPath;                   //创建根路径保存变量
+     	String realPath = req.getSession().getServletContext().getRealPath("/");
+     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
+     	rootPath = realPath+"/Upload/"+filePath+"/";
+     	File dirName = new File(rootPath);
+     	if(!dirName.isDirectory())  //如果目录不存在
+     	{
+     		dirName.mkdirs(); //创建多级目录
+     	}
+    	
+        SmartUpload su = new SmartUpload();
+        su.initialize(this.config, req, res);
+
+    	try {
+			su.upload();
+		} catch (SmartUploadException e) {
+			e.printStackTrace();
+		}
+    	
+    	fileCount = su.getFiles().getCount();
+    	
+    	//循环取得上传所有文件
+     for(int i=0;i<su.getFiles().getCount();i++){
+        com.jspsmart.upload.File myFile = su.getFiles().getFile(i);
+       if(!myFile.isMissing())
+       {       
+     	  String totalFileName = myFile.getFileName();    //得到文件名+扩展名  
+     	  String myFileName = totalFileName.substring(0, totalFileName.lastIndexOf(".")); //得到文件名
+     	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
+    
+     	  String fileType=myFile.getFileExt();     //得到文件扩展名
+     	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
+     	  
+     	  extName.add(fileType);
+     	  fileName.add(myFileName+randomNum);
+     	  fileTotalName.add(myFileName+randomNum+"."+fileType);
+     	  
+     	 this.rootPath = rootPath;
+    	 request = su.getRequest();
+     //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
+    	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
+       } 
+     }
+	}
 
 }

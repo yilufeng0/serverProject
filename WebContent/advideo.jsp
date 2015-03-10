@@ -38,8 +38,8 @@
 
   <body onload="setContentHeight('main-content',0.95)"> 
  <%
-  	ResultSet rs = SelectCpImgVideo.selectCpImgVideo();
-  %>
+ 	ResultSet rs = SelectCpImgVideo.selectCpImgVideo();
+ %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -103,9 +103,9 @@
                           <span>查询终端管理</span>
                       </a>
                       <ul class="sub">
-                          <li class="active"><a  href="aboutcp.jsp">关于正大</a></li>
+                          <li ><a  href="aboutcp.jsp">关于正大</a></li>
                           <li><a  href="safetrace.jsp">安全追溯</a></li>
-                          <li><a  href="advideo.jsp">宣传视频</a></li>
+                          <li class="active"><a  href="advideo.jsp">宣传视频</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -175,7 +175,7 @@
                         </div>
                       </div> 
                     <div class="showback">
-                    	<a href="addnewcp.jsp"><button class="btn btn-success btn-lg">上传图片</button></a>
+                    	<a href="addnewvideo.jsp"><button class="btn btn-success btn-lg">上传视频</button></a>
                     </div>
                     <div class="showback text-center" style="">                      
                         <table class="table table-striped table-hover">
@@ -195,9 +195,9 @@
                        <%
                        if(rs!=null){
                         try{
-                     	  while(rs.next()){                   		 
-                     		  if(rs.getString("type").equals("image"))
-                     		  {
+                     	  while(rs.next()){
+                     		 if(rs.getString("type").equals("video"))
+                    		  {
                        %>
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
@@ -210,7 +210,7 @@
                           </td>
                           </tr>
                         <%
-                     		 }
+                    		}
                           }
                          }catch(SQLException e){
                     	 e.printStackTrace();

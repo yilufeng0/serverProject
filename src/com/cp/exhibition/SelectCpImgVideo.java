@@ -1,0 +1,27 @@
+package com.cp.exhibition;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cp.JDBC.SelectOperation;
+
+public class SelectCpImgVideo {
+	public static ResultSet selectCpImgVideo(){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,type,showTime,thumbpath,oripath,Url,description from exhibition order by ID desc limit 0,20");
+		return rs;
+	}
+	
+	public static ResultSet selectCpImgVideo(int id){
+		List<Object> list = new ArrayList<>();
+		list.add(id);
+		ResultSet rs = SelectOperation.selectOne("select oripath from exhibition where ID =?",list);
+		return rs;
+	}
+	
+	public static ResultSet selectCpImgVideo(String pageNum){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,time,type,,oripath,Url,thumbpath,description from exhibition order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
+		return rs;
+	}
+
+}

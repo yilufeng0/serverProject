@@ -36,7 +36,7 @@
     <![endif]-->
   </head>
 
-  <body onload="setContentHeight('main-content',0.95)">
+  <body onload="setContentHeight('main-content',0.965)">
   <%
   	ResultSet rs = SelectNews.selectNews();
   %>

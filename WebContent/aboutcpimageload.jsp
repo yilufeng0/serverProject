@@ -1,4 +1,4 @@
-<%@page import="com.cp.exhibition.SelectCpImage"%>
+<%@page import="com.cp.exhibition.SelectCpImgVideo"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,7 +10,7 @@
 		return;
 	}
 	
-	ResultSet rs = SelectCpImage.selectCpImage(pageNum);
+	ResultSet rs = SelectCpImgVideo.selectCpImgVideo(pageNum);
 	try{
 	 	while(rs.next()){
 	 	 out.print("<tr class=\"text-center\"><td>");
@@ -36,5 +36,4 @@
 	 }catch(SQLException e){
 		 e.printStackTrace();
 	 }
-
 %>
