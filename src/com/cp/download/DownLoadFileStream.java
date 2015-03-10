@@ -25,10 +25,12 @@ public class DownLoadFileStream {
 	public void downLoad(HttpServletResponse res, String filePath) throws IOException{
 		File f = new File(filePath);
 		if(f.exists()){
+			System.out.println("test");
 			FileInputStream  fis = new FileInputStream(f);  
 	        String fileName = URLEncoder.encode(f.getName(),"utf-8");  //解决中文文件名下载后乱码的问题  
 	        ServletOutputStream  out = res.getOutputStream(); 
-	        res.setCharacterEncoding("utf-8");  
+	        res.setCharacterEncoding("utf-8"); 
+	        res.setContentType("*/*");
 	        res.setHeader("Content-Disposition","attachment; filename="+fileName+"");  
 	        byte[] b = new byte[1024];
             while(fis.read(b)>0){      //如果没有读到文件末尾
@@ -38,6 +40,8 @@ public class DownLoadFileStream {
 	        out.close();  
 	        fis.close();
 	    }
+		else
+			System.out.println("wrong");
 
 	}
 	
