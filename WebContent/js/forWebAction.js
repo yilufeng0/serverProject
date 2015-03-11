@@ -2,6 +2,9 @@
  * 此文件用于完成与删除相关的功能
  * 
  */
+
+
+
 //用于记录所加载的页面的页码
  var pageNum = 1;
 
@@ -78,16 +81,56 @@ function deleteItem(id,type){
 
 //异步加载列表
 
-function loadlist(loadType){
+function loadlist(loadType,acctype){
 	var xmlhttp=createXMLHTTP();
-	xmlhttp.open("GET","url",true);
+	//xmlhttp.open("GET","loadlist?loadType="+loadType+"&pageNum="+pageNum+"&type="+acctype,true);
+	xmlhttp.open("GET","downloadTest.jsp");
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-						
+			var result=xmlhttp.responseText.replace(/[\r\n]/g, "");
+			if(result != "0"){
+				pageNum = pageNum+1;
+				appendele(result);
+				afterDelItem
+				loaddisp(0);
+			}else{
+				loaddisp(2);
+			}
 		}
 	};
 	xmlhttp.send();
+	loaddisp(1);
 }
+
+//服务器端反馈操作
+function loaddisp(id){
+	var tagstartload=document.getElementById("startload");
+	var tagloading=document.getElementById("loading");
+	var tagloaded= document.getElementById("allloaded");
+	
+	tagstartload.style.display="none";
+	tagloading.style.display="none";
+	tagloaded.style.display="none";
+	
+	switch(id){
+	case 0:
+		tagstartload.style.display="";
+		break;
+	case 1:
+		tagloading.style.display="";
+		break;
+	case 2:
+		tagloaded.style.display="";
+		break;
+		
+	}
+}
+
+//将获取的列表进行显示
+function appendele(eles){
+	$(eles).insertBefore("#endpos");
+}
+
 
 
 //生成ajax连接
