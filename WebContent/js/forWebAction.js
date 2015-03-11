@@ -91,7 +91,7 @@ function loadlist(loadType,acctype){
 			if(result != "0"){
 				pageNum = pageNum+1;
 				appendele(result);
-				afterDelItem
+				afterDelItem();
 				loaddisp(0);
 			}else{
 				loaddisp(2);
