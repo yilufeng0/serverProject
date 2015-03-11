@@ -24,7 +24,7 @@ function getserverstate(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var jresult=JSON.parse(xmlhttp.responseText.replace(/[\r\n]/g,""));
 			updatememstate(parseFloat(jresult.memRatio));
-			updatediskstate(jresult.diskAll,jresult.diskRation);
+			updatediskstate(jresult.diskAll,parseFloat(jresult.diskRation));
 		}
 	};
 	xmlhttp.send(null);

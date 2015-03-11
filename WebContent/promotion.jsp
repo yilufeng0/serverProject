@@ -186,14 +186,22 @@
                           }%>
                           <!-- example end -->
                         <!-- 表格结束 -->
+                        <tr id="endpos" style="display:none"><td></td></tr>
                       </tbody>
                     </table>
+                   
                     </div>
-					<ul class="pager">
+                    <br>
+                     <jsp:include page="loadmore.jsp">
+                    			<jsp:param value="pushload" name="loadType"/>
+                    </jsp:include>
+                    
+                    
                     <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
+					<!--  <ul class="pager">                    
                       <li class="previous"><a href="">上一页</a></li>
                       <li class="next"><a href="">下一页</a></li>
-                    </ul>
+                    </ul>-->
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 

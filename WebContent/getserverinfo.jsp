@@ -7,7 +7,7 @@
 	JSONObject serverJson = new JSONObject();
 	serverJson.put("memRatio",String.valueOf(serverInfo.getMemUsageRatio()));
 	serverJson.put("diskAll",serverInfo.getDiskAll());
-	serverJson.put("diskRation",serverInfo.getDiskRatio());
+	serverJson.put("diskRation",String.valueOf(serverInfo.getDiskRatio()));
 	serverJson.put("cpuRatio",serverInfo.getCpuRatio());
 	serverJson.put("rxPackets",serverInfo.getRxPackets());
 	serverJson.put("txPackets",serverInfo.getTxPackets());

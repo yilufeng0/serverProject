@@ -228,11 +228,17 @@
                         	  e.printStackTrace();
                            }
                          }
-                      %>                       
+                      %>  
+                      <tr id="endpos" style="display:none"><td></td></tr>                     
                       </tbody>
                       </table>
+                      
                     </div>
-                    
+                    <br>
+                    <jsp:include page="loadmore.jsp">
+                    			<jsp:param value="accountload" name="loadType"/>
+                    			<jsp:param value="<%=request.getParameter(\"type\")%>" name="type"/>                    			
+                    </jsp:include>
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>             

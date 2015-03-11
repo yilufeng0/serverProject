@@ -227,7 +227,7 @@
                     </div>           	
                 	
 					<jsp:include page="loadmore.jsp">
-						<jsp:param value="loadType" name="loadType"/>
+						<jsp:param value="aboutcpimageload" name="loadType"/>
 					</jsp:include>
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 

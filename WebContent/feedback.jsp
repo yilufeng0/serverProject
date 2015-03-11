@@ -177,15 +177,22 @@
                         	     e.printStackTrace();
                                 } 
                               }
-                              %>                                                                              
+                              %>    
+                              <tr id="endpos" style="display:none"><td></td></tr>                                                                          
                               </tbody>
-                          </table>
+                          </table>                           
                           </div>
-                    <ul class="pager">
-                    <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->
+                          
+                          <br>
+                          <jsp:include page="loadmore.jsp">
+                    			<jsp:param value="feedbackload" name="loadType"/>
+                    		</jsp:include>
+                          
+                     <!-- 通过jsp判断其中所在的页面是否可导航不可导航加disabled属性 -->     
+                    <!-- <ul class="pager">                    
                       <li class="previous"><a href="">上一页</a></li>
                       <li class="next"><a href="">下一页</a></li>
-                    </ul>
+                    </ul> -->
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 
