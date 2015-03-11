@@ -26,6 +26,7 @@
 	     }	
 	 }catch(SQLException e){
 		 e.printStackTrace();
+		 out.print("0");
 	 }
 
 %>
