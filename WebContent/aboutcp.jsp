@@ -220,12 +220,15 @@
                           <!-- example end -->
                           
                         <!-- 表格结束 -->
+                        <tr id="endpos" style="display:none"><td></td></tr>
                       </tbody>
                     </table>
 
                     </div>           	
                 	
-
+					<jsp:include page="loadmore.jsp">
+						<jsp:param value="loadType" name="loadType"/>
+					</jsp:include>
                     <!-- here finish add content -->
                   </div><!-- /col-lg-10 END SECTION MIDDLE --> 
                   <div class="col-lg-1"></div>                 

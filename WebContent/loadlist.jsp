@@ -9,12 +9,12 @@
 	String loadType = request.getParameter("loadType");
 	switch (loadType)	
    {
-	case "accountload"      : response.sendRedirect("accountload.jsp");
-	case "appload"          : response.sendRedirect("appload.jsp");
-	case "aboutcpimageload" : response.sendRedirect("aboutcpimageload.jsp");
-	case "feedbackload"     : response.sendRedirect("feedbackload.jsp");
-	case "newsload"         : response.sendRedirect("newsload.jsp");
-	case "pushload"         : response.sendRedirect("pushload.jsp");
+	case "accountload"      : request.getRequestDispatcher("accountload.jsp").forward(request, response);
+	case "appload"          : request.getRequestDispatcher("appload.jsp").forward(request, response);
+	case "aboutcpimageload" : request.getRequestDispatcher("aboutcpimageload.jsp").forward(request, response);
+	case "feedbackload"     : request.getRequestDispatcher("feedbackload.jsp").forward(request, response);
+	case "newsload"         : request.getRequestDispatcher("newsload.jsp").forward(request, response);
+	case "pushload"         : request.getRequestDispatcher("pushload.jsp").forward(request, response);
 	
    }
 
