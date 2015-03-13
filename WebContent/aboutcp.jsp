@@ -38,7 +38,7 @@
 
   <body onload="setContentHeight('main-content',0.95)"> 
  <%
-  	ResultSet rs = SelectCpImgVideo.selectCpImgVideo();
+  	ResultSet rs = SelectCpImgVideo.selectCpImgVideo("image","0");
   %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -196,8 +196,6 @@
                        if(rs!=null){
                         try{
                      	  while(rs.next()){                   		 
-                     		  if(rs.getString("type").equals("image"))
-                     		  {
                        %>
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
@@ -210,7 +208,6 @@
                           </td>
                           </tr>
                         <%
-                     		 }
                           }
                          }catch(SQLException e){
                     	 e.printStackTrace();

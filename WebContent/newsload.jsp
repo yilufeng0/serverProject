@@ -19,7 +19,7 @@
  	 out.print("</td><td>");
  	 out.print(rs.getString("title"));
  	 out.print("</td><td>");
- 	 out.print(rs.getString("time"));
+ 	 out.print(rs.getString("showTime"));
  	 out.print("</td><td>"); 
  	 out.print(rs.getString("author"));
  	 out.print("</td><td>");

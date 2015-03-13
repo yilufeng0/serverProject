@@ -38,7 +38,7 @@
 
   <body onload="setContentHeight('main-content',0.95)"> 
  <%
- 	ResultSet rs = SelectCpImgVideo.selectCpImgVideo();
+	ResultSet rs = SelectCpImgVideo.selectCpImgVideo("video","0");
  %>
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -187,7 +187,7 @@
                           <th class="col-sm-2 text-center">上传时间</th>
                           <th class="col-sm-1 text-center">操作</th>
                         </tr>
-                      </thead>
+                      </thead> 
                       <tbody>
                       <!-- 表格开始   -->
                           <!-- 此处内容有JSP动态生成 -->
@@ -195,9 +195,7 @@
                        <%
                        if(rs!=null){
                         try{
-                     	  while(rs.next()){
-                     		 if(rs.getString("type").equals("video"))
-                    		  {
+                     	  while(rs.next()){              	
                        %>
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
@@ -210,7 +208,6 @@
                           </td>
                           </tr>
                         <%
-                    		}
                           }
                          }catch(SQLException e){
                     	 e.printStackTrace();
