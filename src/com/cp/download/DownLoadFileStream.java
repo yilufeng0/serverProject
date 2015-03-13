@@ -25,7 +25,6 @@ public class DownLoadFileStream {
 	public void downLoad(HttpServletResponse res, String filePath) throws IOException{
 		File f = new File(filePath);
 		if(f.exists()){
-			System.out.println("test");
 			FileInputStream  fis = new FileInputStream(f);  
 	        String fileName = URLEncoder.encode(f.getName(),"utf-8");  //解决中文文件名下载后乱码的问题  
 	        ServletOutputStream  out = res.getOutputStream(); 

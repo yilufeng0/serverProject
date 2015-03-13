@@ -3,6 +3,7 @@ package com.cp.newspub;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
+import com.cp.upload.SmallUpImgNoRatio;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
+
+
 
 /**
  * Servlet implementation class AddNews
@@ -37,8 +41,11 @@ public class AddNewsServlet extends HttpServlet {
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());	
 		Request req=null;
 		List<Object> listReq = new ArrayList<>();
-        try {        	
+		
+        try {        		
 			uploadFile.upload(request, response, "png|jpg|gif|jpeg|bmp", "image");
+			String thumbFileName = SmallUpImgNoRatio.smallUpload(uploadFile.getFileName(), uploadFile.getExtName(), uploadFile.getRootPath(), 32, 32);
+			UUID uuid = UUID.randomUUID();
 			req=uploadFile.getRequest();
 			listReq.add(req.getParameter("newstitle"));			
 			listReq.add(req.getParameter("newsauthor"));
@@ -47,8 +54,11 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(uploadFile.getRootPath());
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
-			
-			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime) values(?,?,?,?,?,?,?)";
+			listReq.add(String.valueOf(uuid));
+			listReq.add("id="+uuid);
+			listReq.add("id="+uuid);
+			listReq.add(thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
+			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);
 			
 		} catch (Exception e) {

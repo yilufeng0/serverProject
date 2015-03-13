@@ -148,16 +148,27 @@ public class MultiUploadFile {
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
     	
-    	String rootPath;                   //创建根路径保存变量
+    	String rootPath,rPath;                   //创建根路径保存变量
      	String realPath = req.getSession().getServletContext().getRealPath("/");
+     	System.out.println(realPath);
+     	
      	realPath = realPath.substring(0, realPath.indexOf(":")+1);
      	rootPath = realPath+"/Upload/"+filePath+"/";
+     	
+     	rPath = "/"+filePath+"/";
+     	
      	File dirName = new File(rootPath);
      	if(!dirName.isDirectory())  //如果目录不存在
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
-    	
+ /////////////////////////////////////////////////////////////////   	
+     	File diName = new File(rPath);
+     	if(!diName.isDirectory())  //如果目录不存在
+     	{
+     		diName.mkdirs(); //创建多级目录
+     	}
+     	
         SmartUpload su = new SmartUpload();
         su.initialize(this.config, req, res);
 
@@ -187,8 +198,8 @@ public class MultiUploadFile {
      	  
      	 this.rootPath = rootPath;
     	 request = su.getRequest();
-     //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
-    	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
+     	 myFile.saveAs(rPath+myFileName+randomNum+"."+fileType,1);  //VIRTUAL方式保存文件
+    // 	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
        } 
      }
 	}

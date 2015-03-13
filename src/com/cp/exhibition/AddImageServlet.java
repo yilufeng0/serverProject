@@ -54,8 +54,9 @@ public class AddImageServlet extends HttpServlet {
 					listReq.add(type);
 					listReq.add(new GetTime().getDateAndTime());
 					listReq.add(GetTime.getPageDate());
+					listReq.add("/image/"+multiUpload.getFileTotalName().get(i-1));
 
-					String sql = "insert into exhibition(description,oripath,thumbpath,type,time,showTime) values(?,?,?,?,?,?)";
+					String sql = "insert into exhibition(description,oripath,thumbpath,type,time,showTime,Url) values(?,?,?,?,?,?,?)";
 					InsertOperation.insertOne(sql, listReq);
 				}
 				 
