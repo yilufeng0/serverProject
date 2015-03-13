@@ -13,7 +13,7 @@ if(requestType==null){
 	out.write("0");
 	return;
 }
-response.setContentType("application/json;charset=utf-8");
+//response.setContentType("application/json;charset=utf-8");
 switch (requestType)	
 {
   case "image"      : ResultSet rsImage = SelectCpImgVideo.selectCpImgVideo("image");
@@ -28,7 +28,7 @@ switch (requestType)
   					  out.write(ResultsetToJSON.resultsetToJSON(rsNewsImg));
   					  break;
   					  
-  case "newstext"   : ResultSet rsNewsText = SelectNews.selectNewsImg();
+  case "newstext"   : ResultSet rsNewsText = SelectNews.selectNewsText();
 	  				  out.write(ResultsetToJSON.resultsetToJSON(rsNewsText));
 	                  break;
                      

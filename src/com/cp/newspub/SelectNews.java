@@ -23,7 +23,7 @@ public class SelectNews {
 	public static ResultSet selectNewsInfo(String uuid){
 		List<Object> list = new ArrayList<>();
 		list.add(uuid);
-	    ResultSet rs = SelectOperation.selectOne("select content,imageThumbnail from news where uuid = ?", list);	
+	    ResultSet rs = SelectOperation.selectOne("select content from news where uuid = ?", list);	
 	    return rs;
 	}
 	

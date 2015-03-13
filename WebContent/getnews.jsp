@@ -17,9 +17,7 @@
 
  ResultSet rs = SelectNews.selectNewsInfo(uuid);
  rs.next();
- String thumbPath = rs.getString("imageThumbnail");
-// new DownLoadFileStream().downLoad(response,thumbPath);
  String content = rs.getString("content");
  out.write(content);
 
-%>s
+%>

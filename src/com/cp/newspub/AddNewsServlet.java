@@ -44,7 +44,7 @@ public class AddNewsServlet extends HttpServlet {
 		
         try {        		
 			uploadFile.upload(request, response, "png|jpg|gif|jpeg|bmp", "image");
-			String thumbFileName = SmallUpImgNoRatio.smallUpload(uploadFile.getFileName(), uploadFile.getExtName(), uploadFile.getRootPath(), 32, 32);
+			String thumbFileName = SmallUpImgNoRatio.smallUpload(uploadFile.getFName(), uploadFile.getExtName(), uploadFile.getRootPath(), 32, 32);
 			UUID uuid = UUID.randomUUID();
 			req=uploadFile.getRequest();
 			listReq.add(req.getParameter("newstitle"));			
@@ -55,9 +55,9 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
 			listReq.add(String.valueOf(uuid));
+			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			listReq.add("id="+uuid);
-			listReq.add("id="+uuid);
-			listReq.add(thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
+			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);
 			
