@@ -10,7 +10,7 @@
 		return;
 	}
 	
-	ResultSet rs = SelectCpImgVideo.selectCpImgVideo("image",pageNum);
+	ResultSet rs = SelectCpImgVideo.selectCpImgVideo("video",pageNum);
 	try{
 	 	while(rs.next()){
 	 	 out.print("<tr class=\"text-center\"><td>");
@@ -23,7 +23,7 @@
 	 	 out.print(")\"></td><td>");
 	 	 out.print(rs.getString("description"));
 	 	 out.print("</td><td>"); 
-	 	 out.print(rs.getString("time"));
+	 	 out.print(rs.getString("showTime"));
 	 	 out.print("</td><td>");
 	 	 out.print("<button class=\"btn btn-primary btn-xs\" onclick=\"editItem(");
 	 	 out.print(rs.getInt("ID"));
@@ -35,6 +35,5 @@
 	     }	
 	 }catch(SQLException e){
 		 e.printStackTrace();
-		 out.print("0");
 	 }
 %>

@@ -32,6 +32,13 @@ public class SmallUpImgNoRatio {
        }	
        return fileName;
      }
+	
+	public static String smallUpload(String fName, String fileType, String filePath, int width, int height) throws Exception{
+	       Thumbnails.of(filePath+fName+"."+fileType).size(width, height).keepAspectRatio(false).toFile(filePath+fName+"_"+width+"x"+height+"."+fileType);
+	       String fileName=filePath+fName+"_"+width+"x"+height+"."+fileType;
+	       return fileName;
+	     }
+	
 	   
   }
 	

@@ -7,11 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.cp.newspub.SelectNews;
 import com.mysql.jdbc.ResultSetMetaData;
 
 public class ResultsetToJSON {
 	
-	public String resultsetToJSON(ResultSet rs) throws SQLException, JSONException{
+	public static String resultsetToJSON(ResultSet rs) throws SQLException, JSONException{
 		JSONArray jsonArray = new JSONArray();
 		ResultSetMetaData rsMetaData = (ResultSetMetaData) rs.getMetaData();
 		int columnCount = rsMetaData.getColumnCount();

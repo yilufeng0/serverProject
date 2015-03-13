@@ -17,11 +17,11 @@
 	 	 out.print("<tr class=\"text-center\"><td>");
 	 	 out.print(rs.getRow());
 	 	 out.print("</td><td>");
-	 	 out.print(rs.getString("time"));
+	 	 out.print(rs.getString("showTime"));
 	 	 out.print("</td><td  class=\"text-center\">"); 
-	 	 out.print(rs.getString("feedback"));
+	 	 out.print(rs.getString("feedback")!=null?rs.getString("feedback"):"");
 	 	 out.print("</td><td  class=\"text-center\">"); 
-	 	 out.print(rs.getString("operation"));
+	 	 out.print(rs.getString("operation")!=null?rs.getString("operation"):"");
 	 	 out.print("</td><tr>");
 	     }	
 	 }catch(SQLException e){

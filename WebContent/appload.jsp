@@ -25,7 +25,7 @@
              out.print("</button></td><td>");
              out.print(rs.getString("bigVersion")+"."+rs.getString("mediumVersion")+"."+rs.getString("smallVersion"));
              out.print("</td><td>"); 
-		 	 out.print(rs.getString("time"));
+		 	 out.print(rs.getString("showTime"));
 		 	 out.print("</td><td>"); 
 		 	 out.print("<button class=\"btn btn-danger btn-xs\" onclick=\"deleteItem(");
 		     out.print(rs.getInt("ID"));

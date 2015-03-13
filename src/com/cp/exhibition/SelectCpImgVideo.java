@@ -19,9 +19,14 @@ public class SelectCpImgVideo {
 		return rs;
 	}
 	
-	public static ResultSet selectCpImgVideo(String pageNum){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id,time,type,,oripath,Url,thumbpath,description from exhibition order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
+	public static ResultSet selectCpImgVideo(String cpType,String pageNum){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,showTime,type,oripath,Url,thumbpath,description from exhibition where type like '%"+cpType+"%' order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
 		return rs;
 	}
 
+	public static ResultSet selectCpImgVideo(String cpType){
+		ResultSet rs = SelectOperation.selectOnes("select ID as Uid,type as Type,Url from exhibition where type like '%"+cpType+"%' order by ID desc");
+		return rs;
+	}
+	
 }

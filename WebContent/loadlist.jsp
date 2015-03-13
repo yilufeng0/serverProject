@@ -7,15 +7,19 @@
 
 <%
 	String loadType = request.getParameter("loadType");
+    if(loadType==null){
+    	out.write("0");
+    	return;
+    }
 	switch (loadType)	
    {
-	case "accountload"      : request.getRequestDispatcher("accountload.jsp").forward(request, response);
-	case "appload"          : request.getRequestDispatcher("appload.jsp").forward(request, response);
-	case "aboutcpimageload" : request.getRequestDispatcher("aboutcpimageload.jsp").forward(request, response);
-	case "feedbackload"     : request.getRequestDispatcher("feedbackload.jsp").forward(request, response);
-	case "newsload"         : request.getRequestDispatcher("newsload.jsp").forward(request, response);
-	case "pushload"         : request.getRequestDispatcher("pushload.jsp").forward(request, response);
-	
+	case "accountload"      : request.getRequestDispatcher("accountload.jsp").forward(request, response); return;
+	case "appload"          : request.getRequestDispatcher("appload.jsp").forward(request, response);  return;
+	case "aboutcpimageload" : request.getRequestDispatcher("aboutcpimageload.jsp").forward(request, response);  return;
+	case "feedbackload"     : request.getRequestDispatcher("feedbackload.jsp").forward(request, response);  return;
+	case "newsload"         : request.getRequestDispatcher("newsload.jsp").forward(request, response);  return;
+	case "pushload"         : request.getRequestDispatcher("pushload.jsp").forward(request, response);  return;
+	case "videoload"        : request.getRequestDispatcher("videoload.jsp").forward(request, response);  return;
    }
 
 %>

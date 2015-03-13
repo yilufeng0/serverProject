@@ -20,9 +20,25 @@ public class SelectNews {
 	    return rs;
 	}
 	
+	public static ResultSet selectNewsInfo(String uuid){
+		List<Object> list = new ArrayList<>();
+		list.add(uuid);
+	    ResultSet rs = SelectOperation.selectOne("select content,imageThumbnail from news where uuid = ?", list);	
+	    return rs;
+	}
+	
 	public static ResultSet selectNews(String pageNum){
 		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,author,showTime from news order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
 		return rs;
 	}
 
+	public static ResultSet selectNewsImg(){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,imageThumbnailUrl as smallUrl from news order by ID desc");
+		return rs;
+	}
+	
+	public static ResultSet selectNewsText(){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,contentUrl from news order by ID desc");
+		return rs;
+	}
 }
