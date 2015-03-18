@@ -27,7 +27,7 @@ function afterSubmit(result){
 function getSubmit(){
 	var passwd= document.getElementById("passwd");
 	var xmlhttp=createXMLHTTP();
-	xmlhttp.open("POST", "downloadTest.jsp", true);
+	xmlhttp.open("POST", "accountauth.jsp", true);
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var result=xmlhttp.responseText.replace(/[\r\n]/g,"");							
@@ -45,7 +45,7 @@ function mainPaeSubmit(){
 	var account = document.getElementById("account");
 	if(passwd !="" && account !=""){
 		var xmlhttp=createXMLHTTP();
-		xmlhttp.open("POST", "downloadTest.jsp", true);
+		xmlhttp.open("POST", "accountauth.jsp", true);
 		xmlhttp.onreadystatechange=function(){
 			//alert(xmlhttp.readyState);
 			if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
@@ -54,6 +54,6 @@ function mainPaeSubmit(){
 			}
 		};
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xmlhttp.send("passwd"+passwd.value+"&account="+account.value);
+		xmlhttp.send("passwd="+passwd.value+"&account="+account.value);
 	}
 }

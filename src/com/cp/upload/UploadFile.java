@@ -52,6 +52,7 @@ public class UploadFile {
     
 	private String rootPath;
     private String fileName;
+    private String fName;
     private String extName;
     private Request request;
 
@@ -62,6 +63,10 @@ public class UploadFile {
 
 	public String getFileName() {
 		return fileName;
+	}
+	
+	public String getFName() {
+		return fName;
 	}
 
 	public String getExtName() {
@@ -120,6 +125,7 @@ public class UploadFile {
   	    }     
     	 this.rootPath = rootPath;
     	 fileName = myFileName+randomNum+"."+fileType;
+    	 fName = myFileName+randomNum;
     	 extName = fileType;
     	 request = su.getRequest();
     	 

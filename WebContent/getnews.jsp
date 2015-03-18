@@ -8,18 +8,28 @@
 <%@page import="com.cp.JDBC.SelectOperation"%>
 <%@page import="java.sql.ResultSet"%>
 
+
 <%
- String uuid = request.getParameter("id");
+ String uuid = request.getParameter("uuid");
  if(uuid==null){
 	out.write("0");
 	return;
 }
 
  ResultSet rs = SelectNews.selectNewsInfo(uuid);
- rs.next();
- String thumbPath = rs.getString("imageThumbnail");
-// new DownLoadFileStream().downLoad(response,thumbPath);
- String content = rs.getString("content");
- out.write(content);
+ try{
+	 while(rs!=null){
+		 rs.next();
+		 String content = rs.getString("content");
+		 out.write(content);
+		 String title = rs.getString("title");
+		 String abstractt = rs.getString("abstract");
+		 String showTime = rs.getString("showTime");	 
+	 } 
+ }catch(SQLException e){
+//	 e.printStackTrace(); 
+ }
+ 
 
-%>s
+
+%>
