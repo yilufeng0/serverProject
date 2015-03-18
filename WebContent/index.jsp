@@ -220,7 +220,7 @@
 	                  		<span class="li_cloud"></span>
 	                 		 <h3>系统名称</h3>
                        	</div>
-                 		 	<p><%=serverInfo.getOsDesc() %></p>
+                 		 	<p><%=serverInfo.getOsDesc()%></p>
                       </div>
                       <div class="col-md-2 col-sm-2 box0">
                         <div class="box1">

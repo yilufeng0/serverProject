@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" metadata-complete="true" version="3.0">
   <display-name>cpServerPro</display-name>
+ 
+   <servlet>
+    <servlet-name>AccountAuthServlet</servlet-name>
+    <servlet-class>com.cp.account.AccountAuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountAuthServlet</servlet-name>
+    <url-pattern>/AccountAuthServlet</url-pattern>
+  </servlet-mapping>
+ 
   <servlet>
     <servlet-name>AddNewsServlet</servlet-name>
     <servlet-class>com.cp.newspub.AddNewsServlet</servlet-class>
@@ -25,7 +35,6 @@
     <servlet-name>AddImageServlet</servlet-name>
     <url-pattern>/AddImageServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddVideoServlet</servlet-name>
     <servlet-class>com.cp.video.AddVideoServlet</servlet-class>
@@ -34,7 +43,6 @@
     <servlet-name>AddVideoServlet</servlet-name>
     <url-pattern>/AddVideoServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>AddNewAccountServlet</servlet-name>
     <servlet-class>com.cp.account.AddNewAccountServlet</servlet-class>

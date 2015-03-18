@@ -150,7 +150,7 @@ public class MultiUploadFile {
     	
     	String rootPath,rPath;                   //创建根路径保存变量
      	String realPath = req.getSession().getServletContext().getRealPath("/");
-     	System.out.println(realPath);
+ //    	System.out.println(realPath);
      	
      	realPath = realPath.substring(0, realPath.indexOf(":")+1);
      	rootPath = realPath+"/Upload/"+filePath+"/";
@@ -198,7 +198,7 @@ public class MultiUploadFile {
      	  
      	 this.rootPath = rootPath;
     	 request = su.getRequest();
-     	 myFile.saveAs(rPath+myFileName+randomNum+"."+fileType,1);  //VIRTUAL方式保存文件
+     	 myFile.saveAs(rPath+myFileName+randomNum+"."+fileType,1);  //VIRTUAL方式保存文件 
     // 	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
        } 
      }

@@ -20,12 +20,12 @@
     	  result = EditCpImage.editCpImage(id, description);
     	  break;
     case "account" :	 
-    	  String passwd = request.getParameter("passwd");
+    	  String passwd = Integer.toHexString(request.getParameter("passwd").hashCode());
           ResultSet rs = SelectAccount.selectAccount(id);
           rs.next();
           String passwdInDataBase = rs.getString("passwd");
           if(passwd.equals(passwdInDataBase)){
-        	  String renewpasswd = request.getParameter("renewpasswd");
+        	  String renewpasswd = Integer.toHexString(request.getParameter("renewpasswd").hashCode());
         	  result = EditAccount.editAccount(id, renewpasswd);   
           }
           else{

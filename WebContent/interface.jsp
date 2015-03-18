@@ -16,21 +16,17 @@ if(requestType==null){
 //response.setContentType("application/json;charset=utf-8");
 switch (requestType)	
 {
-  case "image"      : ResultSet rsImage = SelectCpImgVideo.selectCpImgVideo("image");
-                      out.write(ResultsetToJSON.resultsetToJSON(rsImage));
-                      break;
-                    
-  case "video"      : ResultSet rsVideo = SelectCpImgVideo.selectCpImgVideo("video");
-                      out.write(ResultsetToJSON.resultsetToJSON(rsVideo));
-                      break;
-                      
-  case "newsimg"    : ResultSet rsNewsImg = SelectNews.selectNewsImg();
-  					  out.write(ResultsetToJSON.resultsetToJSON(rsNewsImg));
-  					  break;
-  					  
-  case "newstext"   : ResultSet rsNewsText = SelectNews.selectNewsText();
-	  				  out.write(ResultsetToJSON.resultsetToJSON(rsNewsText));
-	                  break;
+  case "exhibition"  : ResultSet rsExhibition = SelectCpImgVideo.selectExhibition();
+                       out.write(ResultsetToJSON.resultsetToJSON(rsExhibition));          
+ 					   break;                 
+  case "newsitem"    : ResultSet rsNewsItem = SelectNews.selectNewsItem();
+	  				   out.write(ResultsetToJSON.resultsetToJSON(rsNewsItem));
+	                   break;
+  case "feedback"	 : 
+	  
+  case "version"     : 
+	  
+  
                      
 }  
 

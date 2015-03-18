@@ -38,8 +38,8 @@ public class AddNewAccountServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			listReq.add(request.getParameter("account"));
 			listReq.add(request.getParameter("acctype"));
-			listReq.add(request.getParameter("passwd"));
-			listReq.add(new GetTime().getDateAndTime());
+			listReq.add(Integer.toHexString(request.getParameter("passwd").hashCode()));
+			listReq.add(new GetTime().getDateAndTime());  
 			listReq.add(GetTime.getPageDate());
 			String sql = "insert into account(userName,type,passwd,time,showTime) values(?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);	

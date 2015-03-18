@@ -24,8 +24,8 @@ public class SelectCpImgVideo {
 		return rs;
 	}
 
-	public static ResultSet selectCpImgVideo(String cpType){
-		ResultSet rs = SelectOperation.selectOnes("select ID as Uid,type as Type,Url from exhibition where type like '%"+cpType+"%' order by ID desc");
+	public static ResultSet selectExhibition(){
+		ResultSet rs = SelectOperation.selectOnes("select ID as uid,type as type,Url as url from exhibition order by ID desc");
 		return rs;
 	}
 	

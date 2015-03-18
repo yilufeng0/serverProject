@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
+import com.cp.serverInfo.ServerInfo;
 import com.cp.upload.SmallUpImgNoRatio;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
@@ -40,6 +41,7 @@ public class AddNewsServlet extends HttpServlet {
 
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());	
 		Request req=null;
+		String localIP = new ServerInfo().getIpAddr();
 		List<Object> listReq = new ArrayList<>();
 		
         try {        		
@@ -56,7 +58,7 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(GetTime.getPageDate());
 			listReq.add(String.valueOf(uuid));
 			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
-			listReq.add("id="+uuid);
+			listReq.add("http://"+localIP+":8080/cpServerPro/getnews.jsp?uuid="+uuid);
 			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);

@@ -23,7 +23,7 @@ public class SelectNews {
 	public static ResultSet selectNewsInfo(String uuid){
 		List<Object> list = new ArrayList<>();
 		list.add(uuid);
-	    ResultSet rs = SelectOperation.selectOne("select content from news where uuid = ?", list);	
+	    ResultSet rs = SelectOperation.selectOne("select content,title,abstract,showTime from news where uuid = ?", list);	
 	    return rs;
 	}
 	
@@ -32,13 +32,9 @@ public class SelectNews {
 		return rs;
 	}
 
-	public static ResultSet selectNewsImg(){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id,imageThumbnailUrl as smallUrl from news order by ID desc");
+	public static ResultSet selectNewsItem(){
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,imageThumbnailUrl as smallUrl,contentUrl from news order by ID desc");
 		return rs;
 	}
 	
-	public static ResultSet selectNewsText(){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id,contentUrl from news order by ID desc");
-		return rs;
-	}
 }
