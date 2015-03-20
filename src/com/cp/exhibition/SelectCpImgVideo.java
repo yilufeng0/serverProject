@@ -25,7 +25,7 @@ public class SelectCpImgVideo {
 	}
 
 	public static ResultSet selectExhibition(){
-		ResultSet rs = SelectOperation.selectOnes("select ID as uid,type as type,Url as url from exhibition order by ID desc");
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,type as type,Url as url from exhibition order by ID desc");
 		return rs;
 	}
 	
