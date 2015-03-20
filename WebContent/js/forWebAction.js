@@ -83,8 +83,8 @@ function deleteItem(id,type){
 
 function loadlist(loadType,acctype){
 	var xmlhttp=createXMLHTTP();
-	//xmlhttp.open("GET","loadlist?loadType="+loadType+"&pageNum="+pageNum+"&type="+acctype,true);
-	xmlhttp.open("GET","downloadTest.jsp");
+	xmlhttp.open("GET","loadlist.jsp?loadType="+loadType+"&pageNum="+pageNum+"&type="+acctype,true);
+	//xmlhttp.open("GET","downloadTest.jsp");
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 			var result=xmlhttp.responseText.replace(/[\r\n]/g, "");
