@@ -46,6 +46,7 @@ public class UploadFile {
     /**
 	 * @param rootPath 文件根路径变量
 	 * @param fileName 文件名
+	 * @param fileTotalName 文件全名
 	 * @param extName  文件扩展名
 	 * @param request  请求对象 
 	 */
@@ -72,7 +73,7 @@ public class UploadFile {
 	public String getExtName() {
 		return extName;
 	}
-
+	
 	public Request getRequest() {
 		return request;
 	}

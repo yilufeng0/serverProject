@@ -23,5 +23,11 @@ public class SelectApps {
 		ResultSet rs = SelectOperation.selectOnes("select ID as id ,title,showTime,bigVersion,mediumVersion,smallVersion from apps where type like '%"+appType+"%' order by ID desc limit "+Integer.valueOf(pageNum)*20+",20");
 		return rs;
 	}
+	
+	public static ResultSet selectAppsVer(String appType){
+		ResultSet rs = SelectOperation.selectOnes("select bigVersion,mediumVersion,smallVersion,Url from apps where type like '%"+appType+"%' and ID = (select MAX(ID)from apps where type like 'android')");
+		return rs;
+		
+	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
+import com.cp.serverInfo.ServerInfo;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
 
@@ -37,6 +38,7 @@ public class AddNewAppServlet extends HttpServlet {
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());
 		Request req = null;
 		List<Object> listReq = new ArrayList<>();
+		String localIP = new ServerInfo().getIpAddr();
 		try {
 			uploadFile.upload(request, response, "apk|ipa|xap", "apps");
 			req = uploadFile.getRequest();
@@ -54,7 +56,8 @@ public class AddNewAppServlet extends HttpServlet {
 			listReq.add(req.getParameter("content"));
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
-			String sql = "insert into apps(title,bigVersion,mediumVersion,smallVersion,submit,type,description,time,showTime) values(?,?,?,?,?,?,?,?,?)";
+			listReq.add("http://"+localIP+":8080/cpServerPro/app/"+uploadFile.getFileName());
+			String sql = "insert into apps(title,bigVersion,mediumVersion,smallVersion,submit,type,description,time,showTime,Url) values(?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);	
     	} catch (Exception e) {
 		e.printStackTrace();

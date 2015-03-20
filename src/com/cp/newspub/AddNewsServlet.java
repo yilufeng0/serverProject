@@ -57,7 +57,7 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
 			listReq.add(String.valueOf(uuid));
-			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
+			listReq.add("http://"+localIP+":8080/cpServerPro/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			listReq.add("http://"+localIP+":8080/cpServerPro/getnews.jsp?uuid="+uuid);
 			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";

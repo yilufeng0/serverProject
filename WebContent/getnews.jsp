@@ -21,7 +21,6 @@
 	 while(rs!=null){
 		 rs.next();
 		 String content = rs.getString("content");
-		 out.write(content);
 		 String title = rs.getString("title");
 		 String abstractt = rs.getString("abstract");
 		 String showTime = rs.getString("showTime");	 
