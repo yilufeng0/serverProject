@@ -1,5 +1,5 @@
 <%@page import="com.cp.account.DeleteAccount"%>
-<%@page import="com.cp.exhibition.DeleteCpImage"%>
+<%@page import="com.cp.exhibition.DeleteCpImgVideo"%>
 <%@page import="com.cp.newspub.DeleteNews"%>
 <%@page import="com.cp.push.DeletePush"%>
 <%@page import="com.mysql.jdbc.util.ResultSetUtil"%>
@@ -25,7 +25,7 @@
     	  result = DeleteApps.deleteApp(id);
     	  break;
     case "cpimg" :
-    	  result = DeleteCpImage.deleteCpImage(id);
+    	  result = DeleteCpImgVideo.deleteCpImage(id);
     	  break;
     case "server" :
     case "remote" :
@@ -41,6 +41,4 @@
     }else{
     	out.write("0");
     }
-	
-
 %>

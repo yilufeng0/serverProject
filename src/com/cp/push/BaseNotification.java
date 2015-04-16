@@ -18,7 +18,7 @@ public class BaseNotification {
 	protected CloseableHttpClient client = HttpClients.createDefault();
 	//设置推送通知的基本键参数
 	protected static final HashSet<String> BASE_KEYS = new HashSet<String>(Arrays.asList(new String[]
-			{"appkey","timestamp","type","production_mode","description"}));
+			{"appkey","timestamp","type","device_tokens","production_mode","description"}));
 	protected static final String host = "http://msg.umeng.com";
 	protected static final String postPath = "/api/send";
 	protected String appMasterSecret;

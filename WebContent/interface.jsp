@@ -1,3 +1,4 @@
+<%@page import="com.cp.basefunc.GetTime"%>
 <%@page import="com.cp.basefunc.MapToJSON"%>
 <%@page import="com.cp.app.SelectApps"%>
 <%@page import="com.cp.feedback.AddFeedback"%>
@@ -34,11 +35,21 @@ switch (requestType)
   	  				   out.write(ResultsetToJSON.resultsetToJSON(rsNewsItem));
 	                   break;
 	                   
-  case "feedback"	 : String feedback = request.getParameter("content_str");
-                       System.out.println(feedback);
-                       //String uuid = request.getParameter("uuid");
-                       //String telephone = request.getParameter("phone_str");
-                       //AddFeedback.addFeedback(feedback,uuId,telephone);
+  case "feedback"	 : String feedback = request.getParameter("content_str"); //获取反馈内容
+                       System.out.print("feedback:");
+  					   System.out.println(feedback);
+  					   
+                       String uuId = request.getParameter("uuId");  //获取uuid，即device_token
+                       System.out.print("uuid:");
+                       System.out.println(uuId);
+                       
+                       String telephone = request.getParameter("phone_str"); //获取手机号
+                       System.out.print("phone_str:");
+                       System.out.println(telephone);
+                       if(telephone==null){telephone="";}
+                       
+                       String showTime = GetTime.getPageDate();             //获取反馈发送时间
+                       AddFeedback.addFeedback(feedback,uuId,telephone,showTime);
                        out.write("1");
                        break;
                        

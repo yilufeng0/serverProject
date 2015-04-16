@@ -61,7 +61,7 @@
           
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.jsp">退出</a></li>
+                    <li><a class="logout" href="logout.jsp">退出</a></li>
               </ul>
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
@@ -158,21 +158,21 @@
                             </div>
                             <div class="modal-body">
                              	<div class="form-group">
-		                          <label for="oripasswd" class=" control-label">原始密码</label>
+		                          <!--<label for="oripasswd" class=" control-label">原始密码</label>-->
 		                        <div class=" form-center">
-		                          <input type="password" class="form-control round-form" id="oripasswd"placeholder="New password">
+		                          <input type="password" class="form-control text-center" id="oripasswd"placeholder="旧密码">
 		                        </div>
 		                      </div>
 		                      <div class="form-group">
-		                          <label for="newpasswd" class=" control-label">新密码</label>
+		                          <!--<label for="newpasswd" class=" control-label">新密码</label>-->
 		                        <div class=" form-center">
-		                          <input type="password" class="form-control round-form" id="newpasswd"placeholder="New password">
+		                          <input type="password" class="form-control text-center" id="newpasswd"placeholder="新密码">
 		                        </div>
 		                      </div>
 		                      <div class="form-group">
-		                          <label for="renewpasswd" class=" control-label">确认新密码</label>
+		                          <!-- <label for="renewpasswd" class=" control-label">确认新密码</label>  -->
 		                        <div class="form-center">
-		                          <input type="password" class="form-control round-form" id="renewpasswd" name="renewpasswd" placeholder="password again">
+		                          <input type="password" class="form-control text-center" id="renewpasswd" name="renewpasswd" placeholder="确认新密码">
 		                        </div>
 		                      </div>
                               
@@ -248,7 +248,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer fixed">
+      <footer class="site-footer fixed navbar-fixed-bottom">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="#container" class="go-top">

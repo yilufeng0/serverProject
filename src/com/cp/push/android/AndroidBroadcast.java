@@ -9,7 +9,8 @@ public class AndroidBroadcast extends AndroidNotification {
 	 */
 	public AndroidBroadcast(){
 		try {
-			this.setPreKeyValue("type", "broadcast");
+			//this.setPreKeyValue("type", "broadcast");
+			this.setPreKeyValue("type", "unicast");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

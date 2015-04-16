@@ -32,54 +32,65 @@ public class ServerInfo {
 	}
 	
 	//获取服务器物理内存使用率(%)
-	public float getMemUsageRatio() throws SigarException{
+	public float getMemUsageRatio(){
 		Mem mem = null;
-		mem = sigar.getMem();
-		float a = (float)mem.getUsedPercent();  //内存使用率%
-		float b = (float)(Math.round(a*100))/100;   //保留小数点后两位
+		float a =0;
+		float b =0;
+		try {
+			mem = sigar.getMem();
+			 a = (float)mem.getUsedPercent();  //内存使用率%
+			 b = (float)(Math.round(a*100))/100;   //保留小数点后两位
+		} catch (SigarException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return b;
 	}
 	
 ///////////////////////////////////////////硬盘信息////////////////////////////////		
 	//获取服务器本地硬盘总量(GByte)
-	public float getDiskAll() throws SigarException{ 
-		FileSystem fslist[] = sigar.getFileSystemList();  
+	public float getDiskAll(){  
 		long total = 0L;
-		for (int i = 0; i < fslist.length; i++) {  
-		FileSystem fs = fslist[i];  
 	    FileSystemUsage usage = null;  
-		   try {  
-		    usage = sigar.getFileSystemUsage(fs.getDevName());  
-		   } catch (SigarException e) {  
-		   }  
-		   if(fs.getTypeName().equals("local"))
-		   {
-		    //文件系统总量
-		    total = total + usage.getTotal();
-		   }
+	    try {
+	    	FileSystem fslist[] = sigar.getFileSystemList(); 
+			for (int i = 0; i < fslist.length; i++) {  
+		    	FileSystem fs = fslist[i];  
+			    usage = sigar.getFileSystemUsage(fs.getDevName());  
+			   if(fs.getTypeName().equals("local"))
+			   {
+			    //文件系统总量
+			    total = total + usage.getTotal();
+			   }
+			}	
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
           return total/1024/1024;
 	}
 	
 	//获取服务器本地硬盘使用率(%)
-	public float getDiskRatio() throws SigarException{ 
-		FileSystem fslist[] = sigar.getFileSystemList();  
+	public float getDiskRatio(){ 
 		long total = 0L;
 		long use = 0L;
-		for (int i = 0; i < fslist.length; i++) {  
-		FileSystem fs = fslist[i];  
-	    FileSystemUsage usage = null;  
-		   try {  
-		    usage = sigar.getFileSystemUsage(fs.getDevName());  
-		   } catch (SigarException e) {  
-		   }  
-		   if(fs.getTypeName().equals("local"))
-		   {
-		    //文件系统总量
-		    total = total + usage.getTotal();
-		    //文件系统已使用量  
-		    use = use + usage.getUsed();
-		   }
+		try {
+			FileSystem fslist[] = sigar.getFileSystemList();  
+			for (int i = 0; i < fslist.length; i++) {  
+			FileSystem fs = fslist[i];  
+		    FileSystemUsage usage = null;  
+	        usage = sigar.getFileSystemUsage(fs.getDevName());  
+			   if(fs.getTypeName().equals("local"))
+			   {
+			    //文件系统总量
+			    total = total + usage.getTotal();
+			    //文件系统已使用量  
+			    use = use + usage.getUsed();
+			   }
+			}			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 		  float tmp = (float)use/total;
 		  float diskUsedPercent = (float)(Math.round(tmp*100))/100;   ///服务器本地硬盘使用率

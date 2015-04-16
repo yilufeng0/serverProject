@@ -19,11 +19,11 @@ function afterSubmit(result){
     if(result == "1"){		//成功登录，进行页面的跳转    	
     	self.location="index.jsp";    	
     }else{							//告知用户密码错误
-    	alert("fail");
+    	alert("用户名或密码错误!");
     }    
 }
 
-
+//锁屏后点击登陆
 function getSubmit(){
 	var passwd= document.getElementById("passwd");
 	var xmlhttp=createXMLHTTP();
@@ -35,7 +35,7 @@ function getSubmit(){
 		}
 	};
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("passwd"+passwd.value);
+	xmlhttp.send("passwd="+passwd.value);
 }
 
 

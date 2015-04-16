@@ -10,7 +10,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
- String uuid = request.getParameter("uuid");
+// String uuid = request.getParameter("uuid");
+   String uuid = "56b10c84-990d-4998-b03c-b73ee02e7d87";
  if(uuid==null){
 	out.write("0");
 	return;
@@ -44,10 +45,12 @@
 <body>
 <div data-role="page">
 	<div data-role="header" class="jqm-header">
-		<p><%=title %></p>
-		<p><h4><%=showTime %></h4></p>
+		<h2><%=title %></h2>				
 	</div>
+	<h6><span style="text-align:left">正大禽蛋 &nbsp&nbsp<%=showTime %></span></h6>
+	<hr sytle="">
 	<div data-role="content">
+		
 		<p><%=content %></p>
 	</div>
 	

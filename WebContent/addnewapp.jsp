@@ -67,7 +67,7 @@
             
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.jsp">退出</a></li>
+                    <li><a class="logout" href="logout.jsp">退出</a></li>
               </ul>
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
@@ -254,7 +254,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer fixed">
+      <footer class="site-footer fixed navbar-fixed-bottom">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="newspub.jsp#" class="go-top">

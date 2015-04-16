@@ -1,6 +1,5 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="com.cp.account.AccountAuth"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.cp.JDBC.SelectOperation"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

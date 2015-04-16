@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+ session.setAttribute("login", "false");
+ System.out.println("login-out:"+session.getAttribute("login"));
+%>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -46,19 +50,22 @@
 				          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
 				              <div class="modal-dialog">
 				                  <div class="modal-content">
-				                      <div class="modal-header">
-				                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				                          <h4 class="modal-title">Welcome Back</h4>
-				                      </div>
-				                      <div class="modal-body">
-				                          <p class="centered"><img class="img-circle" width="80" src="assets/img/ui-sam.jpg"></p>
-				                          <input id="passwd" type="password" name="password" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
-				
-				                      </div>
-				                      <div class="modal-footer centered">
-				                          <button data-dismiss="modal" class="btn btn-theme04" type="button">Cancel</button>
-				                          <button onclick="getSubmit()" class="btn btn-theme03" type="button">Login</button>
-				                      </div>
+				                  	<form action="accountauth.jsp" method="post">
+					                      <div class="modal-header">
+					                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					                          <h4 class="modal-title">Welcome Back</h4>
+					                      </div>
+					                      <div class="modal-body">
+					                          <p class="centered"><img class="img-circle" width="80" src="assets/img/ui-sam.jpg"></p>
+					                          <input id="passwd" type="password" name="passwd" placeholder="Password" autocomplete="off" class="form-control placeholder-no-fix">
+					
+					                      </div>
+					                      <div class="modal-footer centered">
+					                          <button  data-dismiss="modal" class="btn btn-theme04" type="button">Cancel</button>
+					                          <!--  <button onclick="getSubmit()" class="btn btn-theme03" type="button">Login</button> -->
+					                          <button type="submit" class="btn btn-theme03" type="button">Login</button>
+					                      </div>
+				                      </form>
 				                  </div>
 				              </div>
 				          </div>

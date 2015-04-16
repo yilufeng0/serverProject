@@ -32,7 +32,7 @@ function getserverstate(){
 }
 
 function timer(){
-	setInterval("getserverstate()",1000);
+	setInterval("getserverstate()",10000);
 }
 
 
