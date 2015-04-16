@@ -29,21 +29,21 @@ public class AuthFilter implements Filter {
      HttpServletResponse response = (HttpServletResponse)servletResponse;
      HttpSession session = request.getSession();
      String login = (String)session.getAttribute("login");
-     System.out.println("login:"+login);
+  //   System.out.println("login:"+login);
      String currentURL = request.getRequestURI();
      String targetURL = currentURL.substring(currentURL.indexOf("/", 1)+1,currentURL.length());
     // System.out.println(currentURL);
-     System.out.println(targetURL);
+    // System.out.println(targetURL);
    if(targetURL.equals("accountauth.jsp")||targetURL.equals("interface.jsp")){
 	   filterChain.doFilter(request, response);  
    }
    else{
 	   if(session==null||login==null){ //最开始服务器加载时候
-	    	 System.out.println("1");
+	    	// System.out.println("1");
 	    	   request.getRequestDispatcher("login.jsp").forward(request, response);
 	     }else{
 	    	 if(login.equals("true")){
-	    		 System.out.println("2");
+	    		// System.out.println("2");
 	    		// request.getRequestDispatcher("index.jsp").forward(request, response);
 	    		filterChain.doFilter(request, response); //如果登录过，就不阻拦
 	         }

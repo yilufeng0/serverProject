@@ -8,29 +8,27 @@
 <%
     String passwd = Integer.toHexString(request.getParameter("passwd").hashCode());	
 	String userName = request.getParameter("account");
-	String refUrl = request.getHeader("Referer");
-	System.out.println("refurl:"+refUrl);
+
 	response.addHeader( "Cache-Control", "no-cache" );
 	response.addHeader( "Cache-Control", "no-store" );
 	boolean result = true;
 	if(userName==null){
 		 userName = (String)session.getAttribute("username");	
-		 System.out.println(userName);
+		// System.out.println(userName);
 	}
     String userNamee = (String)session.getAttribute("username");	
 	if(userName==""||passwd=="0"){
 		session.setAttribute("username","");
 		session.setAttribute("login", "false");
-		System.out.println("test1");
+		//System.out.println("test1");
 		result=false;
 //		out.write("0");
 		return;
 	}
 	else{
 		session.setAttribute("username",userName);
-		System.out.println("userName:"+userName);
-		System.out.println("passwd:"+passwd);
-		System.out.println("test2");		
+		//System.out.println("userName:"+userName);
+		//System.out.println("passwd:"+passwd);	
 		String sql = "select count(*) as result from account where userName=? and passwd=?";
 		List<Object> list = new ArrayList<>();
 		list.add(userName);
@@ -46,7 +44,7 @@
 			// TODO: handle exception
 			result = false;
 		}
-		System.out.println("result:"+result);
+		//System.out.println("result:"+result);
 		
 		
 		if(result==true){

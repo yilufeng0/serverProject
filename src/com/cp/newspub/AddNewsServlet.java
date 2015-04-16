@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
-import com.cp.serverInfo.ServerInfo;
+import com.cp.serverInfo.ServerInfo2;
 import com.cp.upload.SmallUpImgNoRatio;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
@@ -41,7 +41,7 @@ public class AddNewsServlet extends HttpServlet {
 
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());	
 		Request req=null;
-		String localIP = new ServerInfo().getIpAddr();
+		String localIP = new ServerInfo2().getIpAddr();
 		List<Object> listReq = new ArrayList<>();
 		
         try {        		
@@ -68,7 +68,7 @@ public class AddNewsServlet extends HttpServlet {
 		}
 		
         request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
-        
+       // response.sendRedirect("addsuccess.jsp");
 	}
 	
 }

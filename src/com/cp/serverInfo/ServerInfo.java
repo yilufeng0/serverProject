@@ -231,25 +231,8 @@ public class ServerInfo {
 			return txBytes;			
 	} 
 	
-		
-///////////////////////////////////////////操作系统信息////////////////////////////////		  
-	 // 获取当前操作系统名称描述  
-	public String getOsDesc(){
-		 OperatingSystem OS = OperatingSystem.getInstance();  
-		 return OS.getDescription();
-	}
-	
-	// 操作系统类型 (32bit/64bit) 
-	public String getOsType(){
-		 OperatingSystem OS = OperatingSystem.getInstance();  
-		 return OS.getName();
-	}
-	
-	//获取当前操作系统的版本号  
-	public String getOsVersion(){
-		 OperatingSystem OS = OperatingSystem.getInstance();  
-		 return OS.getVersion();
-	}
+
+
 		
 	public static void main(String[] args) {
 		

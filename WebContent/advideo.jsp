@@ -199,7 +199,8 @@
                        %>
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
-                          <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
+                         <!-- <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td> --> 
+                          <td><img alt="error" src=<%=rs.getString("thumbpath")%>></td>
                           <td id="des<%=rs.getInt("ID") %>"><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<input type="button" value=继续添加 onclick="javascript:history.go(-1);">
+<input type="button" value="返回列表页" onclick="javascript:history.go(-2);">
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@page import="com.cp.basefunc.GetTime"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.mysql.fabric.xmlrpc.base.Data"%>
-<%@page import="com.cp.serverInfo.ServerInfo"%>
+<%@page import="com.cp.serverInfo.ServerInfo2"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -38,7 +38,7 @@
   </head>
 
   <body onload="setContentHeight('mainheight',0.63);timer()">
-	<%!ServerInfo serverInfo = new ServerInfo(); %>
+	<%!ServerInfo2 serverInfo = new ServerInfo2(); %>
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -271,7 +271,7 @@
                                       color:"#68dff0"
                                     },
                                     {
-                                      value : <%=100-serverInfo.getMemUsageRatio()%>,
+                                      value : <%=100-Double.valueOf(serverInfo.getMemUsageRatio())%>,
 
                                       color : "#fdfdfd"
                                     }
@@ -294,11 +294,11 @@
 	                <script>
 	                  var doughnutData = [
 	                      {
-	                        value: <%=serverInfo.getDiskRatio()%>,
+	                        value: <%=Double.valueOf(serverInfo.getDiskRatio()) %>,
 	                        color:"#68dff0"
 	                      },
 	                      {
-	                        value : <%=100-serverInfo.getDiskRatio()%>,
+	                        value : <%=100-Double.valueOf(serverInfo.getDiskRatio())%>,
 	                        color : "#444c57"
 	                      }
 	                    ];
