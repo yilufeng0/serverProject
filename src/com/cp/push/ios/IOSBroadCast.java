@@ -8,7 +8,8 @@ public class IOSBroadCast extends IOSNotification {
      */
     public IOSBroadCast() {
 		try {
-			this.setPreKeyValue("type", "broadcast");
+			//this.setPreKeyValue("type", "broadcast");
+			this.setPreKeyValue("type", "unicast");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

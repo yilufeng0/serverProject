@@ -1,7 +1,7 @@
 <%@page import="com.cp.basefunc.GetTime"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.mysql.fabric.xmlrpc.base.Data"%>
-<%@page import="com.cp.serverInfo.ServerInfo"%>
+<%@page import="com.cp.serverInfo.ServerInfo2"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -38,7 +38,7 @@
   </head>
 
   <body onload="setContentHeight('mainheight',0.63);timer()">
-	<%!ServerInfo serverInfo = new ServerInfo(); %>
+	<%!ServerInfo2 serverInfo = new ServerInfo2(); %>
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -117,7 +117,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.jsp">退出</a></li>
+                    <li><a class="logout" href="logout.jsp">退出</a></li>
             	</ul>
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
@@ -271,7 +271,7 @@
                                       color:"#68dff0"
                                     },
                                     {
-                                      value : <%=100-serverInfo.getMemUsageRatio()%>,
+                                      value : <%=100-Double.valueOf(serverInfo.getMemUsageRatio())%>,
 
                                       color : "#fdfdfd"
                                     }
@@ -294,11 +294,11 @@
 	                <script>
 	                  var doughnutData = [
 	                      {
-	                        value: <%=serverInfo.getDiskRatio()%>,
+	                        value: <%=Double.valueOf(serverInfo.getDiskRatio()) %>,
 	                        color:"#68dff0"
 	                      },
 	                      {
-	                        value : <%=100-serverInfo.getDiskRatio()%>,
+	                        value : <%=100-Double.valueOf(serverInfo.getDiskRatio())%>,
 	                        color : "#444c57"
 	                      }
 	                    ];
@@ -325,7 +325,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
+      <footer class="site-footer navbar-fixed-bottom">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="#container" class="go-top">

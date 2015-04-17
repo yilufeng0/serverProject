@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
-import com.cp.upload.UploadFile;
-import com.jspsmart.upload.Request;
 
 /**
  * Servlet implementation class AddPromotionServlet
@@ -36,6 +34,7 @@ public class AddPromotionServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		List<Object> listReq = new ArrayList<>();
 		try {
+			//推送内容插入数据库
 			listReq.add(request.getParameter("ticker"));
 			listReq.add(request.getParameter("title"));
 			listReq.add(request.getParameter("notidesc"));
@@ -43,6 +42,13 @@ public class AddPromotionServlet extends HttpServlet {
 			listReq.add(new GetTime().getDateAndTime());
 			String sql = "insert into push(tips,title,abstract,content,time) values(?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);	
+			//Android推送
+			Push pushAndroid = new Push("55233243fd98c585d4000c38", "cd579716b68460c91066592f01e8470b");
+			pushAndroid.sendAndroidBroadcast(request.getParameter("ticker"),request.getParameter("title"),request.getParameter("content"));
+			//IOS推送  
+			//Push pushIOS = new Push("552646a2fd98c521000018c7", "ob7l3h1xkmogliux2obsdmwzafw7uhoi");
+			//pushIOS.sendIOSBroadcast();      
+			
     	} catch (Exception e) {
 		e.printStackTrace();
 	  }

@@ -89,16 +89,25 @@ public class MultiUploadFile {
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
     	
-    	String rootPath;                   //创建根路径保存变量
-     	String realPath = req.getSession().getServletContext().getRealPath("/");
-     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
-     	rootPath = realPath+"/Upload/"+filePath+"/";
+    	String rootPath,rPath;                   //创建根路径保存变量
+ //    	String realPath = req.getSession().getServletContext().getRealPath("/");
+    	String realPath = req.getServletContext().getRealPath("/");
+//     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
+//     	rootPath = realPath+"/Upload/"+filePath+"/";
+//     	rPath = "/"+filePath+"/";
+    	rootPath = realPath + "/Upload/"+filePath+"/";
      	File dirName = new File(rootPath);
      	if(!dirName.isDirectory())  //如果目录不存在
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
-    	
+    /////////////////////////////////////////////////////////////////   	
+//     	File diName = new File(rPath);
+//     	if(!diName.isDirectory())  //如果目录不存在
+//     	{
+//     		diName.mkdirs(); //创建多级目录
+//     	}
+//    	
         SmartUpload su = new SmartUpload();
         su.initialize(this.config, req, res);
 
@@ -118,24 +127,37 @@ public class MultiUploadFile {
      	  String totalFileName = myFile.getFileName();    //得到文件名+扩展名  
      	  String myFileName = totalFileName.substring(0, totalFileName.lastIndexOf(".")); //得到文件名
      	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
-    
+          String fName = myFileName+randomNum;
      	  String fileType=myFile.getFileExt();     //得到文件扩展名
      	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
+     	  String fTotalName = myFileName+randomNum+"."+fileType;
      	  
-     	  extName.add(fileType);
-     	  fileName.add(myFileName+randomNum);
-     	  fileTotalName.add(myFileName+randomNum+"."+fileType);
      	  
      	 if (upFileType.indexOf(fileType)==-1)
     	 {
-      	  throw new Exception("wrong file type");
-    	 } 
-     	 
-     	 this.rootPath = rootPath;
-    	 request = su.getRequest();
-     //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
-    	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
+     		//throw new Exception("上传文件错误");
+    	     myFileName = "imagebackup";
+    	     fileType = "png";
+    	     fTotalName = myFileName+"."+fileType;
+    	     fName = myFileName;
+    	     this.rootPath = rootPath;
+        	 fileName.add(fName);
+        	 extName.add(fileType);
+        	 fileTotalName.add(fTotalName);
+        	 request = su.getRequest();	     
+    		 return;
+    	 }else{
+        	  extName.add(fileType);
+        	  fileName.add(fName);
+        	  fileTotalName.add(fTotalName);
+
+    	 }
+     	  
+     //	 myFile.saveAs(r+randomNum+myFileName,1);  //VIRTUAL方式保存文件
+    	 myFile.saveAs(rootPath+fTotalName,2);  //PHYSICAL方式保存文件
        } 
+         this.rootPath = rootPath;
+ 	     request = su.getRequest();
      }
 	}
 	
@@ -149,25 +171,23 @@ public class MultiUploadFile {
     	req.setCharacterEncoding("UTF-8");
     	
     	String rootPath,rPath;                   //创建根路径保存变量
-     	String realPath = req.getSession().getServletContext().getRealPath("/");
- //    	System.out.println(realPath);
-     	
-     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
-     	rootPath = realPath+"/Upload/"+filePath+"/";
-     	
-     	rPath = "/"+filePath+"/";
-     	
+//     	String realPath = req.getSession().getServletContext().getRealPath("/");
+    	String realPath = req.getServletContext().getRealPath("/");
+//     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
+//     	rootPath = realPath+"/Upload/"+filePath+"/";
+//     	rPath = "/"+filePath+"/";
+    	rootPath = realPath + "/Upload/"+filePath+"/";
      	File dirName = new File(rootPath);
      	if(!dirName.isDirectory())  //如果目录不存在
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
  /////////////////////////////////////////////////////////////////   	
-     	File diName = new File(rPath);
-     	if(!diName.isDirectory())  //如果目录不存在
-     	{
-     		diName.mkdirs(); //创建多级目录
-     	}
+//     	File diName = new File(rPath);
+//     	if(!diName.isDirectory())  //如果目录不存在
+//     	{
+//     		diName.mkdirs(); //创建多级目录
+//     	}
      	
         SmartUpload su = new SmartUpload();
         su.initialize(this.config, req, res);
@@ -195,13 +215,12 @@ public class MultiUploadFile {
      	  extName.add(fileType);
      	  fileName.add(myFileName+randomNum);
      	  fileTotalName.add(myFileName+randomNum+"."+fileType);
-     	  
-     	 this.rootPath = rootPath;
-    	 request = su.getRequest();
-     	 myFile.saveAs(rPath+myFileName+randomNum+"."+fileType,1);  //VIRTUAL方式保存文件 
-    // 	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
+     //	 myFile.saveAs(rPath+myFileName+randomNum+"."+fileType,1);  //VIRTUAL方式保存文件 
+     	 myFile.saveAs(rootPath+myFileName+randomNum+"."+fileType,2);  //PHYSICAL方式保存文件
        } 
      }
+       this.rootPath = rootPath;
+	   request = su.getRequest();
 	}
 
 }

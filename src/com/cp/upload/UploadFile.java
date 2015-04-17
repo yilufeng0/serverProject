@@ -94,16 +94,27 @@ public class UploadFile {
     	res.setCharacterEncoding("UTF-8"); 
     	req.setCharacterEncoding("UTF-8");
     	
-    	String rootPath;                   //创建根路径保存变量
-     	String realPath = req.getSession().getServletContext().getRealPath("/");
-     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
-     	rootPath = realPath+"/Upload/"+filePath+"/";
+    	String rootPath,rPath;                   //创建根路径保存变量
+//     	String realPath = req.getSession().getServletContext().getRealPath("/");
+     	String realPath = req.getServletContext().getRealPath("/");
+//     	realPath = realPath.substring(0, realPath.indexOf(":")+1);
+//     	rootPath = realPath+"/Upload/"+filePath+"/";
+     	rootPath = realPath + "/Upload/"+filePath+"/";
+//     	rPath = "/"+filePath+"/";
+     	
      	File dirName = new File(rootPath);
      	if(!dirName.isDirectory())  //如果目录不存在
      	{
      		dirName.mkdirs(); //创建多级目录
      	}
+   ///////////////////////////////////////////////////////////
      	
+//     	File diName = new File(rPath);
+//     	if(!diName.isDirectory())  //如果目录不存在
+//     	{
+//     		diName.mkdirs(); //创建多级目录
+//     	}
+//     	
         SmartUpload su = new SmartUpload();
         su.initialize(this.config, req, res);
     	try {
@@ -120,19 +131,28 @@ public class UploadFile {
     	  String fileType=myFile.getFileExt();     //得到文件扩展名
     	  fileType=fileType.toLowerCase();         //将扩展名转换成小写
     	  String randomNum = RandomNum.getRandomNumber(6);  //生成随机数，添加到文件后缀名作标识
+    	  
+    	  this.rootPath = rootPath;
+     	  fileName = myFileName+randomNum+"."+fileType;
+     	  fName = myFileName+randomNum;
+     	  extName = fileType;
+     	  request = su.getRequest();
+
+     	  
     	 if (upFileType.indexOf(fileType)==-1)
   	    {
-  	        throw new Exception("上传文件错误");
-  	    }     
-    	 this.rootPath = rootPath;
-    	 fileName = myFileName+randomNum+"."+fileType;
-    	 fName = myFileName+randomNum;
-    	 extName = fileType;
-    	 request = su.getRequest();
-    	 
-    //	 myFile.saveAs(rootPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
-    	 myFile.saveAs(rootPath+fileName,2);  //PHYSICAL方式保存文件
-
+  	       //throw new Exception("上传文件错误");
+    	     myFileName = "imagebackup";     //上传文件类型错误时，选择默认图片上传
+    	     fileType = "png";
+    	     this.rootPath = rootPath;
+        	 fileName = myFileName+"."+fileType;
+        	 fName = myFileName;
+        	 extName = fileType;
+        	 request = su.getRequest();	     
+    		 return;
+  	    }  		
+        //	 myFile.saveAs(rPath+randomNum+myFileName,1);  //VIRTUAL方式保存文件
+        	 myFile.saveAs(rootPath+fileName,2);  //PHYSICAL方式保存文件
        }
     	
   }

@@ -57,7 +57,7 @@
             
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.jsp">退出</a></li>
+                    <li><a class="logout" href="logout.jsp">退出</a></li>
               </ul>
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
@@ -164,7 +164,7 @@
                               <div class="modal-title text-center"><h4 id="edittitle">描述信息</h4></div>
                             </div>
                             <div class="modal-body">                                                         
-                             	<input class="" id="modaldes">
+                             	<input class="form-control" id="modaldes">
                             </div>
                             <div class="modal-footer">
                               <button class="btn btn-default" data-dismiss="modal" type="button">放弃</button>
@@ -235,7 +235,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
+      <footer class="site-footer navbar-fixed-bottom">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="#container" class="go-top">

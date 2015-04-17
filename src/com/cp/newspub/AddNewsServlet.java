@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
-import com.cp.serverInfo.ServerInfo;
+import com.cp.serverInfo.ServerInfo2;
 import com.cp.upload.SmallUpImgNoRatio;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
@@ -41,7 +41,7 @@ public class AddNewsServlet extends HttpServlet {
 
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());	
 		Request req=null;
-		String localIP = new ServerInfo().getIpAddr();
+		String localIP = new ServerInfo2().getIpAddr();
 		List<Object> listReq = new ArrayList<>();
 		
         try {        		
@@ -57,7 +57,7 @@ public class AddNewsServlet extends HttpServlet {
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
 			listReq.add(String.valueOf(uuid));
-			listReq.add("http://"+localIP+":8080/cpServerPro/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
+			listReq.add("http://"+localIP+":8080/cpServerPro/Upload/image/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			listReq.add("http://"+localIP+":8080/cpServerPro/getnews.jsp?uuid="+uuid);
 			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -68,7 +68,7 @@ public class AddNewsServlet extends HttpServlet {
 		}
 		
         request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
-        
+       // response.sendRedirect("addsuccess.jsp");
 	}
 	
 }

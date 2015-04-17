@@ -6,15 +6,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-    
+    String passwd = Integer.toHexString(request.getParameter("passwd").hashCode());	
 	String userName = request.getParameter("account");
-	String passwd = Integer.toHexString(request.getParameter("passwd").hashCode());	
-	if(userName==null||passwd==null){
-		out.write("0");
+
+	response.addHeader( "Cache-Control", "no-cache" );
+	response.addHeader( "Cache-Control", "no-store" );
+	boolean result = true;
+	if(userName==null){
+		 userName = (String)session.getAttribute("username");	
+		// System.out.println(userName);
+	}
+    String userNamee = (String)session.getAttribute("username");	
+	if(userName==""||passwd=="0"){
+		session.setAttribute("username","");
+		session.setAttribute("login", "false");
+		//System.out.println("test1");
+		result=false;
+//		out.write("0");
 		return;
 	}
 	else{
-		boolean result = true;
+		session.setAttribute("username",userName);
+		//System.out.println("userName:"+userName);
+		//System.out.println("passwd:"+passwd);	
 		String sql = "select count(*) as result from account where userName=? and passwd=?";
 		List<Object> list = new ArrayList<>();
 		list.add(userName);
@@ -30,12 +44,22 @@
 			// TODO: handle exception
 			result = false;
 		}
-		System.out.println(result);
+		//System.out.println("result:"+result);
+		
+		
 		if(result==true){
-			out.write("1");
+				
+			session.setAttribute("login", "true");
+			//out.write("1");
+			response.sendRedirect("index.jsp");
+			//out.write("1");
 		}
-		else
-			out.write("0");
+		else{			
+		    session.setAttribute("login", "false");	
+		    //out.write("0");
+		    response.sendRedirect("login.jsp");
+		}
+			
 	}
 	
 	

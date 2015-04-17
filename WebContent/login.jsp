@@ -36,18 +36,19 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login">
+		      <form class="form-login" method="POST" action="accountauth.jsp">
 		        <h2 class="form-login-heading">用户验证</h2>
 		        <div class="">
 		        <div class="col-sm-4"></div>
 		        	<img src="img/loginpic.png" class="img-circle" style="width:96px;height:96px;">
 		        </div>
 		        <div class="login-wrap">
-		            <input  id="account" type="text" class="form-control  text-center" placeholder="用户名" autofocus>
+		            <input  id="account" type="text" class="form-control  text-center" name="account" placeholder="用户名" autofocus>
 		            <br>
-		            <input id="passwd" type="password" class="form-control text-center" placeholder="密码">
+		            <input id="passwd" type="password" class="form-control text-center" name="passwd" placeholder="密码">
 		            <br>
-		            <button  onclick="mainPaeSubmit()" class="btn btn-theme btn-block" ><i class="fa fa-lock"></i>登&nbsp;&nbsp;录</button>
+		            <!--  <button  onclick="mainPaeSubmit()" class="btn btn-theme btn-block" ><i class="fa fa-lock"></i>登&nbsp;&nbsp;录</button>  -->
+		            <button  type="submit" class="btn btn-theme btn-block" ><i class="fa fa-lock"></i>登&nbsp;&nbsp;录</button>
 		            <hr>	            
 		            
 		        </div>	

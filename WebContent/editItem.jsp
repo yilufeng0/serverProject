@@ -1,7 +1,7 @@
 <%@page import="com.cp.account.SelectAccount"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.cp.account.EditAccount"%>
-<%@page import="com.cp.exhibition.EditCpImage"%>
+<%@page import="com.cp.exhibition.EditCpImgVideo"%>
 <%@page import="com.cp.newspub.EditNews"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,7 +17,7 @@
     	  break;
     case "cpimg" :
     	  String description = request.getParameter("description");
-    	  result = EditCpImage.editCpImage(id, description);
+    	  result = EditCpImgVideo.editCpImage(id, description);
     	  break;
     case "account" :	 
     	  String passwd = Integer.toHexString(request.getParameter("passwd").hashCode());
@@ -42,5 +42,4 @@
     }else{
     	out.write("0");
     }
-
 %>

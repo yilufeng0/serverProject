@@ -43,19 +43,23 @@ public class AddVideoServlet extends HttpServlet {
 		    List<Object> listReq = new ArrayList<>();
 			try {
 				multiUpload.multiUploadVideo(request, response,"video");
-				
-				String thumbFileName = "thumb";
-				
+
 				req = multiUpload.getRequest();
 				for(int i = 1; i <= multiUpload.getFileCount();i++){
 					listReq.clear();
+					String oripath = multiUpload.getRootPath()+multiUpload.getFileTotalName().get(i-1);
 					listReq.add(req.getParameter("filedescp"+i));	
-					listReq.add(multiUpload.getRootPath()+multiUpload.getFileTotalName().get(i-1));
-					listReq.add(thumbFileName);
+					listReq.add(oripath);
+					
+					String filename = multiUpload.getFileTotalName().get(i-1).substring(0,multiUpload.getFileTotalName().get(i-1).indexOf("."))+".jpg";
+					String imagepath = multiUpload.getRootPath()+filename;
+
+					new GenerateImage().getThumbnail(oripath, imagepath, "32*32");  //生成显示视频的图片第一帧
+					listReq.add("Upload/video/"+filename);
 					listReq.add(type);
 					listReq.add(new GetTime().getDateAndTime());
 					listReq.add(GetTime.getPageDate());
-					listReq.add("/video/"+multiUpload.getFileTotalName().get(i-1));
+					listReq.add("/Upload/video/"+multiUpload.getFileTotalName().get(i-1));
 
 					String sql = "insert into exhibition(description,oripath,thumbpath,type,time,showTime,Url) values(?,?,?,?,?,?,?)";
 					InsertOperation.insertOne(sql, listReq);

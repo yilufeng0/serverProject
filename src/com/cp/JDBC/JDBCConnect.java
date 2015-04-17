@@ -24,7 +24,7 @@ public class JDBCConnect {
 	static{
 		try {
 			Class.forName(drivername);
-			System.out.println("load driver success");
+		//	System.out.println("load driver success");
 		} catch (ClassNotFoundException e) {
 			// TODO: handle exception
 		}
@@ -34,7 +34,7 @@ public class JDBCConnect {
 		Connection conn=null;
 		try {
 			conn=(Connection)DriverManager.getConnection(url, username, password);
-			System.out.println("connect DB success");
+			//System.out.println("connect DB success");
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("fail,check url/username/password");

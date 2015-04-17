@@ -57,7 +57,7 @@
             
             <div class="top-menu">
               <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.jsp">退出</a></li>
+                    <li><a class="logout" href="logout.jsp">退出</a></li>
               </ul>
               <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="lock_screen.jsp">锁屏</a></li>
@@ -199,7 +199,8 @@
                        %>
                         <tr class="text-center" id="<%=rs.getInt("ID") %>">
                           <td><%=rs.getRow() %></td>
-                          <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td>
+                         <!-- <td><img alt="error" src=<%=rs.getString("thumbpath")%> onclick="dispImg(<%=rs.getInt("ID")%>)"></td> --> 
+                          <td><img alt="error" src=<%=rs.getString("thumbpath")%>></td>
                           <td id="des<%=rs.getInt("ID") %>"><%=rs.getString("description")!=null?rs.getString("description"):"" %></td>
                           <td><%=rs.getString("showTime")!=null?rs.getString("showTime"):"" %></td>
                           <td>
@@ -236,7 +237,7 @@
 
       <!--main content end-->
       <!--footer start-->
-      <footer class="site-footer">
+      <footer class="site-footer navbar-fixed-bottom">
           <div class="text-center">
                <a href="http://www.cpegg.com" target="_blank">正大集团</a> 
               <a href="#container" class="go-top">

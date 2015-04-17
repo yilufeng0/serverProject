@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class AndroidNotification extends BaseNotification{
 	protected static final HashSet<String> PAYLOAD_KEYS = new HashSet<String>(Arrays.asList(new String[]{"display_type"}));
-	protected static final HashSet<String> BODY_KEYS = new HashSet<String>(Arrays.asList(new String[]{"ticker","title","text","after_open"}));
+	protected static final HashSet<String> BODY_KEYS = new HashSet<String>(Arrays.asList(new String[]{"ticker","title","text","after_open","url"}));
 
 	/**
 	 * Android端的键值设置

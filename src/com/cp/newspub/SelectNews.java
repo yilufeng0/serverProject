@@ -33,7 +33,8 @@ public class SelectNews {
 	}
 
 	public static ResultSet selectNewsItem(String id){
-		ResultSet rs = SelectOperation.selectOnes("select ID as id,title,showTime as showtime,abstract,imageThumbnailUrl as smallUrl,contentUrl from news where id >"+Integer.valueOf(id)+" order by ID desc");
+		ResultSet rs = SelectOperation.selectOnes("select ID as id,title,showTime as showtime,abstract,imageThumbnailUrl as smallUrl,contentUrl,uuid from news where id >"+Integer.valueOf(id)+" order by ID desc");
+		//ResultSet rs = SelectOperation.selectOnes("select uuid from news where id >"+Integer.valueOf(id)+" order by ID desc");
 		return rs;
 	}
 	

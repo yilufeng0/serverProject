@@ -22,22 +22,23 @@ public class Push {
 	 * Android广播的键值设置以及消息POST
 	 * @throws Exception
 	 */
-	public void sendAndroidBroadcast() throws Exception{
+	public void sendAndroidBroadcast(String ticker,String title,String text) throws Exception{
 		AndroidBroadcast broadcast = new AndroidBroadcast();
 		broadcast.setPreKeyValue("appkey", this.appkey);                    //root level
 		broadcast.setAppMasterSecret(this.appMasterSecret);
 		broadcast.setPreKeyValue("timestamp", this.timestamp);
-		broadcast.setPreKeyValue("type", "broadcast");                      //消息发送类型为广播
-		
+		//broadcast.setPreKeyValue("type", "broadcast");                      //消息发送类型为广播
+		broadcast.setPreKeyValue("device_tokens", "AmoU2OofbBIdwUJxZTrIzvW7kFF_ROatxyscQnvAtY1u");
 		broadcast.setPreKeyValue("display_type", "notification");           //payload level
 		
-		broadcast.setPreKeyValue("ticker", "Android broadcast ticker");     //body level
-		broadcast.setPreKeyValue("title", "中文的title");
-		broadcast.setPreKeyValue("text", "Android broadcast text");
+		broadcast.setPreKeyValue("ticker", ticker);     //body level
+		broadcast.setPreKeyValue("title", title);
+		broadcast.setPreKeyValue("text", text);
 		broadcast.setPreKeyValue("after_open", "go_app");
 		broadcast.setPreKeyValue("production_mode", "false");               //true为正式模式，false为测试模式
 		
 		broadcast.sendPush();                                               //将消息POST出去
+		System.out.println("pushing...");
 	}
 	
 	/**
@@ -49,23 +50,25 @@ public class Push {
 		broadcast.setPreKeyValue("appkey", this.appkey);              //root level
 		broadcast.setAppMasterSecret(this.appMasterSecret);
 		broadcast.setPreKeyValue("timestamp", this.timestamp);
-		broadcast.setPreKeyValue("type", "broadcast");                //消息发送类型为广播
+		//broadcast.setPreKeyValue("type", "unicast");                //消息发送类型为广播
+		broadcast.setPreKeyValue("device_tokens", "0d47ad2400c7a8edef2d14c1e452a21b49f4ca669fe744d9371b6c49c1c2b8de");
 		
 		broadcast.setPreKeyValue("display_type", "notification");     //payload level
 		
-		broadcast.setPreKeyValue("alert", "IOS 广播测试");             //aps level
+		broadcast.setPreKeyValue("alert", "Hello IOS!!");             //aps level 
+		//broadcast.setPreKeyValue("alert", text); 
 		broadcast.setPreKeyValue("badge", 0);
 		broadcast.setPreKeyValue("sound", "chime");
 		broadcast.setPreKeyValue("production_mode", "false");         //true为正式模式，false为测试模式
 		
 		broadcast.sendPush();                                         //将消息POST出去
-		
+		System.out.println("pushing...");
 	}
 	
 	public static void main(String[] args) throws Exception {
-		Push push = new Push("your appkey", "the app master secret");
+		//Push push = new Push("your appkey", "the app master secret");
 		//push.sendAndroidBroadcast();
-		push.sendIOSBroadcast();
+		//push.sendIOSBroadcast();
 	}
 
 }
