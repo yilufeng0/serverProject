@@ -10,8 +10,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-// String uuid = request.getParameter("uuid");
-   String uuid = "56b10c84-990d-4998-b03c-b73ee02e7d87";
+ String uuid = request.getParameter("uuid");
+//   String uuid = "56b10c84-990d-4998-b03c-b73ee02e7d87";
  if(uuid==null){
 	out.write("0");
 	return;
