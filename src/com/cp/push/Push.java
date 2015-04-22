@@ -28,7 +28,7 @@ public class Push {
 		broadcast.setAppMasterSecret(this.appMasterSecret);
 		broadcast.setPreKeyValue("timestamp", this.timestamp);
 		//broadcast.setPreKeyValue("type", "broadcast");                      //消息发送类型为广播
-		broadcast.setPreKeyValue("device_tokens", "AmoU2OofbBIdwUJxZTrIzvW7kFF_ROatxyscQnvAtY1u");
+		broadcast.setPreKeyValue("device_tokens", new GetPushParameter().getDevice_Token("android"));
 		broadcast.setPreKeyValue("display_type", "notification");           //payload level
 		
 		broadcast.setPreKeyValue("ticker", ticker);     //body level
@@ -51,7 +51,7 @@ public class Push {
 		broadcast.setAppMasterSecret(this.appMasterSecret);
 		broadcast.setPreKeyValue("timestamp", this.timestamp);
 		//broadcast.setPreKeyValue("type", "unicast");                //消息发送类型为广播
-		broadcast.setPreKeyValue("device_tokens", "0d47ad2400c7a8edef2d14c1e452a21b49f4ca669fe744d9371b6c49c1c2b8de");
+		broadcast.setPreKeyValue("device_tokens", "");
 		
 		broadcast.setPreKeyValue("display_type", "notification");     //payload level
 		

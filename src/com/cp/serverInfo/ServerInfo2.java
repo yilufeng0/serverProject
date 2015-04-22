@@ -5,8 +5,14 @@ import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;   
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletConfig;
 
 import com.sun.management.OperatingSystemMXBean;
 
@@ -99,25 +105,57 @@ public class ServerInfo2 {
 	
 	
 ///////////////////////////////////////////网络信息////////////////////////////////		
-//获取当前机器的IP地址
-	public String getIpAddr() {  	
-	String address = null;
-	try {
-		String addresstmp = InetAddress.getLocalHost().toString();
-		address = addresstmp.substring(addresstmp.indexOf("/")+1, addresstmp.length());
-	} catch (UnknownHostException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+//获取当前机器的IP地址()
+//	public String getIpAddr() {  	
+//	String address = null;
+//	try {
+//		String addresstmp = InetAddress.getLocalHost().toString();
+//		address = addresstmp.substring(addresstmp.indexOf("/")+1, addresstmp.length());
+//	} catch (UnknownHostException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	return address;		  
+//	} 
+
+//获取当前机器的IP地址(通过web.xml配置文件获取)
+	public String getIpAddr(){
+//		Map<String, String> map = new HashMap<String, String>() ;   ServletConfig config
+//		map.put("ip", config.getInitParameter("IP"));
+//		map.put("port", config.getInitParameter("PORT"));
+		String ipAddress = null;
+		try {
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context)initCtx.lookup("java:comp/env");
+			ipAddress = (String)envCtx.lookup("IP");
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return ipAddress;
 	}
-	return address;		  
-	} 
-		
 	
+//获取当前机器的IP地址(通过web.xml配置文件获取)
+	public String getPort(){
+		String port = null;
+		try {
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context)initCtx.lookup("java:comp/env");
+			port = (String)envCtx.lookup("PORT");
+			System.out.println(port);
+		} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+		} 
+			return port;
+		}
+
 	public static void main(String[] args) throws UnknownHostException {
-		System.out.println(new ServerInfo2().getOsDesc());
-		System.out.println(new ServerInfo2().getOsVersion());
-		System.out.println(new ServerInfo2().getOsType());
-		System.out.println(new ServerInfo2().getDiskRatio());
+//		System.out.println(new ServerInfo2().getOsDesc());
+//		System.out.println(new ServerInfo2().getOsVersion());
+//		System.out.println(new ServerInfo2().getOsType());
+//		System.out.println(new ServerInfo2().getDiskRatio());
+	
     }
      
 

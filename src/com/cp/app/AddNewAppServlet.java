@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cp.JDBC.InsertOperation;
 import com.cp.basefunc.GetTime;
-import com.cp.serverInfo.ServerInfo;
+import com.cp.serverInfo.ServerInfo2;
 import com.cp.upload.UploadFile;
 import com.jspsmart.upload.Request;
 
@@ -38,7 +38,9 @@ public class AddNewAppServlet extends HttpServlet {
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());
 		Request req = null;
 		List<Object> listReq = new ArrayList<>();
-		String localIP = new ServerInfo().getIpAddr();
+		String localIP = new ServerInfo2().getIpAddr();
+		String port = new ServerInfo2().getPort();
+		String apptype=null;
 		try {
 			uploadFile.upload(request, response, "apk|ipa|xap", "apps");
 			req = uploadFile.getRequest();
@@ -53,16 +55,18 @@ public class AddNewAppServlet extends HttpServlet {
 			listReq.add(smallVersion);
 			listReq.add(req.getParameter("author"));
 			listReq.add(req.getParameter("apptype"));
+			apptype = req.getParameter("apptype");
 			listReq.add(req.getParameter("content"));
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
-			listReq.add("http://"+localIP+":8080/cpServerPro/app/"+uploadFile.getFileName());
+			listReq.add("http://"+localIP+":"+port+"/cpServerPro/app/"+uploadFile.getFileName());
 			String sql = "insert into apps(title,bigVersion,mediumVersion,smallVersion,submit,type,description,time,showTime,Url) values(?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);	
     	} catch (Exception e) {
 		e.printStackTrace();
 	  }
 	  response.setCharacterEncoding("UTF-8");
+	  request.setAttribute("apptype", apptype==null?"android":apptype);
 	  request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
 		
 	}

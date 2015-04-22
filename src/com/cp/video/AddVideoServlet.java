@@ -69,6 +69,7 @@ public class AddVideoServlet extends HttpServlet {
 				e.printStackTrace();
 		}
 		response.setCharacterEncoding("UTF-8");	
+		request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
 	}
 
 }
