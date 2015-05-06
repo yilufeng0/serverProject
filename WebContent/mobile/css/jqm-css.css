@@ -1,5 +1,6 @@
 /* JQM Demos custom CSS */
 
+
 /* Header */
 .jqm-demos .jqm-header {
 	text-align:auto
@@ -19,7 +20,7 @@
 .jqm-demos .jqm-header h2 img {
 	display: block;
 	width: 140px;
-	height: auto;
+	height: auto;s
 }
 .jqm-demos .jqm-header h2 > img {
 	display: inline-block;

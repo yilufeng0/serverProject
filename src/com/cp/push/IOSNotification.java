@@ -6,7 +6,7 @@ import java.util.HashSet;
 import org.json.JSONObject;
 
 public class IOSNotification extends BaseNotification {
-	protected static final HashSet<String> PAYLOAD_KEYS = new HashSet<String>(Arrays.asList(new String[]{"display_type"}));
+	protected static final HashSet<String> PAYLOAD_KEYS = new HashSet<String>(Arrays.asList(new String[]{"targetUrl"}));
 	protected static final HashSet<String> APS_KEYS = new HashSet<String>(Arrays.asList(new String[]{"alert", "badge", "sound", "content-available"}));
 
 	/**
@@ -49,7 +49,7 @@ public class IOSNotification extends BaseNotification {
 				payloadJson.put("aps", apsJson);
 			}
 			apsJson.put(key, value);
-		} else {
+		}else {
 			if (key == "payload" || key == "aps" || key == "policy" || key == "extra") {
 				throw new Exception("You don't need to set value for " + key + " , just set values for the sub keys in it.");
 			} else {

@@ -3,6 +3,9 @@
  */
 package com.cp.video;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -12,17 +15,40 @@ import javax.servlet.http.HttpServletRequest;
 public class GenerateImage {
 	public boolean getThumbnail(String videoPath,String imagePath,String size,HttpServletRequest request){
 		boolean result=false;
-		String rootpath = request.getServletContext().getRealPath("/");
-		//String command = "cmd /c  start D:\\ffmpeg\\ffmpeg.bat "+ videoPath+" "+size+" "+imagePath;
-		String command = "cmd /c "+rootpath+"\\ffmpeg\\bin\\ffmpeg.exe -i "+videoPath+" -ss 1 -vframes 1 -r 1 -ac 1 -ab 2 -s "+size+" -f image2 "+imagePath+" -y";
+		String  toolPath = request.getServletContext().getRealPath("/ffmpeg/bin/ffmpeg.exe");
+		//System.out.println(toolPath);
+		List<String> command = new ArrayList<String>();
+		command.add(toolPath);
+		command.add("-i");
+		command.add(videoPath);
+		command.add("-y");
+		command.add("-f");
+		command.add("image2");
+		command.add("-ss");
+		command.add("1");
+		command.add("-t");
+		command.add("0.001");
+		command.add("-s");
+		command.add(size);
+		command.add(imagePath);
+		
 		try {
-			Runtime.getRuntime().exec(command);
-			result = true;
+			@SuppressWarnings("unused")
+			ProcessBuilder builder= new ProcessBuilder();
+			builder.command(command);
+			builder.redirectErrorStream(true);
+			builder.start();
+			result= true;
+			//			
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e);
+			e.printStackTrace();
+			
 		}
 		return result;
 	}
+
 
 	/**
 	 * @param args

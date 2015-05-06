@@ -53,8 +53,7 @@ public class AddVideoServlet extends HttpServlet {
 					
 					String filename = multiUpload.getFileTotalName().get(i-1).substring(0,multiUpload.getFileTotalName().get(i-1).indexOf("."))+".jpg";
 					String imagepath = multiUpload.getRootPath()+filename;
-
-					new GenerateImage().getThumbnail(oripath, imagepath, "32*32",request);  //生成显示视频的图片第一帧
+					
 					listReq.add("Upload/video/"+filename);
 					listReq.add(type);
 					listReq.add(new GetTime().getDateAndTime());
@@ -63,6 +62,8 @@ public class AddVideoServlet extends HttpServlet {
 
 					String sql = "insert into exhibition(description,oripath,thumbpath,type,time,showTime,Url) values(?,?,?,?,?,?,?)";
 					InsertOperation.insertOne(sql, listReq);
+					new GenerateImage().getThumbnail(oripath, imagepath, "32*32",request);  //生成显示视频的图片第一帧
+					
 				}
 				 
 			} catch (Exception e) {

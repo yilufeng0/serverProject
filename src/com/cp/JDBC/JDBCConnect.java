@@ -23,6 +23,7 @@ public class JDBCConnect {
 	
 	static{
 		try {
+			//加载MySql的驱动类
 			Class.forName(drivername);
 		//	System.out.println("load driver success");
 		} catch (ClassNotFoundException e) {

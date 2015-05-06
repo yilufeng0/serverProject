@@ -74,7 +74,7 @@ public class SelectOperation {
 	
 	/**
 	 * @param index 指示所填充的位置 
-	 * @param obj	在知识位置填充的数据
+	 * @param obj	在指示位置填充的数据
 	 * @throws SQLException 
 	 */
 	private static void set(int index,Object obj) throws SQLException{
@@ -82,11 +82,11 @@ public class SelectOperation {
 		switch (valType) {
 		case "String":
 			pstm.setString(index, (String)obj);
-			System.out.println("string");
+			//System.out.println("string");
 			break;
 		case "Integer":
 			pstm.setInt(index, (int)obj);
-			System.out.println("int");
+			//System.out.println("int");
 			break;
 		default:
 			break;
