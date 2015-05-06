@@ -41,6 +41,7 @@
 	<link rel="stylesheet" href="mobile/css/jqm-css.css">
 	<script src="js/jquery-1.7.2.min.js"></script>
 	<script src="mobile/jquery.mobile-1.4.5.min.js"></script>
+	
 </head>
 <body>
 <div data-role="page">

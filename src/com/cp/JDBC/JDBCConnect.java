@@ -23,6 +23,7 @@ public class JDBCConnect {
 	
 	static{
 		try {
+			//加载MySql的驱动类
 			Class.forName(drivername);
 		//	System.out.println("load driver success");
 		} catch (ClassNotFoundException e) {
@@ -34,7 +35,12 @@ public class JDBCConnect {
 		Connection conn=null;
 		try {
 			conn=(Connection)DriverManager.getConnection(url, username, password);
-			//System.out.println("connect DB success");
+//			System.out.println("connect DB success");
+//			Statement stmt = conn.createStatement();
+//			stmt.execute("set character_set_client = utf8");
+//			stmt.execute("set character_set_connection = utf8");
+//			stmt.execute("set character_set_database = utf8");
+//			stmt.execute("set character_set_server = utf8");
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("fail,check url/username/password");

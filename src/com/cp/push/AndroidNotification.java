@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public class AndroidNotification extends BaseNotification{
 	protected static final HashSet<String> PAYLOAD_KEYS = new HashSet<String>(Arrays.asList(new String[]{"display_type"}));
 	protected static final HashSet<String> BODY_KEYS = new HashSet<String>(Arrays.asList(new String[]{"ticker","title","text","after_open","url"}));
-
+    protected static final HashSet<String> EXTRA_KEYS = new HashSet<String>(Arrays.asList(new String[]{"targetUrl"}));
 	/**
 	 * Android端的键值设置
 	 * @param key    JSON串中的键
@@ -49,7 +49,27 @@ public class AndroidNotification extends BaseNotification{
 				payloadJson.put("body", bodyJson);
 			}
 			bodyJson.put(key, value);
-		} else {
+		} else if(EXTRA_KEYS.contains(key)){
+			// This key should be in the extras level
+			JSONObject extraJson = null;
+			JSONObject payloadJson = null;
+			// 'body' key is under 'payload', so build a 'payload' if it doesn't exist
+			if (baseJson.has("payload")) {
+				payloadJson = baseJson.getJSONObject("payload");
+			} else {
+				payloadJson = new JSONObject();
+				baseJson.put("payload", payloadJson);
+			}
+			// Get 'extra' JSONObject, generate one if not existed
+			if (payloadJson.has("body")) {
+				extraJson = payloadJson.getJSONObject("body");
+			} else {
+				extraJson = new JSONObject();
+				payloadJson.put("body", extraJson);
+			}
+			extraJson.put(key, value);
+			
+		}else {
 			if (key == "payload" || key == "body" || key == "policy" || key == "extra") {
 				throw new Exception("You don't need to set value for " + key + " , just set values for the sub keys in it.");
 			} else {

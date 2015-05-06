@@ -11,6 +11,78 @@
     <url-pattern>/AccountAuthServlet</url-pattern>
   </servlet-mapping>
  -->
+ <!-- 用户登录设置 -->
+ <env-entry>
+ 	<env-entry-name>tag</env-entry-name>
+ 	<env-entry-type>java.lang.Boolean</env-entry-type>
+ 	<env-entry-value>true</env-entry-value>
+</env-entry>
+ 
+ <env-entry>
+ 	<env-entry-name>userName</env-entry-name>  <!-- 帐户用户名设置 -->
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>admin</env-entry-value>
+</env-entry>
+
+ <env-entry>
+ 	<env-entry-name>passwd</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>586034f</env-entry-value>  <!-- 帐户密码的hash值 -->
+</env-entry>
+
+
+ <!-- 配置IP地址和端口号Port -->
+<env-entry>
+ 	<env-entry-name>IP</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>103.244.82.219</env-entry-value>
+</env-entry>
+ 
+ <env-entry>
+ 	<env-entry-name>PORT</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>8080</env-entry-value>
+</env-entry>
+
+ <!-- Android推送参数设置 -->
+ <env-entry>
+ 	<env-entry-name>APP_KEY_ANDROID</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>55233243fd98c585d4000c38</env-entry-value>
+</env-entry>
+ 
+ <env-entry>
+ 	<env-entry-name>APP_MASTER_SECRET_ANDROID</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>i92rwu5ntirbklemtgroolldmdvv5ort</env-entry-value>
+</env-entry>
+
+ <env-entry>
+ 	<env-entry-name>DEVICE_TOKEN_ANDROID</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>Amalf9Eh8M8lTb8ZWDGIx4xyn77HR-oYocBHCDOMTjh9</env-entry-value>
+</env-entry>
+<!-- IOS推送参数设置 -->
+ <env-entry>
+ 	<env-entry-name>APP_KEY_IOS</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>552646a2fd98c521000018c7</env-entry-value>
+</env-entry>
+ 
+ <env-entry>
+ 	<env-entry-name>APP_MASTER_SECRET_IOS</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>ob7l3h1xkmogliux2obsdmwzafw7uhoi</env-entry-value>
+</env-entry>
+
+ <env-entry>
+ 	<env-entry-name>DEVICE_TOKEN_IOS</env-entry-name>
+ 	<env-entry-type>java.lang.String</env-entry-type>
+ 	<env-entry-value>0d47ad2400c7a8edef2d14c1e452a21b49f4ca669fe744d9371b6c49c1c2b8de</env-entry-value>
+</env-entry>
+<!--  -->
+
+ 
   <servlet>
     <servlet-name>AddNewsServlet</servlet-name>
     <servlet-class>com.cp.newspub.AddNewsServlet</servlet-class>

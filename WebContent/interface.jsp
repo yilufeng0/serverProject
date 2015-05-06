@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.cp.basefunc.GetTime"%>
 <%@page import="com.cp.basefunc.MapToJSON"%>
 <%@page import="com.cp.app.SelectApps"%>
@@ -17,7 +18,7 @@
 <%
 String requestType = request.getParameter("requestType");
 if(requestType==null){
-	out.write("0");
+	out.write("{\"result\":\"0\"}");
 	return;
 }
 response.setContentType("application/json;charset=utf-8");
@@ -35,7 +36,8 @@ switch (requestType)
   	  				   out.write(ResultsetToJSON.resultsetToJSON(rsNewsItem));
 	                   break;
 	                   
-  case "feedback"	 : String feedback = request.getParameter("content_str"); //获取反馈内容
+  case "feedback"	 : String tmp_feedback = request.getParameter("content_str");  //获取反馈内容
+  					   String feedback = URLDecoder.decode(tmp_feedback,"utf-8");  //urldecoder解码
                        System.out.print("feedback:");
   					   System.out.println(feedback);
   					   
@@ -50,7 +52,7 @@ switch (requestType)
                        
                        String showTime = GetTime.getPageDate();             //获取反馈发送时间
                        AddFeedback.addFeedback(feedback,uuId,telephone,showTime);
-                       out.write("1");
+                       out.write("{\"result\":\"1\"}"); 
                        break;
                        
   case "version"     : String appType = request.getParameter("appType");
@@ -95,7 +97,7 @@ switch (requestType)
              			   out.write(MapToJSON.hashMapToJson(map));   
            			   }
            			   else{
-           				   out.write("{'result':'-1'}");
+           				out.write("{\"result\":\"-1\"}");
            			   }
            			   
                        break;

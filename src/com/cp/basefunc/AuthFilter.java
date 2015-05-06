@@ -34,7 +34,8 @@ public class AuthFilter implements Filter {
      String targetURL = currentURL.substring(currentURL.indexOf("/", 1)+1,currentURL.length());
     // System.out.println(currentURL);
     // System.out.println(targetURL);
-   if(targetURL.equals("accountauth.jsp")||targetURL.equals("interface.jsp")){
+     //对该网页不进行阻拦
+   if(targetURL.equals("accountauth.jsp")||targetURL.equals("interface.jsp")||targetURL.equals("getnews.jsp")){
 	   filterChain.doFilter(request, response);  
    }
    else{

@@ -37,6 +37,7 @@ public class AddNewAccountServlet extends HttpServlet {
 		try {
 			request.setCharacterEncoding("UTF-8");
 			listReq.add(request.getParameter("account"));
+			//System.out.println(request.getParameter("account"));
 			listReq.add(request.getParameter("acctype"));
 			listReq.add(Integer.toHexString(request.getParameter("passwd").hashCode()));
 			listReq.add(new GetTime().getDateAndTime());  

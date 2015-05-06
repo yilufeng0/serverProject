@@ -38,10 +38,11 @@ public class AddNewsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		request.setCharacterEncoding("UTF-8");
 		UploadFile uploadFile = new UploadFile(this.getServletConfig());	
 		Request req=null;
 		String localIP = new ServerInfo2().getIpAddr();
+		String port = new ServerInfo2().getPort();
 		List<Object> listReq = new ArrayList<>();
 		
         try {        		
@@ -49,16 +50,19 @@ public class AddNewsServlet extends HttpServlet {
 			String thumbFileName = SmallUpImgNoRatio.smallUpload(uploadFile.getFName(), uploadFile.getExtName(), uploadFile.getRootPath(), 32, 32);
 			UUID uuid = UUID.randomUUID();
 			req=uploadFile.getRequest();
+			
+			//System.out.println(req.getParameter("newstitle"));
 			listReq.add(req.getParameter("newstitle"));			
 			listReq.add(req.getParameter("newsauthor"));
+			//System.out.println(req.getParameter("newstitle"));
 			listReq.add(req.getParameter("remark"));
 			listReq.add(req.getParameter("content"));
 			listReq.add(uploadFile.getRootPath());
 			listReq.add(new GetTime().getDateAndTime());
 			listReq.add(GetTime.getPageDate());
 			listReq.add(String.valueOf(uuid));
-			listReq.add("http://"+localIP+":8080/cpServerPro/Upload/image/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
-			listReq.add("http://"+localIP+":8080/cpServerPro/getnews.jsp?uuid="+uuid);
+			listReq.add("http://"+localIP+":"+port+"/cpServerPro/Upload/image/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
+			listReq.add("http://"+localIP+":"+port+"/cpServerPro/getnews.jsp?uuid="+uuid);
 			listReq.add("/"+thumbFileName.substring(thumbFileName.lastIndexOf("/")+1, thumbFileName.length()));
 			String sql = "insert into news(title,author,abstract,content,imageOri,time,showTime,uuid,imageThumbnailUrl,contentUrl,imageThumbnail) values(?,?,?,?,?,?,?,?,?,?,?)";
 			InsertOperation.insertOne(sql, listReq);
@@ -66,7 +70,7 @@ public class AddNewsServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+        response.setCharacterEncoding("UTF-8");	
         request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
        // response.sendRedirect("addsuccess.jsp");
 	}

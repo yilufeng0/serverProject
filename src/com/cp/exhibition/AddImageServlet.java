@@ -38,7 +38,6 @@ public class AddImageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		    request.setCharacterEncoding("UTF-8");
 		  	String type = request.getParameter("type");
-		  	String localIP = new ServerInfo().getIpAddr();
 		    MultiUploadFile multiUpload = new MultiUploadFile(this.getServletConfig());
 		    Request req = null;
 		    List<Object> listReq = new ArrayList<>();
@@ -68,6 +67,7 @@ public class AddImageServlet extends HttpServlet {
 				e.printStackTrace();
 		}
 		response.setCharacterEncoding("UTF-8");	
+		request.getRequestDispatcher("addsuccess.jsp").forward(request,response);
 	}
 
 }
